@@ -1,0 +1,103 @@
+[2020/05/26 10:07:38.188] [TID:1] [MainServer.CreateServer => MainServer.RegistHandler => NLogLog.Info]: 핸들러 등록 완료
+[2020/05/26 10:07:38.204] [TID:1] [Program.Main => MainServer.CreateServer => NLogLog.Info]: 서버 생성 성공
+[2020/05/26 10:07:38.232] [TID:1] [AppServer`2.Start => AppServerBase`2.Start => NLogLog.Info]: The server instance Echo has been started!
+[2020/05/26 10:07:38.232] [TID:1] [Program.Main => NLogLog.Info]: 서버 네트워크 시작
+[2020/05/26 10:07:38.232] [TID:1] [Program.Main => NLogLog.Info]: Key 를 누르면 종료
+[2020/05/26 10:08:04.228] [TID:5] [<>c__DisplayClass133_0.<OnNewSessionConnected>b__0 => MainServer.OnConnected => NLogLog.Info]: 세션 번호 c08acc16-69b5-4630-970f-b197ab9a1b75 접속
+[2020/05/26 10:08:16.625] [TID:5] [<>c__DisplayClass133_0.<OnNewSessionConnected>b__0 => MainServer.OnConnected => NLogLog.Info]: 세션 번호 f05f1112-50f5-4f74-a8cd-2f20611a7071 접속
+[2020/05/26 10:08:18.759] [TID:5] [AppServerBase`2.ExecuteCommand => MainServer.RequestReceived => NLogLog.Info]: 세션 번호 c08acc16-69b5-4630-970f-b197ab9a1b75, 받은 데이터 크기 : 6
+[2020/05/26 10:08:20.532] [TID:6] [AppServerBase`2.ExecuteCommand => MainServer.RequestReceived => NLogLog.Info]: 세션 번호 f05f1112-50f5-4f74-a8cd-2f20611a7071, 받은 데이터 크기 : 6
+[2020/05/26 10:08:21.003] [TID:5] [AppServerBase`2.ExecuteCommand => MainServer.RequestReceived => NLogLog.Info]: 세션 번호 f05f1112-50f5-4f74-a8cd-2f20611a7071, 받은 데이터 크기 : 6
+[2020/05/26 10:08:22.549] [TID:5] [AppServerBase`2.ExecuteCommand => MainServer.RequestReceived => NLogLog.Info]: 세션 번호 c08acc16-69b5-4630-970f-b197ab9a1b75, 받은 데이터 크기 : 6
+[2020/05/26 10:08:23.290] [TID:5] [<>c__DisplayClass141_0.<OnSessionClosed>b__0 => MainServer.OnClosed => NLogLog.Info]: 세션 번호 c08acc16-69b5-4630-970f-b197ab9a1b75 접속해제 : SocketError
+[2020/05/26 10:08:24.066] [TID:6] [<>c__DisplayClass141_0.<OnSessionClosed>b__0 => MainServer.OnClosed => NLogLog.Info]: 세션 번호 f05f1112-50f5-4f74-a8cd-2f20611a7071 접속해제 : SocketError
+[2020/05/26 11:53:00.001] [TID:1] [MainServer.CreateServer => MainServer.RegistHandler => NLogLog.Info]: 핸들러 등록 완료
+[2020/05/26 11:53:00.014] [TID:1] [Program.Main => MainServer.CreateServer => NLogLog.Info]: 서버 생성 성공
+[2020/05/26 11:53:00.045] [TID:1] [AppServer`2.Start => AppServerBase`2.Start => NLogLog.Info]: The server instance Echo has been started!
+[2020/05/26 11:53:00.045] [TID:1] [Program.Main => NLogLog.Info]: 서버 네트워크 시작
+[2020/05/26 11:53:00.045] [TID:1] [Program.Main => NLogLog.Info]: Key 를 누르면 종료
+[2020/05/26 11:53:04.693] [TID:5] [<>c__DisplayClass133_0.<OnNewSessionConnected>b__0 => MainServer.OnConnected => NLogLog.Info]: 세션 번호 9dd19f9c-d30a-496a-81dc-89fb6520c8ef 접속
+[2020/05/26 11:53:06.314] [TID:5] [AppServerBase`2.ExecuteCommand => MainServer.RequestReceived => NLogLog.Info]: 세션 번호 9dd19f9c-d30a-496a-81dc-89fb6520c8ef, 받은 데이터 크기 : 6
+[2020/05/26 11:53:06.314] [TID:5] [AppServerBase`2.ExecuteCommand => MainServer.RequestReceived => NLogLog.Info]: System.Byte[]
+[2020/05/26 11:53:07.657] [TID:5] [AppServerBase`2.ExecuteCommand => MainServer.RequestReceived => NLogLog.Info]: 세션 번호 9dd19f9c-d30a-496a-81dc-89fb6520c8ef, 받은 데이터 크기 : 6
+[2020/05/26 11:53:07.657] [TID:5] [AppServerBase`2.ExecuteCommand => MainServer.RequestReceived => NLogLog.Info]: System.Byte[]
+[2020/05/26 11:53:08.198] [TID:5] [AppServerBase`2.ExecuteCommand => MainServer.RequestReceived => NLogLog.Info]: 세션 번호 9dd19f9c-d30a-496a-81dc-89fb6520c8ef, 받은 데이터 크기 : 6
+[2020/05/26 11:53:08.198] [TID:5] [AppServerBase`2.ExecuteCommand => MainServer.RequestReceived => NLogLog.Info]: System.Byte[]
+[2020/05/26 11:53:08.728] [TID:4] [AppServerBase`2.ExecuteCommand => MainServer.RequestReceived => NLogLog.Info]: 세션 번호 9dd19f9c-d30a-496a-81dc-89fb6520c8ef, 받은 데이터 크기 : 6
+[2020/05/26 11:53:08.728] [TID:4] [AppServerBase`2.ExecuteCommand => MainServer.RequestReceived => NLogLog.Info]: System.Byte[]
+[2020/05/26 11:54:22.803] [TID:10] [<>c__DisplayClass141_0.<OnSessionClosed>b__0 => MainServer.OnClosed => NLogLog.Info]: 세션 번호 9dd19f9c-d30a-496a-81dc-89fb6520c8ef 접속해제 : SocketError
+[2020/05/26 11:55:12.787] [TID:1] [MainServer.CreateServer => MainServer.RegistHandler => NLogLog.Info]: 핸들러 등록 완료
+[2020/05/26 11:55:12.799] [TID:1] [Program.Main => MainServer.CreateServer => NLogLog.Info]: 서버 생성 성공
+[2020/05/26 11:55:12.826] [TID:1] [AppServer`2.Start => AppServerBase`2.Start => NLogLog.Info]: The server instance Echo has been started!
+[2020/05/26 11:55:12.826] [TID:1] [Program.Main => NLogLog.Info]: 서버 네트워크 시작
+[2020/05/26 11:55:12.826] [TID:1] [Program.Main => NLogLog.Info]: Key 를 누르면 종료
+[2020/05/26 11:55:14.269] [TID:5] [<>c__DisplayClass133_0.<OnNewSessionConnected>b__0 => MainServer.OnConnected => NLogLog.Info]: 세션 번호 8745a1d0-6b41-443d-a926-981c422dbf7e 접속
+[2020/05/26 11:55:21.578] [TID:5] [AppServerBase`2.ExecuteCommand => MainServer.RequestReceived => NLogLog.Info]: 세션 번호 8745a1d0-6b41-443d-a926-981c422dbf7e, 받은 데이터 크기 : 6
+[2020/05/26 11:55:21.578] [TID:5] [AppServerBase`2.ExecuteCommand => MainServer.RequestReceived => NLogLog.Info]: S
+[2020/05/26 11:55:21.578] [TID:5] [AppServerBase`2.ExecuteCommand => MainServer.RequestReceived => NLogLog.Info]: y
+[2020/05/26 11:55:21.578] [TID:5] [AppServerBase`2.ExecuteCommand => MainServer.RequestReceived => NLogLog.Info]: s
+[2020/05/26 11:55:21.578] [TID:5] [AppServerBase`2.ExecuteCommand => MainServer.RequestReceived => NLogLog.Info]: t
+[2020/05/26 11:55:21.578] [TID:5] [AppServerBase`2.ExecuteCommand => MainServer.RequestReceived => NLogLog.Info]: e
+[2020/05/26 11:55:21.578] [TID:5] [AppServerBase`2.ExecuteCommand => MainServer.RequestReceived => NLogLog.Info]: m
+[2020/05/26 11:55:21.578] [TID:5] [AppServerBase`2.ExecuteCommand => MainServer.RequestReceived => NLogLog.Info]: .
+[2020/05/26 11:55:21.578] [TID:5] [AppServerBase`2.ExecuteCommand => MainServer.RequestReceived => NLogLog.Info]: B
+[2020/05/26 11:55:21.578] [TID:5] [AppServerBase`2.ExecuteCommand => MainServer.RequestReceived => NLogLog.Info]: y
+[2020/05/26 11:55:21.578] [TID:5] [AppServerBase`2.ExecuteCommand => MainServer.RequestReceived => NLogLog.Info]: t
+[2020/05/26 11:55:21.578] [TID:5] [AppServerBase`2.ExecuteCommand => MainServer.RequestReceived => NLogLog.Info]: e
+[2020/05/26 11:55:21.578] [TID:5] [AppServerBase`2.ExecuteCommand => MainServer.RequestReceived => NLogLog.Info]: [
+[2020/05/26 11:55:21.578] [TID:5] [AppServerBase`2.ExecuteCommand => MainServer.RequestReceived => NLogLog.Info]: ]
+[2020/05/26 11:55:41.018] [TID:1] [MainServer.CreateServer => MainServer.RegistHandler => NLogLog.Info]: 핸들러 등록 완료
+[2020/05/26 11:55:41.031] [TID:1] [Program.Main => MainServer.CreateServer => NLogLog.Info]: 서버 생성 성공
+[2020/05/26 11:55:41.059] [TID:1] [AppServer`2.Start => AppServerBase`2.Start => NLogLog.Info]: The server instance Echo has been started!
+[2020/05/26 11:55:41.059] [TID:1] [Program.Main => NLogLog.Info]: 서버 네트워크 시작
+[2020/05/26 11:55:41.059] [TID:1] [Program.Main => NLogLog.Info]: Key 를 누르면 종료
+[2020/05/26 11:55:42.613] [TID:4] [<>c__DisplayClass133_0.<OnNewSessionConnected>b__0 => MainServer.OnConnected => NLogLog.Info]: 세션 번호 73ab01bc-715c-482e-b04c-8453df8e67c3 접속
+[2020/05/26 11:55:44.045] [TID:4] [AppServerBase`2.ExecuteCommand => MainServer.RequestReceived => NLogLog.Info]: 세션 번호 73ab01bc-715c-482e-b04c-8453df8e67c3, 받은 데이터 크기 : 6
+[2020/05/26 11:55:44.045] [TID:4] [AppServerBase`2.ExecuteCommand => MainServer.RequestReceived => NLogLog.Info]: S
+[2020/05/26 11:55:44.045] [TID:4] [AppServerBase`2.ExecuteCommand => MainServer.RequestReceived => NLogLog.Info]: y
+[2020/05/26 11:55:44.045] [TID:4] [AppServerBase`2.ExecuteCommand => MainServer.RequestReceived => NLogLog.Info]: s
+[2020/05/26 11:55:44.045] [TID:4] [AppServerBase`2.ExecuteCommand => MainServer.RequestReceived => NLogLog.Info]: t
+[2020/05/26 11:55:44.045] [TID:4] [AppServerBase`2.ExecuteCommand => MainServer.RequestReceived => NLogLog.Info]: e
+[2020/05/26 11:55:44.045] [TID:4] [AppServerBase`2.ExecuteCommand => MainServer.RequestReceived => NLogLog.Info]: m
+[2020/05/26 11:55:44.045] [TID:4] [AppServerBase`2.ExecuteCommand => MainServer.RequestReceived => NLogLog.Info]: .
+[2020/05/26 11:55:44.045] [TID:4] [AppServerBase`2.ExecuteCommand => MainServer.RequestReceived => NLogLog.Info]: B
+[2020/05/26 11:55:44.045] [TID:4] [AppServerBase`2.ExecuteCommand => MainServer.RequestReceived => NLogLog.Info]: y
+[2020/05/26 11:55:44.045] [TID:4] [AppServerBase`2.ExecuteCommand => MainServer.RequestReceived => NLogLog.Info]: t
+[2020/05/26 11:55:44.045] [TID:4] [AppServerBase`2.ExecuteCommand => MainServer.RequestReceived => NLogLog.Info]: e
+[2020/05/26 11:55:44.045] [TID:4] [AppServerBase`2.ExecuteCommand => MainServer.RequestReceived => NLogLog.Info]: [
+[2020/05/26 11:55:44.045] [TID:4] [AppServerBase`2.ExecuteCommand => MainServer.RequestReceived => NLogLog.Info]: ]
+[2020/05/26 11:55:45.320] [TID:4] [AppServerBase`2.ExecuteCommand => MainServer.RequestReceived => NLogLog.Info]: 세션 번호 73ab01bc-715c-482e-b04c-8453df8e67c3, 받은 데이터 크기 : 6
+[2020/05/26 11:55:45.320] [TID:4] [AppServerBase`2.ExecuteCommand => MainServer.RequestReceived => NLogLog.Info]: S
+[2020/05/26 11:55:45.320] [TID:4] [AppServerBase`2.ExecuteCommand => MainServer.RequestReceived => NLogLog.Info]: y
+[2020/05/26 11:55:45.320] [TID:4] [AppServerBase`2.ExecuteCommand => MainServer.RequestReceived => NLogLog.Info]: s
+[2020/05/26 11:55:45.320] [TID:4] [AppServerBase`2.ExecuteCommand => MainServer.RequestReceived => NLogLog.Info]: t
+[2020/05/26 11:55:45.320] [TID:4] [AppServerBase`2.ExecuteCommand => MainServer.RequestReceived => NLogLog.Info]: e
+[2020/05/26 11:55:45.320] [TID:4] [AppServerBase`2.ExecuteCommand => MainServer.RequestReceived => NLogLog.Info]: m
+[2020/05/26 11:55:45.320] [TID:4] [AppServerBase`2.ExecuteCommand => MainServer.RequestReceived => NLogLog.Info]: .
+[2020/05/26 11:55:45.320] [TID:4] [AppServerBase`2.ExecuteCommand => MainServer.RequestReceived => NLogLog.Info]: B
+[2020/05/26 11:55:45.320] [TID:4] [AppServerBase`2.ExecuteCommand => MainServer.RequestReceived => NLogLog.Info]: y
+[2020/05/26 11:55:45.320] [TID:4] [AppServerBase`2.ExecuteCommand => MainServer.RequestReceived => NLogLog.Info]: t
+[2020/05/26 11:55:45.320] [TID:4] [AppServerBase`2.ExecuteCommand => MainServer.RequestReceived => NLogLog.Info]: e
+[2020/05/26 11:55:45.320] [TID:4] [AppServerBase`2.ExecuteCommand => MainServer.RequestReceived => NLogLog.Info]: [
+[2020/05/26 11:55:45.320] [TID:4] [AppServerBase`2.ExecuteCommand => MainServer.RequestReceived => NLogLog.Info]: ]
+[2020/05/26 11:55:57.312] [TID:1] [MainServer.CreateServer => MainServer.RegistHandler => NLogLog.Info]: 핸들러 등록 완료
+[2020/05/26 11:55:57.324] [TID:1] [Program.Main => MainServer.CreateServer => NLogLog.Info]: 서버 생성 성공
+[2020/05/26 11:55:57.353] [TID:1] [AppServer`2.Start => AppServerBase`2.Start => NLogLog.Info]: The server instance Echo has been started!
+[2020/05/26 11:55:57.353] [TID:1] [Program.Main => NLogLog.Info]: 서버 네트워크 시작
+[2020/05/26 11:55:57.353] [TID:1] [Program.Main => NLogLog.Info]: Key 를 누르면 종료
+[2020/05/26 11:55:59.672] [TID:4] [<>c__DisplayClass133_0.<OnNewSessionConnected>b__0 => MainServer.OnConnected => NLogLog.Info]: 세션 번호 910d2381-56f3-44d6-9c58-9331ffc42b1c 접속
+[2020/05/26 11:56:00.505] [TID:4] [AppServerBase`2.ExecuteCommand => MainServer.RequestReceived => NLogLog.Info]: 세션 번호 910d2381-56f3-44d6-9c58-9331ffc42b1c, 받은 데이터 크기 : 6
+[2020/05/26 11:56:00.505] [TID:4] [AppServerBase`2.ExecuteCommand => MainServer.RequestReceived => NLogLog.Info]: S
+[2020/05/26 11:56:00.505] [TID:4] [AppServerBase`2.ExecuteCommand => MainServer.RequestReceived => NLogLog.Info]: y
+[2020/05/26 11:56:00.505] [TID:4] [AppServerBase`2.ExecuteCommand => MainServer.RequestReceived => NLogLog.Info]: s
+[2020/05/26 11:56:00.505] [TID:4] [AppServerBase`2.ExecuteCommand => MainServer.RequestReceived => NLogLog.Info]: t
+[2020/05/26 11:56:00.505] [TID:4] [AppServerBase`2.ExecuteCommand => MainServer.RequestReceived => NLogLog.Info]: e
+[2020/05/26 11:56:00.505] [TID:4] [AppServerBase`2.ExecuteCommand => MainServer.RequestReceived => NLogLog.Info]: m
+[2020/05/26 11:56:00.505] [TID:4] [AppServerBase`2.ExecuteCommand => MainServer.RequestReceived => NLogLog.Info]: .
+[2020/05/26 11:56:00.505] [TID:4] [AppServerBase`2.ExecuteCommand => MainServer.RequestReceived => NLogLog.Info]: B
+[2020/05/26 11:56:00.505] [TID:4] [AppServerBase`2.ExecuteCommand => MainServer.RequestReceived => NLogLog.Info]: y
+[2020/05/26 11:56:00.505] [TID:4] [AppServerBase`2.ExecuteCommand => MainServer.RequestReceived => NLogLog.Info]: t
+[2020/05/26 11:56:00.505] [TID:4] [AppServerBase`2.ExecuteCommand => MainServer.RequestReceived => NLogLog.Info]: e
+[2020/05/26 11:56:00.505] [TID:4] [AppServerBase`2.ExecuteCommand => MainServer.RequestReceived => NLogLog.Info]: [
+[2020/05/26 11:56:00.505] [TID:4] [AppServerBase`2.ExecuteCommand => MainServer.RequestReceived => NLogLog.Info]: ]
+[2020/05/26 11:56:02.046] [TID:4] [<>c__DisplayClass141_0.<OnSessionClosed>b__0 => MainServer.OnClosed => NLogLog.Info]: 세션 번호 910d2381-56f3-44d6-9c58-9331ffc42b1c 접속해제 : SocketError

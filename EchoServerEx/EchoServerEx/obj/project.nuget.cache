@@ -1,0 +1,30 @@
+{
+  "version": 2,
+  "dgSpecHash": "CidcmSfDOeA0Pp868fRvDOuog9JclCx1BlBshrE75kIfqhcD8cJBb3GQBDJ4VOKq+nLSBj+y3EuoRbNKOV6yCQ==",
+  "success": true,
+  "projectFilePath": "C:\\Project\\study_supersocketlite\\EchoServerEx\\EchoServerEx\\EchoServerEx.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\yaj\\.nuget\\packages\\commandlineparser\\2.8.0\\commandlineparser.2.8.0.nupkg.sha512",
+    "C:\\Users\\yaj\\.nuget\\packages\\microsoft.extensions.configuration\\3.0.0\\microsoft.extensions.configuration.3.0.0.nupkg.sha512",
+    "C:\\Users\\yaj\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\3.0.0\\microsoft.extensions.configuration.abstractions.3.0.0.nupkg.sha512",
+    "C:\\Users\\yaj\\.nuget\\packages\\microsoft.extensions.configuration.binder\\3.0.0\\microsoft.extensions.configuration.binder.3.0.0.nupkg.sha512",
+    "C:\\Users\\yaj\\.nuget\\packages\\microsoft.extensions.dependencyinjection\\3.0.0\\microsoft.extensions.dependencyinjection.3.0.0.nupkg.sha512",
+    "C:\\Users\\yaj\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\3.0.0\\microsoft.extensions.dependencyinjection.abstractions.3.0.0.nupkg.sha512",
+    "C:\\Users\\yaj\\.nuget\\packages\\microsoft.extensions.logging\\3.0.0\\microsoft.extensions.logging.3.0.0.nupkg.sha512",
+    "C:\\Users\\yaj\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\3.0.0\\microsoft.extensions.logging.abstractions.3.0.0.nupkg.sha512",
+    "C:\\Users\\yaj\\.nuget\\packages\\microsoft.extensions.options\\3.0.0\\microsoft.extensions.options.3.0.0.nupkg.sha512",
+    "C:\\Users\\yaj\\.nuget\\packages\\microsoft.extensions.primitives\\3.0.0\\microsoft.extensions.primitives.3.0.0.nupkg.sha512",
+    "C:\\Users\\yaj\\.nuget\\packages\\microsoft.netcore.platforms\\5.0.0-preview.4.20251.6\\microsoft.netcore.platforms.5.0.0-preview.4.20251.6.nupkg.sha512",
+    "C:\\Users\\yaj\\.nuget\\packages\\microsoft.win32.systemevents\\5.0.0-preview.4.20251.6\\microsoft.win32.systemevents.5.0.0-preview.4.20251.6.nupkg.sha512",
+    "C:\\Users\\yaj\\.nuget\\packages\\nlog\\4.7.2\\nlog.4.7.2.nupkg.sha512",
+    "C:\\Users\\yaj\\.nuget\\packages\\nlog.extensions.logging\\1.6.4\\nlog.extensions.logging.1.6.4.nupkg.sha512",
+    "C:\\Users\\yaj\\.nuget\\packages\\system.configuration.configurationmanager\\5.0.0-preview.4.20251.6\\system.configuration.configurationmanager.5.0.0-preview.4.20251.6.nupkg.sha512",
+    "C:\\Users\\yaj\\.nuget\\packages\\system.drawing.common\\5.0.0-preview.4.20251.6\\system.drawing.common.5.0.0-preview.4.20251.6.nupkg.sha512",
+    "C:\\Users\\yaj\\.nuget\\packages\\system.security.accesscontrol\\5.0.0-preview.4.20251.6\\system.security.accesscontrol.5.0.0-preview.4.20251.6.nupkg.sha512",
+    "C:\\Users\\yaj\\.nuget\\packages\\system.security.cryptography.protecteddata\\5.0.0-preview.4.20251.6\\system.security.cryptography.protecteddata.5.0.0-preview.4.20251.6.nupkg.sha512",
+    "C:\\Users\\yaj\\.nuget\\packages\\system.security.permissions\\5.0.0-preview.4.20251.6\\system.security.permissions.5.0.0-preview.4.20251.6.nupkg.sha512",
+    "C:\\Users\\yaj\\.nuget\\packages\\system.security.principal.windows\\5.0.0-preview.4.20251.6\\system.security.principal.windows.5.0.0-preview.4.20251.6.nupkg.sha512",
+    "C:\\Users\\yaj\\.nuget\\packages\\system.windows.extensions\\5.0.0-preview.4.20251.6\\system.windows.extensions.5.0.0-preview.4.20251.6.nupkg.sha512"
+  ],
+  "logs": []
+}

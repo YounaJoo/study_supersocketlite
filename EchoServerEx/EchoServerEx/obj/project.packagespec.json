@@ -1,0 +1,64 @@
+﻿{
+  "version": "1.0.0",
+  "restore": {
+    "projectUniqueName": "C:\\Project\\study_supersocketlite\\EchoServerEx\\EchoServerEx\\EchoServerEx.csproj",
+    "projectName": "EchoServerEx",
+    "projectPath": "C:\\Project\\study_supersocketlite\\EchoServerEx\\EchoServerEx\\EchoServerEx.csproj",
+    "outputPath": "C:\\Project\\study_supersocketlite\\EchoServerEx\\EchoServerEx\\obj\\",
+    "projectStyle": "PackageReference",
+    "originalTargetFrameworks": [
+      "netcoreapp3.1"
+    ],
+    "sources": {
+      "https://api.nuget.org/v3/index.json": {}
+    },
+    "frameworks": {
+      "netcoreapp3.1": {
+        "projectReferences": {}
+      }
+    },
+    "warningProperties": {
+      "warnAsError": [
+        "NU1605"
+      ]
+    }
+  },
+  "frameworks": {
+    "netcoreapp3.1": {
+      "dependencies": {
+        "CommandLineParser": {
+          "target": "Package",
+          "version": "[2.8.0, )"
+        },
+        "NLog": {
+          "target": "Package",
+          "version": "[4.7.2, )"
+        },
+        "NLog.Extensions.Logging": {
+          "target": "Package",
+          "version": "[1.6.4, )"
+        },
+        "System.Configuration.ConfigurationManager": {
+          "target": "Package",
+          "version": "[5.0.0-preview.4.20251.6, )"
+        }
+      },
+      "imports": [
+        "net461",
+        "net462",
+        "net47",
+        "net471",
+        "net472",
+        "net48"
+      ],
+      "assetTargetFallback": true,
+      "warn": true,
+      "frameworkReferences": {
+        "Microsoft.NETCore.App": {
+          "privateAssets": "all"
+        }
+      },
+      "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.202\\RuntimeIdentifierGraph.json"
+    }
+  }
+}
