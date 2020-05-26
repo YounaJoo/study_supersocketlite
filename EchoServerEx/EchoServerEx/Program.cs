@@ -10,6 +10,7 @@ namespace EchoServerEx
             Console.WriteLine("Hello SuperSocketLite");
 
             // 커맨드 라인에서 배치 파일 실행 후 Port, Max 연결 수, Name 입력 후 매핑
+            // 매핑 완료 시 ServerOption 형태로 반환
             var serverOption = ParseCommandLine(args);
             if (serverOption == null)
             {
@@ -18,11 +19,13 @@ namespace EchoServerEx
             
             // MainServer 객체 생성
             var server = new MainServer();
-            // MainServer 객체 초기화
+            // 네트워크 구성요소-Config 초기화
             server.InitConfig(serverOption);
             server.CreateServer();
 
             // Start = SuperSocket 기능, 연결 시작
+            // 이 Method가 AsyncAccept 까지 진행
+            // 그래서 개발자는 종료가 되지 않게 막아줘야 한다.
             var IsResult = server.Start();
 
             if (IsResult)

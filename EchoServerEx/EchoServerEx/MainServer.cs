@@ -32,9 +32,14 @@ namespace EchoServerEx
             NewRequestReceived += new RequestHandler<NetworkSession, EFBinaryRequestInfo>(RequestReceived); // 3. 데이터 왔음
         }
 
+        // 패킷 핸들러 연결 
+        // 로그인인지, 방에 들어가는건지 아닌지 그거에 따라 분기를 해서 if-switch 대신 함수 포인터처럼 사용함
+        // c#으로는 연관 컨테이너로 사용함. Value는 함수
+        // 패킷 처리할 때 패킷 종류에 따라 함수 연결
         void RegistHandler()
         {
             // Map 이라 중복이 안됨. 핸들러의 정확한 개념을 인지하고 가기 --> createServer 호출 모양 잘 보기!
+            // 패킷 ID는 중요하다. 중복되면 안되니까 각 패킷 종류마다 ID를 enum 상태값으로 주어 절대 바뀌어 지지 않게 적용한다. (enum은 상수값!)
             HandlerMap.Add((int)PACKETID.REQ_ECHO, CommonHan.RequestEcho);
             MainLogger.Info("핸들러 등록 완료");
         }
@@ -109,18 +114,20 @@ namespace EchoServerEx
         {
             // 리퀘스트 정보에 들어있는 PacketID get
             var PacketID = reqInfo.PacketID;
-
-             // 중복 키 발생 시
+            
+            // 증복 등록은 막고 있다
             if (HandlerMap.ContainsKey(PacketID))
             {
                 // Q> 의미 무엇 ㅜㅜ?
+                // 해당 키가 들어있으면 해당 함수를 그대로 호출.
+                // 그렇지 않으면 오류(해킹)이라 생각
                 HandlerMap[PacketID](session, reqInfo);
             }
             else
             {
-                // 무사히 요청을 받음
-                MainLogger.Info($"세션 번호 {session.SessionID}, 받은 데이터 크기 : {reqInfo.Body.Length}");
-                
+                // 오류 메세지 발생
+                MainLogger.Error($"[Error] 세션 번호 {session.SessionID}, 받은 데이터 크기 : {reqInfo.Body.Length}");
+                MainLogger.Info(PacketID);
             }
         }
     }

@@ -10,6 +10,7 @@ namespace EchoServerEx
     // 패킷에 대한 정보를 담고 있는 클래스(패킷 크기, ID, 데이터-body, 헤더 크기 등)
     public class EFBinaryRequestInfo : BinaryRequestInfo
     {
+        // 패킷의 데이터 : 패킷 전체의 크기, 패킷 종류(Echo), 데이터
         public Int16 TotalSize { get; private set; }
         public Int16 PacketID { get; private set; }
         public SByte Value1 { get; private set; }
@@ -25,7 +26,7 @@ namespace EchoServerEx
     }
 
     // SuperSocket에 ReceiveFilter를 재정의 하는 클래스
-    // ReceiveFilter는, 패킷 크기, 헤더 등을 정의하고 패킷 헤더에 따라 패킷을 잘개 쪼개는 역할을 한다.
+    // ReceiveFilter는, 패킷 크기, 헤더 등을 정의하고 패킷 헤더에 따라 패킷을 잘개 쪼개는 역할을 한다. 쪼개는건 SuperSocket이 알아서 해주어 Execute 한다.
     // TRequestInfo(=위에 생성한 EFBinaryRequestInfo) 추상 멤버를 갖고 있는 FixedHeader~를 상속받았기에 재정의 필요 
     public class ReceiveFilter : FixedHeaderReceiveFilter<EFBinaryRequestInfo>
     {

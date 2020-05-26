@@ -16,13 +16,13 @@ namespace EchoServerEx
     // Int 형으로 되어 있는 Packet Id 상태값
     public enum PACKETID : int
     {
-        REQ_ECHO = 101,
+        REQ_ECHO = 101,// Request Echo ID = 101
     }
 
     // Main 에서 연결될 Handler 객체
     public class CommonHandler
     {
-        // Q> 정확한 의미?
+        // 에코니까 Request에 들어온 대로 Session에 넘겨줌
         public void RequestEcho(NetworkSession session, EFBinaryRequestInfo requestInfo)
         {
             // 패킷의 전체 크기 : body + header 
