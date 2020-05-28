@@ -18,15 +18,21 @@ namespace CSBaseLib
         public static byte[] Make(PACKETID packetID, byte[] bodyData)
         {
             byte type = 0;
+            // 패킷 아이디 --> 16비트 Int로 변환
             var pktID = (Int16)packetID;
             Int16 bodyDataSize = 0;
             if (bodyData != null)
             {
+                // 매개변수로 받은 byte[]의 크기를 멤버변수에 할당
                 bodyDataSize = (Int16)bodyData.Length;
             }
+            // 패킷 전체 크기 = body + header
             var packetSize = (Int16)(bodyDataSize + PacketDef.PACKET_HEADER_SIZE);
-                        
+            
             var dataSource = new byte[packetSize];
+            // Buffer Class : 기본 형식의 배열을 조작하는 클래스
+            // Buffer.BlockCopy : 특정 오프셋에서 시작하는 소스 배열에서 특정 오프셋에서 시작하는 대상 배열로 지정된 바이트 수를 복사(바이트 블록을 전체 복사)
+            // Buffer.BlockCopy Argument : (소스 배열, 소스 배열에 대한 바이트 오프셋, 대상 배열, 대상 배열에 대한 바이트 오프셋, 복사할 바이트 수)
             Buffer.BlockCopy(BitConverter.GetBytes(packetSize), 0, dataSource, 0, 2);
             Buffer.BlockCopy(BitConverter.GetBytes(pktID), 0, dataSource, 2, 2);
             dataSource[4] = type;
@@ -36,6 +42,8 @@ namespace CSBaseLib
                 Buffer.BlockCopy(bodyData, 0, dataSource, 5, bodyDataSize);
             }
 
+            // 패킷에 대한 바이트 수가 복사된 dataSource 반환 (패킷의 전체 사이즈 --> 패킷 ID --> 패킷 Body)
+            // Q> dataSource 의 역할은?? --> Packet을 하나로 뭉치는 것?
             return dataSource;
         }
 

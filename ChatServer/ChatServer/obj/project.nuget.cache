@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "z9V6cozwjir/8UVDFk4LECpYpx27Lw48Z0V0yCGSg1rha6CTfNbXN7WqejJ++50HIfzndDDqfb1Nd6mdP1yzog==",
+  "dgSpecHash": "fUV+RTrTy94PMrFDj5CzADMle0C7vltJO+3jyMcKLW1smFVaUOrrHYhyHXdQ+qwJI+1jeUBJzihFsSutRDJHRw==",
   "success": true,
   "projectFilePath": "C:\\Project\\study_supersocketlite\\ChatServer\\ChatServer\\ChatServer.csproj",
   "expectedPackageFiles": [
@@ -8,6 +8,7 @@
     "C:\\Users\\yaj\\.nuget\\packages\\messagepack\\2.1.115\\messagepack.2.1.115.nupkg.sha512",
     "C:\\Users\\yaj\\.nuget\\packages\\messagepack.annotations\\2.1.115\\messagepack.annotations.2.1.115.nupkg.sha512",
     "C:\\Users\\yaj\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\1.0.0\\microsoft.bcl.asyncinterfaces.1.0.0.nupkg.sha512",
+    "C:\\Users\\yaj\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",
     "C:\\Users\\yaj\\.nuget\\packages\\microsoft.extensions.configuration\\3.0.0\\microsoft.extensions.configuration.3.0.0.nupkg.sha512",
     "C:\\Users\\yaj\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\3.0.0\\microsoft.extensions.configuration.abstractions.3.0.0.nupkg.sha512",
     "C:\\Users\\yaj\\.nuget\\packages\\microsoft.extensions.configuration.binder\\3.0.0\\microsoft.extensions.configuration.binder.3.0.0.nupkg.sha512",
@@ -18,10 +19,16 @@
     "C:\\Users\\yaj\\.nuget\\packages\\microsoft.extensions.options\\3.0.0\\microsoft.extensions.options.3.0.0.nupkg.sha512",
     "C:\\Users\\yaj\\.nuget\\packages\\microsoft.extensions.primitives\\3.0.0\\microsoft.extensions.primitives.3.0.0.nupkg.sha512",
     "C:\\Users\\yaj\\.nuget\\packages\\microsoft.netcore.platforms\\5.0.0-preview.4.20251.6\\microsoft.netcore.platforms.5.0.0-preview.4.20251.6.nupkg.sha512",
+    "C:\\Users\\yaj\\.nuget\\packages\\microsoft.win32.registry\\4.5.0\\microsoft.win32.registry.4.5.0.nupkg.sha512",
     "C:\\Users\\yaj\\.nuget\\packages\\microsoft.win32.systemevents\\5.0.0-preview.4.20251.6\\microsoft.win32.systemevents.5.0.0-preview.4.20251.6.nupkg.sha512",
     "C:\\Users\\yaj\\.nuget\\packages\\nlog\\4.7.2\\nlog.4.7.2.nupkg.sha512",
     "C:\\Users\\yaj\\.nuget\\packages\\nlog.extensions.logging\\1.6.4\\nlog.extensions.logging.1.6.4.nupkg.sha512",
+    "C:\\Users\\yaj\\.nuget\\packages\\runtime.native.system.data.sqlclient.sni\\4.4.0\\runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512",
+    "C:\\Users\\yaj\\.nuget\\packages\\runtime.win-arm64.runtime.native.system.data.sqlclient.sni\\4.4.0\\runtime.win-arm64.runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512",
+    "C:\\Users\\yaj\\.nuget\\packages\\runtime.win-x64.runtime.native.system.data.sqlclient.sni\\4.4.0\\runtime.win-x64.runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512",
+    "C:\\Users\\yaj\\.nuget\\packages\\runtime.win-x86.runtime.native.system.data.sqlclient.sni\\4.4.0\\runtime.win-x86.runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512",
     "C:\\Users\\yaj\\.nuget\\packages\\system.configuration.configurationmanager\\5.0.0-preview.4.20251.6\\system.configuration.configurationmanager.5.0.0-preview.4.20251.6.nupkg.sha512",
+    "C:\\Users\\yaj\\.nuget\\packages\\system.data.sqlclient\\4.5.1\\system.data.sqlclient.4.5.1.nupkg.sha512",
     "C:\\Users\\yaj\\.nuget\\packages\\system.drawing.common\\5.0.0-preview.4.20251.6\\system.drawing.common.5.0.0-preview.4.20251.6.nupkg.sha512",
     "C:\\Users\\yaj\\.nuget\\packages\\system.memory\\4.5.3\\system.memory.4.5.3.nupkg.sha512",
     "C:\\Users\\yaj\\.nuget\\packages\\system.reflection.emit\\4.6.0\\system.reflection.emit.4.6.0.nupkg.sha512",
@@ -31,8 +38,10 @@
     "C:\\Users\\yaj\\.nuget\\packages\\system.security.cryptography.protecteddata\\5.0.0-preview.4.20251.6\\system.security.cryptography.protecteddata.5.0.0-preview.4.20251.6.nupkg.sha512",
     "C:\\Users\\yaj\\.nuget\\packages\\system.security.permissions\\5.0.0-preview.4.20251.6\\system.security.permissions.5.0.0-preview.4.20251.6.nupkg.sha512",
     "C:\\Users\\yaj\\.nuget\\packages\\system.security.principal.windows\\5.0.0-preview.4.20251.6\\system.security.principal.windows.5.0.0-preview.4.20251.6.nupkg.sha512",
+    "C:\\Users\\yaj\\.nuget\\packages\\system.text.encoding.codepages\\4.5.0\\system.text.encoding.codepages.4.5.0.nupkg.sha512",
     "C:\\Users\\yaj\\.nuget\\packages\\system.threading.tasks.extensions\\4.5.3\\system.threading.tasks.extensions.4.5.3.nupkg.sha512",
-    "C:\\Users\\yaj\\.nuget\\packages\\system.windows.extensions\\5.0.0-preview.4.20251.6\\system.windows.extensions.5.0.0-preview.4.20251.6.nupkg.sha512"
+    "C:\\Users\\yaj\\.nuget\\packages\\system.windows.extensions\\5.0.0-preview.4.20251.6\\system.windows.extensions.5.0.0-preview.4.20251.6.nupkg.sha512",
+    "C:\\Users\\yaj\\.nuget\\packages\\z.extensionmethods\\2.1.1\\z.extensionmethods.2.1.1.nupkg.sha512"
   ],
   "logs": []
 }

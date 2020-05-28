@@ -34,6 +34,10 @@
           "target": "Package",
           "version": "[2.8.0, )"
         },
+        "MessagePack": {
+          "target": "Package",
+          "version": "[2.1.115, )"
+        },
         "NLog.Extensions.Logging": {
           "target": "Package",
           "version": "[1.6.4, )"
@@ -41,6 +45,10 @@
         "System.Configuration.ConfigurationManager": {
           "target": "Package",
           "version": "[5.0.0-preview.4.20251.6, )"
+        },
+        "Z.ExtensionMethods": {
+          "target": "Package",
+          "version": "[2.1.1, )"
         }
       },
       "imports": [

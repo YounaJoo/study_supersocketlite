@@ -1,0 +1,56 @@
+[2020/05/28 11:33:42.311] [TID:9] [Extensions.IfTrue => <>c__DisplayClass13_0.<Process>b__0 => NLogLog.Error]: System.NullReferenceException: Object reference not set to an instance of an object.
+   at ChatServer.PacketProcessor.Process() in C:\Project\study_supersocketlite\ChatServer\ChatServer\PacketProcessor.cs:line 96
+[2020/05/28 11:33:45.082] [TID:9] [Extensions.IfTrue => <>c__DisplayClass13_0.<Process>b__0 => NLogLog.Error]: System.NullReferenceException: Object reference not set to an instance of an object.
+   at ChatServer.PacketProcessor.Process() in C:\Project\study_supersocketlite\ChatServer\ChatServer\PacketProcessor.cs:line 96
+[2020/05/28 11:33:46.976] [TID:9] [Extensions.IfTrue => <>c__DisplayClass13_0.<Process>b__0 => NLogLog.Error]: System.NullReferenceException: Object reference not set to an instance of an object.
+   at ChatServer.PacketProcessor.Process() in C:\Project\study_supersocketlite\ChatServer\ChatServer\PacketProcessor.cs:line 96
+[2020/05/28 11:34:16.939] [TID:9] [Extensions.IfTrue => <>c__DisplayClass13_0.<Process>b__0 => NLogLog.Error]: System.NullReferenceException: Object reference not set to an instance of an object.
+   at ChatServer.PacketProcessor.Process() in C:\Project\study_supersocketlite\ChatServer\ChatServer\PacketProcessor.cs:line 96
+[2020/05/28 11:34:18.704] [TID:9] [Extensions.IfTrue => <>c__DisplayClass13_0.<Process>b__0 => NLogLog.Error]: System.NullReferenceException: Object reference not set to an instance of an object.
+   at ChatServer.PacketProcessor.Process() in C:\Project\study_supersocketlite\ChatServer\ChatServer\PacketProcessor.cs:line 96
+[2020/05/28 11:34:24.140] [TID:9] [Extensions.IfTrue => <>c__DisplayClass13_0.<Process>b__0 => NLogLog.Error]: System.NullReferenceException: Object reference not set to an instance of an object.
+   at ChatServer.PacketProcessor.Process() in C:\Project\study_supersocketlite\ChatServer\ChatServer\PacketProcessor.cs:line 96
+[2020/05/28 11:37:48.337] [TID:9] [Extensions.IfTrue => <>c__DisplayClass13_0.<Process>b__0 => NLogLog.Error]: System.NullReferenceException: Object reference not set to an instance of an object.
+   at ChatServer.PacketProcessor.Process() in C:\Project\study_supersocketlite\ChatServer\ChatServer\PacketProcessor.cs:line 97
+[2020/05/28 11:39:18.406] [TID:9] [Extensions.IfTrue => <>c__DisplayClass13_0.<Process>b__0 => NLogLog.Error]: System.ArgumentNullException: Array cannot be null. (Parameter 'bytes')
+   at System.Text.Encoding.GetString(Byte[] bytes)
+   at ChatServer.PacketProcessor.Process() in C:\Project\study_supersocketlite\ChatServer\ChatServer\PacketProcessor.cs:line 97
+[2020/05/28 11:39:33.214] [TID:9] [Extensions.IfTrue => <>c__DisplayClass13_0.<Process>b__0 => NLogLog.Error]: System.ArgumentNullException: Array cannot be null. (Parameter 'bytes')
+   at System.Text.Encoding.GetString(Byte[] bytes)
+   at ChatServer.PacketProcessor.Process() in C:\Project\study_supersocketlite\ChatServer\ChatServer\PacketProcessor.cs:line 97
+[2020/05/28 12:04:41.791] [TID:9] [Extensions.IfTrue => <>c__DisplayClass13_0.<Process>b__0 => NLogLog.Error]: System.ArgumentNullException: Array cannot be null. (Parameter 'bytes')
+   at System.Text.Encoding.GetString(Byte[] bytes)
+   at ChatServer.PacketProcessor.Process() in C:\Project\study_supersocketlite\ChatServer\ChatServer\PacketProcessor.cs:line 97
+[2020/05/28 12:06:58.860] [TID:9] [Extensions.IfTrue => <>c__DisplayClass13_0.<Process>b__0 => NLogLog.Error]: System.ArgumentNullException: Array cannot be null. (Parameter 'bytes')
+   at System.Text.Encoding.GetString(Byte[] bytes)
+   at ChatServer.PacketProcessor.Process() in C:\Project\study_supersocketlite\ChatServer\ChatServer\PacketProcessor.cs:line 97
+[2020/05/28 12:10:58.389] [TID:9] [Extensions.IfTrue => <>c__DisplayClass13_0.<Process>b__0 => NLogLog.Error]: System.ArgumentNullException: Array cannot be null. (Parameter 'bytes')
+   at System.Text.Encoding.GetString(Byte[] bytes)
+   at ChatServer.PacketProcessor.Process() in C:\Project\study_supersocketlite\ChatServer\ChatServer\PacketProcessor.cs:line 97
+[2020/05/28 13:57:53.034] [TID:9] [Extensions.IfTrue => <>c__DisplayClass13_0.<Process>b__0 => NLogLog.Error]: System.ArgumentNullException: Array cannot be null. (Parameter 'bytes')
+   at System.Text.Encoding.GetString(Byte[] bytes)
+   at ChatServer.PacketProcessor.Process() in C:\Project\study_supersocketlite\ChatServer\ChatServer\PacketProcessor.cs:line 98
+[2020/05/28 14:07:32.332] [TID:9] [Extensions.IfTrue => <>c__DisplayClass13_0.<Process>b__0 => NLogLog.Error]: System.ArgumentNullException: Array cannot be null. (Parameter 'bytes')
+   at System.Text.Encoding.GetString(Byte[] bytes)
+   at ChatServer.PacketProcessor.Process() in C:\Project\study_supersocketlite\ChatServer\ChatServer\PacketProcessor.cs:line 98
+[2020/05/28 14:07:47.774] [TID:9] [Extensions.IfTrue => <>c__DisplayClass13_0.<Process>b__0 => NLogLog.Error]: System.ArgumentNullException: Array cannot be null. (Parameter 'bytes')
+   at System.Text.Encoding.GetString(Byte[] bytes)
+   at ChatServer.PacketProcessor.Process() in C:\Project\study_supersocketlite\ChatServer\ChatServer\PacketProcessor.cs:line 98
+[2020/05/28 14:07:48.381] [TID:9] [Extensions.IfTrue => <>c__DisplayClass13_0.<Process>b__0 => NLogLog.Error]: System.ArgumentNullException: Array cannot be null. (Parameter 'bytes')
+   at System.Text.Encoding.GetString(Byte[] bytes)
+   at ChatServer.PacketProcessor.Process() in C:\Project\study_supersocketlite\ChatServer\ChatServer\PacketProcessor.cs:line 98
+[2020/05/28 14:07:55.736] [TID:9] [Extensions.IfTrue => <>c__DisplayClass13_0.<Process>b__0 => NLogLog.Error]: System.ArgumentNullException: Array cannot be null. (Parameter 'bytes')
+   at System.Text.Encoding.GetString(Byte[] bytes)
+   at ChatServer.PacketProcessor.Process() in C:\Project\study_supersocketlite\ChatServer\ChatServer\PacketProcessor.cs:line 98
+[2020/05/28 14:07:56.722] [TID:9] [Extensions.IfTrue => <>c__DisplayClass13_0.<Process>b__0 => NLogLog.Error]: System.ArgumentNullException: Array cannot be null. (Parameter 'bytes')
+   at System.Text.Encoding.GetString(Byte[] bytes)
+   at ChatServer.PacketProcessor.Process() in C:\Project\study_supersocketlite\ChatServer\ChatServer\PacketProcessor.cs:line 98
+[2020/05/28 17:04:19.161] [TID:9] [Extensions.IfTrue => <>c__DisplayClass13_0.<Process>b__0 => NLogLog.Error]: System.ArgumentNullException: Array cannot be null. (Parameter 'bytes')
+   at System.Text.Encoding.GetString(Byte[] bytes)
+   at ChatServer.PacketProcessor.Process() in C:\Project\study_supersocketlite\ChatServer\ChatServer\PacketProcessor.cs:line 98
+[2020/05/28 17:04:28.321] [TID:9] [Extensions.IfTrue => <>c__DisplayClass13_0.<Process>b__0 => NLogLog.Error]: System.ArgumentNullException: Array cannot be null. (Parameter 'bytes')
+   at System.Text.Encoding.GetString(Byte[] bytes)
+   at ChatServer.PacketProcessor.Process() in C:\Project\study_supersocketlite\ChatServer\ChatServer\PacketProcessor.cs:line 98
+[2020/05/28 17:04:37.911] [TID:9] [Extensions.IfTrue => <>c__DisplayClass13_0.<Process>b__0 => NLogLog.Error]: System.ArgumentNullException: Array cannot be null. (Parameter 'bytes')
+   at System.Text.Encoding.GetString(Byte[] bytes)
+   at ChatServer.PacketProcessor.Process() in C:\Project\study_supersocketlite\ChatServer\ChatServer\PacketProcessor.cs:line 98

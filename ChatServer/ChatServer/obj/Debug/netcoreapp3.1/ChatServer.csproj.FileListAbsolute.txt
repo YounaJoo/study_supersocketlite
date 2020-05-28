@@ -52,3 +52,11 @@ C:\Project\study_supersocketlite\ChatServer\ChatServer\bin\Debug\netcoreapp3.1\C
 C:\Project\study_supersocketlite\ChatServer\ChatServer\bin\Debug\netcoreapp3.1\SuperSocket.Common.pdb
 C:\Project\study_supersocketlite\ChatServer\ChatServer\bin\Debug\netcoreapp3.1\SuperSocket.SocketBase.pdb
 C:\Project\study_supersocketlite\ChatServer\ChatServer\bin\Debug\netcoreapp3.1\SuperSocket.SocketEngine.pdb
+C:\Project\study_supersocketlite\00_server_bins\netcoreapp3.1\CSBaseLib.exe
+C:\Project\study_supersocketlite\00_server_bins\netcoreapp3.1\ChatServer.exe
+C:\Project\study_supersocketlite\00_server_bins\netcoreapp3.1\NLog.config
+C:\Project\study_supersocketlite\00_server_bins\netcoreapp3.1\ChatServer.deps.json
+C:\Project\study_supersocketlite\00_server_bins\netcoreapp3.1\ChatServer.runtimeconfig.json
+C:\Project\study_supersocketlite\00_server_bins\netcoreapp3.1\ChatServer.runtimeconfig.dev.json
+C:\Project\study_supersocketlite\00_server_bins\netcoreapp3.1\ChatServer.dll
+C:\Project\study_supersocketlite\00_server_bins\netcoreapp3.1\ChatServer.pdb

@@ -15,8 +15,10 @@
 
     <ItemGroup>
       <PackageReference Include="CommandLineParser" Version="2.8.0" />
+      <PackageReference Include="MessagePack" Version="2.1.115" />
       <PackageReference Include="NLog.Extensions.Logging" Version="1.6.4" />
       <PackageReference Include="System.Configuration.ConfigurationManager" Version="5.0.0-preview.4.20251.6" />
+      <PackageReference Include="Z.ExtensionMethods" Version="2.1.1" />
     </ItemGroup>
 
     <ItemGroup>
