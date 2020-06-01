@@ -100,6 +100,7 @@ namespace ChatServer
             // Session Index Pool 생성 - CommandLine에서 입력한 MaxConnectionNumber를 한정으로!
             // Q> MaxConnectionNumber 수를 넘어 선 채 세션을 할당한다면 어떻게 될 것인가?
             // Q> Index Pool의 역할은? 
+            // A> 새로운 Client 유저 접속 시, Pool에 있는 index를 부여해주며 메모리 재사용 관리
             ClientSession.CreateIndexPool(m_Config.MaxConnectionNumber);
 
             // Room의 NetSendFunc 델리게이트 함수 연결
@@ -132,6 +133,7 @@ namespace ChatServer
                 {
                     return false;
                 }
+                Console.WriteLine($"SendData sesionIndex : {session.SessionIndex}");
                 
                 // 보내는 것도 SuperSocket이 해준다.
                 session.Send(sendData, 0, sendData.Length);
@@ -161,7 +163,7 @@ namespace ChatServer
         {
             // 옵션의 최대 연결 수를 넘으면 SuperSocket이 바로 접속을 짤라버린다. 즉 이 OnConnected 함수는 호출되지 않는다.
             
-            // Q> Session Index Pool 에서 하나 Pop 하여 세션에 메모리 할당
+            // Session Index Pool 에서 하나 Pop 하여 세션에 메모리 할당
             session.AllocSessionIndex();
             MainLogger.Info(string.Format("세션 번호 {0} 접속", session.SessionID));
 
@@ -195,7 +197,6 @@ namespace ChatServer
             packet.SessionIndex = session.SessionIndex;
             packet.PackSize = reqInfo.Size;
             packet.PacketID = reqInfo.PacketID;
-            Console.WriteLine($"PacektID : {packet.PacketID}  PacketType : {packet.Type}");
             packet.Type = reqInfo.Type;
             packet.BodyData = reqInfo.Body;
 
