@@ -1,24 +1,17 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEditor.UI;
-using UnityEngine.UI;
 
 public class Test : MonoBehaviour
 {
-    public Text txt;
-    public Button btn;
-    private MachingSystem ms;
-    
-    public void chkBtn()
+    // Start is called before the first frame update
+    void Start()
     {
-        ms = btn.GetComponent<MachingSystem>();
-        string person = "youna";
-        txt.text = "Sucess Maching : " + person;
+        Debug.Log(1234);
+    }
 
-        Text btn_txt = btn.GetComponentInChildren<Text>();
-        btn_txt.text = "ok";
-        ms.idx = 2;
+    public Test()
+    {
+        Debug.Log("Instance");
     }
 }

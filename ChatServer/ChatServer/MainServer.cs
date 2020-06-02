@@ -134,6 +134,7 @@ namespace ChatServer
                     return false;
                 }
                 Console.WriteLine($"SendData sesionIndex : {session.SessionIndex}");
+                Console.WriteLine($"SendData sesionID : {sessionID}");
                 
                 // 보내는 것도 SuperSocket이 해준다.
                 session.Send(sendData, 0, sendData.Length);
