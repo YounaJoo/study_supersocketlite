@@ -24,9 +24,14 @@ namespace ConnectToServer
     /// </summary>
     public class MainClient : MonoBehaviour
     {
+        #region Init
+
+        private static MainClient instance = null; 
+        
         private bool serializerRegistered = false;
         
         private NetworkManager networkManager;
+        private RoomUIManager roomUIManager;
 
         private PLAYER_STATE p_state = PLAYER_STATE.NONE;
 
@@ -39,12 +44,6 @@ namespace ConnectToServer
         private string prevCommenct = "";
 
         private List<string> msg;
-
-        // UI 변경
-        public GameObject loginPannel;
-        public GameObject roomPannel;
-        public GameObject chatPanel;
-        public GameObject gamePanel;
         
         // for test
         public Text room;
@@ -53,6 +52,7 @@ namespace ConnectToServer
         {
             NONE = 0, // 아무런 상태 X
             REQ_LOGIN,
+            ROOMENTER,
             IN_ROOM, // 채팅 중
             GAME, // 게임
             IDLE, // 쉬어가는 타임
@@ -60,12 +60,34 @@ namespace ConnectToServer
             ERROR // 에러
         }
 
+        #endregion
+
+        #region Unity
+
+        public static MainClient Instance
+        {
+            get => instance;
+            set => instance = value;
+        }
+
         private void Awake()
         {
             networkManager = new NetworkManager();
             networkManager.debugPrintFunc = Debug.Log;
-            
+
             msg = new List<string>();
+
+            roomUIManager = new RoomUIManager();
+
+            if (instance == null)
+            {
+                instance = this;
+                DontDestroyOnLoad(this.gameObject);
+            }
+            else
+            {
+                Destroy(this.gameObject);
+            }
         }
 
         private void Start()
@@ -73,8 +95,8 @@ namespace ConnectToServer
             if (!serializerRegistered)
             {
                 StaticCompositeResolver.Instance.Register(
-                    MessagePack.Resolvers.GeneratedResolver.Instance,
-                    MessagePack.Resolvers.StandardResolver.Instance
+                    GeneratedResolver.Instance,
+                    StandardResolver.Instance
                 );
 
                 var option = MessagePackSerializerOptions.Standard.WithResolver(StaticCompositeResolver.Instance);
@@ -96,8 +118,15 @@ namespace ConnectToServer
                     requestLogin();
                     break;
                 
+                case PLAYER_STATE.ROOMENTER :
+                    requestRoomEnter();
+                    Debug.Log("Room 입장 요청~");
+                    
+                    break;
+
                 case PLAYER_STATE.IN_ROOM : // Ready, Chatting?
-                    Debug.Log("ROOM에 들어가야지");
+                    roomUIManager.roomEnterUIChange();
+                    p_state = PLAYER_STATE.GAME;
                     break;
                 
                 case PLAYER_STATE.GAME :
@@ -108,19 +137,69 @@ namespace ConnectToServer
                 
                 case PLAYER_STATE.LEAVE :
                     networkManager.disconnect();
+                    roomUIManager.exitUIChange();
+                    p_state = PLAYER_STATE.NONE;
                     break;
                 
                 case PLAYER_STATE.ERROR :
                     break;
             }
         }
-        
-        // test
-        public void exitBtn()
+
+        #endregion
+
+        #region Request
+        private void requestLogin()
         {
-            p_state = PLAYER_STATE.LEAVE;
+            Debug.Log("Login중");
+            var packetList = networkManager.GetPacket();
+            
+            var reqLogin = new PKTReqLogin() {UserID = id, AuthToken = pass};
+
+            // 2020.06.02 : MessagePack Error!!
+            var body = MessagePackSerializer.Serialize(reqLogin);
+            var sendData = PacketToBytes.Make(PACKETID.REQ_LOGIN, body);
+
+            PostSendPacket(sendData);
+            
+            p_state = PLAYER_STATE.ROOMENTER;
         }
-        
+
+        private void requestRoomEnter()
+        {
+            var packetList = networkManager.GetPacket();
+            
+            var reqRoomEnter = new PKTReqRoomEnter()
+            {
+                RoomNumber = int.Parse(room.text)
+            };
+
+            var body = MessagePackSerializer.Serialize(reqRoomEnter);
+            var sendData = PacketToBytes.Make(PACKETID.REQ_ROOM_ENTER, body);
+            
+            PostSendPacket(sendData);
+            
+            p_state = PLAYER_STATE.IN_ROOM;
+        }
+        #endregion
+
+        #region Network
+        public void PostSendPacket(byte[] sendData)
+        {
+            if (networkManager.IsConnected == false)
+            {
+                Debug.Log("서버 연결이 되어 있지 않습니다");
+                return;
+            }
+
+            // 패킷 감싸서 network.Send(packetData)
+            networkManager.Send(sendData);
+        }
+
+        #endregion
+
+        #region UI
+
         public void loginBtn()
         {
             // get : input Id / pass
@@ -144,7 +223,6 @@ namespace ConnectToServer
                 bool isConnected = networkManager.connect(ip, port);
                 if (isConnected)
                 {
-                    ChatRoomManager.playerID = id;
                     p_state = PLAYER_STATE.REQ_LOGIN;
                 }
                 else
@@ -158,32 +236,14 @@ namespace ConnectToServer
             }
         }
 
-        private void requestLogin()
+        // test
+        public void exitBtn()
         {
-            var packetList = networkManager.GetPacket();
-            
-            var reqLogin = new PKTReqLogin() {UserID = id, AuthToken = pass};
-
-            // 2020.06.02 : MessagePack Error!!
-            var body = MessagePackSerializer.Serialize(reqLogin);
-            var sendData = PacketToBytes.Make(PACKETID.REQ_LOGIN, body);
-
-            PostSendPacket(sendData);
-            
-            Debug.Log("Login중");
+            Debug.Log(11234);
+            p_state = PLAYER_STATE.LEAVE;
         }
 
-        public void PostSendPacket(byte[] sendData)
-        {
-            if (networkManager.IsConnected == false)
-            {
-                Debug.Log("서버 연결이 되어 있지 않습니다");
-                return;
-            }
+        #endregion
 
-            // 패킷 감싸서 network.Send(packetData)
-            networkManager.Send(sendData);
-            p_state = PLAYER_STATE.IN_ROOM;
-        }
     }
 }

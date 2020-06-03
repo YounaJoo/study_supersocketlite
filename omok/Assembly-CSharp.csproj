@@ -58,15 +58,15 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Scripts\ButtonContoller.cs" />
      <Compile Include="Assets\Scripts\CSBaseLib\PacketData.cs" />
      <Compile Include="Assets\Scripts\CSBaseLib\PacketDefine.cs" />
-     <Compile Include="Assets\Scripts\ChatRoom.cs" />
-     <Compile Include="Assets\Scripts\ChatRoomManager.cs" />
+     <Compile Include="Assets\Scripts\ChattingRoom.cs" />
      <Compile Include="Assets\Scripts\ConnectToServer\MainClient.cs" />
      <Compile Include="Assets\Scripts\ConnectToServer\NetworkManager.cs" />
      <Compile Include="Assets\Scripts\ConnectToServer\PacketBufferManager.cs" />
      <Compile Include="Assets\Scripts\Login.cs" />
-     <Compile Include="Assets\Scripts\Test.cs" />
+     <Compile Include="Assets\Scripts\RoomUIManager.cs" />
      <Compile Include="Assets\Scripts\_chat.cs" />
      <Compile Include="Assets\_Completed-Assets\Scripts\Common\Packet\MessagepackResolver.cs" />
  <Reference Include="Unity.Timeline.Editor">
