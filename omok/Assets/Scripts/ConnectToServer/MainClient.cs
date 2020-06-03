@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
 using MessagePack;
+using MessagePack.Resolvers;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -23,6 +24,8 @@ namespace ConnectToServer
     /// </summary>
     public class MainClient : MonoBehaviour
     {
+        private bool serializerRegistered = false;
+        
         private NetworkManager networkManager;
 
         private PLAYER_STATE p_state = PLAYER_STATE.NONE;
@@ -65,6 +68,21 @@ namespace ConnectToServer
             msg = new List<string>();
         }
 
+        private void Start()
+        {
+            if (!serializerRegistered)
+            {
+                StaticCompositeResolver.Instance.Register(
+                    MessagePack.Resolvers.GeneratedResolver.Instance,
+                    MessagePack.Resolvers.StandardResolver.Instance
+                );
+
+                var option = MessagePackSerializerOptions.Standard.WithResolver(StaticCompositeResolver.Instance);
+                MessagePackSerializer.DefaultOptions = option;
+                serializerRegistered = true;
+            }
+        }
+
         private void Update()
         {
             switch (p_state)
@@ -79,6 +97,7 @@ namespace ConnectToServer
                     break;
                 
                 case PLAYER_STATE.IN_ROOM : // Ready, Chatting?
+                    Debug.Log("ROOM에 들어가야지");
                     break;
                 
                 case PLAYER_STATE.GAME :
@@ -164,6 +183,7 @@ namespace ConnectToServer
 
             // 패킷 감싸서 network.Send(packetData)
             networkManager.Send(sendData);
+            p_state = PLAYER_STATE.IN_ROOM;
         }
     }
 }

@@ -68,6 +68,7 @@
      <Compile Include="Assets\Scripts\Login.cs" />
      <Compile Include="Assets\Scripts\Test.cs" />
      <Compile Include="Assets\Scripts\_chat.cs" />
+     <Compile Include="Assets\_Completed-Assets\Scripts\Common\Packet\MessagepackResolver.cs" />
  <Reference Include="Unity.Timeline.Editor">
  <HintPath>C:/Project/study_supersocketlite/omok/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
  </Reference>
