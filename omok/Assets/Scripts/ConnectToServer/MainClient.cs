@@ -52,6 +52,7 @@ namespace ConnectToServer
         {
             NONE = 0, // 아무런 상태 X
             REQ_LOGIN, // 로그인 요청
+            RES_LOGIN,
             ROOMENTER, // 방 입장
             IN_ROOM, // 채팅 & 게임 레디
             GAME, // 게임 턴
@@ -115,15 +116,13 @@ namespace ConnectToServer
                     break;
                     
                 case PLAYER_STATE.REQ_LOGIN : 
-                    // ID 접속 --> UI 변경
                     requestLogin();
                     break;
                 
-                case PLAYER_STATE.ROOMENTER :
-                    requestRoomEnter();
-                    Debug.Log("Room 입장 요청~");
+                case PLAYER_STATE.RES_LOGIN :
+                    receiveLogin();
                     break;
-
+                
                 case PLAYER_STATE.IN_ROOM : // Ready, Chatting
                     // 상대방, 유저 둘 다 게임 준비 완료를 하면 Game 시작
                     receiveChat();
@@ -143,8 +142,12 @@ namespace ConnectToServer
                     break;
                 
                 case PLAYER_STATE.ERROR :
+                    Debug.Log("Error 발생");
+                    p_state = PLAYER_STATE.NONE;
                     break;
             }
+            
+            
         }
 
         #endregion
@@ -152,9 +155,6 @@ namespace ConnectToServer
         #region Request
         private void requestLogin()
         {
-            Debug.Log("Login중");
-            var packetList = networkManager.GetPacket();
-            
             var reqLogin = new PKTReqLogin() {UserID = id, AuthToken = pass};
 
             // 2020.06.02 : MessagePack Error!!
@@ -162,9 +162,8 @@ namespace ConnectToServer
             var sendData = PacketToBytes.Make(PACKETID.REQ_LOGIN, body);
 
             PostSendPacket(sendData);
-            
-            // Res에서 제대로 받았으면, RoomEnter인데 현재는 작은 프로세스를 만드는 것이라 일단은 바로 허용해주기
-            p_state = PLAYER_STATE.ROOMENTER;
+
+            p_state = PLAYER_STATE.RES_LOGIN;
         }
 
         private void requestRoomEnter()
@@ -206,10 +205,35 @@ namespace ConnectToServer
 
         #region receive
 
-        public void receiveChat()
+        public void receiveLogin()
         {
-            var packetList = networkManager.GetPacket();
+            var packet = networkManager.getPacket();
+            if (packet.PacketID == (UInt16) PACKETID.RES_LOGIN)
+            {
+                var resData = MessagePackSerializer.Deserialize<PKTResLogin>(packet.BodyData);
+                if (resData.Result == (short)ERROR_CODE.NONE)
+                {
+                    // Res에서 제대로 받았으면, 현재는 바로 실행, 백그라운드 실행 고려해보기
+                    //p_state = PLAYER_STATE.ROOMENTER;
+                    requestRoomEnter();
+                }
+                else
+                {
+                    Debug.Log("Message : " + resData.Result);
+                    p_state = PLAYER_STATE.ERROR;
+                }
+            }
+            else if (packet.PacketID == PacketDef.SYS_PACKET_ID_DISCONNECT_FROM_SERVER)
+            {
+                p_state = PLAYER_STATE.LEAVE;
+                Debug.Log("문제 발생");
+            }
+        }
 
+        public void receiveChat()
+        { 
+            var packetList = networkManager.GetPacket();
+            
             foreach (var packet in packetList)
             {
                 if (packet.PacketID == (UInt16) PACKETID.NTF_ROOM_CHAT)
@@ -291,7 +315,6 @@ namespace ConnectToServer
         // test
         public void exitBtn()
         {
-            Debug.Log(11234);
             p_state = PLAYER_STATE.LEAVE;
         }
         #endregion

@@ -138,6 +138,51 @@ namespace ConnectToServer
 
             return packetList;
         }
+        
+        // 한 개만 return 하기
+        public PacketData getPacket()
+        {
+            var packet = new PacketData();
+            const Int16 PacketHeaderSize = PacketDef.PACKET_HEADER_SIZE;
+
+            if (IsConnected == false)
+            {
+                Debug.Log("접속xx");
+                return packet;
+            }
+
+            byte[] buffer = null;
+            var result = Receive(out buffer);
+            if (result == false)
+            {
+                return packet;
+            }
+
+            if (buffer.Length > 1)
+            {
+                packetBuffer.write(buffer, 0, buffer.Length);
+                
+                var data = packetBuffer.read();
+                if (data.Count < 1)
+                {
+                    return packet;
+                }
+
+                packet.DataSize = (UInt16) (data.Count - PacketHeaderSize);
+                packet.PacketID = BitConverter.ToUInt16(data.Array, data.Offset + 2);
+                packet.Type = (SByte) data.Array[(data.Offset + 4)];
+                packet.BodyData = new byte[packet.DataSize];
+                Buffer.BlockCopy(data.Array, (data.Offset + PacketHeaderSize), packet.BodyData, 0,
+                    (data.Count - PacketHeaderSize));
+            }
+            else
+            {
+                // 서버에서 접속을 종료하였음을 알린다.
+                packet.PacketID = PacketDef.SYS_PACKET_ID_DISCONNECT_FROM_SERVER;
+            }
+
+            return packet;
+        }
 
         // 송신처리.
         public void Send(byte[] data)

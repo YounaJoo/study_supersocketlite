@@ -17,6 +17,7 @@ namespace ChatServer
         
         // 유저를 구분할 Map (sessionIndex, User 객체)
         Dictionary<int, User> UserMap = new Dictionary<int, User>();
+        HashSet<string> hashUserId = new HashSet<string>();
 
         public void Init(int maxUserCount)
         {
@@ -37,6 +38,14 @@ namespace ChatServer
             {
                 return ERROR_CODE.ADD_USER_DUPLICATION;
             }
+            
+            // userID가 존재할 때 fail
+            if (hashUserId.Contains(userID))
+            {
+                return ERROR_CODE.LOGIN_ALREADY_WORKING;
+            }
+            
+            hashUserId.Add(userID);
 
             ++UserSequenceNumber;
             
@@ -50,8 +59,11 @@ namespace ChatServer
         // 유저 제거
         public ERROR_CODE RemoveUser(int sessionIndex)
         {
+            User user = GetUser(sessionIndex);
+            bool isRemove = hashUserId.Remove(user.ID());
+            
             // 유저 삭제 실패 시 에러 코드 발생
-            if (UserMap.Remove(sessionIndex) == false)
+            if (UserMap.Remove(sessionIndex) == false || isRemove == false)
             {
                 return ERROR_CODE.REMOVE_USER_SEARCH_FAILURE_USER_ID;
             }

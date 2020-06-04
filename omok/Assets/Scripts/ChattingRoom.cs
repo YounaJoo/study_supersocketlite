@@ -45,5 +45,6 @@ public class ChattingRoom : MonoBehaviour
     {
         chatText.text += userID + " : " + message + "\n";
         chatView.GetComponent<ScrollRect>().verticalNormalizedPosition = 0.0f;
+        
     }
 }
