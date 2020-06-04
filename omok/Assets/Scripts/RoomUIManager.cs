@@ -25,7 +25,13 @@ public class RoomUIManager : MonoBehaviour
 
     public void roomEnterUIChange()
     {
-        if (num == 0)
+
+        if (num == 1)
+        {
+            return;
+        } 
+        
+        if(num == 0)   
         {
             Destroy(Canvas.gameObject);
         }

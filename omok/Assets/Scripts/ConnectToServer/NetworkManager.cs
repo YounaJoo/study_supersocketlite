@@ -34,7 +34,6 @@ namespace ConnectToServer
         // 소켓 연결
         public bool connect(string ip, int port)
         {
-
             if (packetBuffer == null)
             {
                 packetBuffer = new PacketBufferManager();

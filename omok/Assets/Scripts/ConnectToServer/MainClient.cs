@@ -25,7 +25,7 @@ namespace ConnectToServer
     public class MainClient : MonoBehaviour
     {
         #region Init
-
+        // 싱글 톤 사용
         private static MainClient instance = null; 
         
         private bool serializerRegistered = false;
@@ -51,11 +51,11 @@ namespace ConnectToServer
         enum PLAYER_STATE
         {
             NONE = 0, // 아무런 상태 X
-            REQ_LOGIN,
-            ROOMENTER,
-            IN_ROOM, // 채팅 중
-            GAME, // 게임
-            IDLE, // 쉬어가는 타임
+            REQ_LOGIN, // 로그인 요청
+            ROOMENTER, // 방 입장
+            IN_ROOM, // 채팅 & 게임 레디
+            GAME, // 게임 턴
+            IDLE, // 쉬어가는 턴
             LEAVE, // 방 나가기
             ERROR // 에러
         }
@@ -92,6 +92,7 @@ namespace ConnectToServer
 
         private void Start()
         {
+            // Init MessagePack
             if (!serializerRegistered)
             {
                 StaticCompositeResolver.Instance.Register(
@@ -109,7 +110,7 @@ namespace ConnectToServer
         {
             switch (p_state)
             {
-                case PLAYER_STATE.NONE :
+                case PLAYER_STATE.NONE :  
                     msg.Clear();
                     break;
                     
@@ -121,21 +122,21 @@ namespace ConnectToServer
                 case PLAYER_STATE.ROOMENTER :
                     requestRoomEnter();
                     Debug.Log("Room 입장 요청~");
-                    
                     break;
 
-                case PLAYER_STATE.IN_ROOM : // Ready, Chatting?
-                    roomUIManager.roomEnterUIChange();
-                    p_state = PLAYER_STATE.GAME;
+                case PLAYER_STATE.IN_ROOM : // Ready, Chatting
+                    // 상대방, 유저 둘 다 게임 준비 완료를 하면 Game 시작
+                    receiveChat();
+                    gameReady();
                     break;
                 
-                case PLAYER_STATE.GAME :
+                case PLAYER_STATE.GAME : // 게임 턴
                     break;
                     
-                case PLAYER_STATE.IDLE :
+                case PLAYER_STATE.IDLE : // 쉬어가기
                     break;
                 
-                case PLAYER_STATE.LEAVE :
+                case PLAYER_STATE.LEAVE : // 해당 방 나가기
                     networkManager.disconnect();
                     roomUIManager.exitUIChange();
                     p_state = PLAYER_STATE.NONE;
@@ -162,6 +163,7 @@ namespace ConnectToServer
 
             PostSendPacket(sendData);
             
+            // Res에서 제대로 받았으면, RoomEnter인데 현재는 작은 프로세스를 만드는 것이라 일단은 바로 허용해주기
             p_state = PLAYER_STATE.ROOMENTER;
         }
 
@@ -179,10 +181,51 @@ namespace ConnectToServer
             
             PostSendPacket(sendData);
             
+            roomUIManager.roomEnterUIChange();
             p_state = PLAYER_STATE.IN_ROOM;
+        }
+
+        public void requestChatting(string message)
+        {
+            if (p_state != PLAYER_STATE.IN_ROOM)
+            {
+                Debug.Log("Error");
+                return;
+            }
+            
+            var request = new PKTReqRoomChat()
+            {
+                ChatMessage =  message
+            };
+            
+            var Body = MessagePackSerializer.Serialize(request);
+            var sendData = CSBaseLib.PacketToBytes.Make(CSBaseLib.PACKETID.REQ_ROOM_CHAT, Body);
+            PostSendPacket(sendData);
         }
         #endregion
 
+        #region receive
+
+        public void receiveChat()
+        {
+            var packetList = networkManager.GetPacket();
+
+            foreach (var packet in packetList)
+            {
+                if (packet.PacketID == (UInt16) PACKETID.NTF_ROOM_CHAT)
+                {
+                    var message = MessagePackSerializer.Deserialize<PKTNtfRoomChat>(packet.BodyData);
+                    Debug.Log("UserID :" + message.UserID + " Message : " + message.ChatMessage);
+                    GameObject.Find("Canvas_game(Clone)").GetComponent<ChattingRoom>().chatting(message.UserID, message.ChatMessage);
+                }
+                else if (packet.PacketID == PacketDef.SYS_PACKET_ID_DISCONNECT_FROM_SERVER)
+                {
+                    Debug.Log("error");
+                }
+            }
+        }
+        #endregion
+        
         #region Network
         public void PostSendPacket(byte[] sendData)
         {
@@ -195,11 +238,17 @@ namespace ConnectToServer
             // 패킷 감싸서 network.Send(packetData)
             networkManager.Send(sendData);
         }
-
         #endregion
 
-        #region UI
+        #region Game
 
+        private void gameReady()
+        {
+            
+        }
+        #endregion
+        
+        #region UI
         public void loginBtn()
         {
             // get : input Id / pass
@@ -235,6 +284,9 @@ namespace ConnectToServer
                 Debug.Log("ID, Pass, IP, Port 를 입력해주세요.");
             }
         }
+        #endregion
+
+        #region Test
 
         // test
         public void exitBtn()
@@ -242,7 +294,6 @@ namespace ConnectToServer
             Debug.Log(11234);
             p_state = PLAYER_STATE.LEAVE;
         }
-
         #endregion
 
     }
