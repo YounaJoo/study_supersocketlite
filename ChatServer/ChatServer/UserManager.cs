@@ -96,6 +96,7 @@ namespace ChatServer
         private string SessionID;
         private int SessionIndex = -1;
         public int RoomNumber { get; private set; } = -1;
+        private int userPos;
         private string UserID;
 
         public void Set(UInt16 sequence, string sessionID, int sessionIndex, string userID)
@@ -104,6 +105,7 @@ namespace ChatServer
             this.SessionID = sessionID;
             this.SessionIndex = sessionIndex;
             this.UserID = userID;
+            this.userPos = -1;
         }
 
         public bool IsConfirm(string netSessionID)
@@ -114,6 +116,11 @@ namespace ChatServer
         public string ID()
         {
             return this.UserID;
+        }
+
+        public void setUserPos(int pos)
+        {
+            this.userPos = pos; // 0 : 흑(방장), 1 : 백(일반), -1 : none
         }
 
         public void EnteredRoom(int roomNumber)

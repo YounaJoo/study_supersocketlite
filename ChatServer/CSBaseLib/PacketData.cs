@@ -62,7 +62,7 @@ namespace CSBaseLib
 
     // 로그인 요청
     [MessagePackObject]
-    public class PKTReqLogin
+    public class OMKReqLogin
     {
         [Key(0)]
         public string UserID;
@@ -71,7 +71,7 @@ namespace CSBaseLib
     }
 
     [MessagePackObject]
-    public class PKTResLogin
+    public class OMKResLogin
     {
         [Key(0)]
         public short Result;
@@ -79,7 +79,7 @@ namespace CSBaseLib
 
 
     [MessagePackObject]
-    public class PKNtfMustClose
+    public class OMKMustClose
     {
         [Key(0)]
         public short Result;
@@ -88,28 +88,28 @@ namespace CSBaseLib
 
 
     [MessagePackObject]
-    public class PKTReqRoomEnter
+    public class OMKReqRoomEnter
     {
         [Key(0)]
         public int RoomNumber;
     }
 
     [MessagePackObject]
-    public class PKTResRoomEnter
+    public class OMKResRoomEnter
     {
         [Key(0)]
         public short Result;
     }
 
     [MessagePackObject]
-    public class PKTNtfRoomUserList
+    public class OMKRoomUserList
     {
         [Key(0)]
         public List<string> UserIDList = new List<string>();
     }
 
     [MessagePackObject]
-    public class PKTNtfRoomNewUser
+    public class OMKRoomNewUser
     {
         [Key(0)]
         public string UserID;
@@ -117,19 +117,19 @@ namespace CSBaseLib
 
 
     [MessagePackObject]
-    public class PKTReqRoomLeave
+    public class OMKReqRoomLeave
     {
     }
 
     [MessagePackObject]
-    public class PKTResRoomLeave
+    public class OMKResRoomLeave
     {
         [Key(0)]
         public short Result;
     }
 
     [MessagePackObject]
-    public class PKTNtfRoomLeaveUser
+    public class OMKRoomLeaveUser
     {
         [Key(0)]
         public string UserID;
@@ -137,7 +137,7 @@ namespace CSBaseLib
 
 
     [MessagePackObject]
-    public class PKTReqRoomChat
+    public class OMKReqRoomChat
     {
         [Key(0)]
         public string ChatMessage;
@@ -145,7 +145,7 @@ namespace CSBaseLib
 
     
     [MessagePackObject]
-    public class PKTNtfRoomChat
+    public class OMKRoomChat
     {
         [Key(0)]
         public string UserID;

@@ -12,7 +12,8 @@ namespace ChatServer
         {
             var maxRoomCount = MainServer.ServerOption.RoomMaxCount;
             var startNumber = MainServer.ServerOption.RoomStartNumber;
-            var maxUserCount = MainServer.ServerOption.RoomMaxUserCount;
+            //var maxUserCount = MainServer.ServerOption.RoomMaxUserCount;
+            var maxUserCount = 2;
 
             for (int i = 0; i < maxRoomCount; ++i)
             {

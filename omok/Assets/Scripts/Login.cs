@@ -20,8 +20,6 @@ public class Login : MonoBehaviour
      
         loginBtn.onClick.AddListener(MainClient.Instance.loginBtn);
         signBtn.onClick.AddListener(MainClient.Instance.exitBtn);
-
-        MainClient.Instance.room = GameObject.Find("roomText").GetComponent<Text>();
     }
     
     

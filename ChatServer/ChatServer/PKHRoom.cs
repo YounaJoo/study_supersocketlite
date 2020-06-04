@@ -67,6 +67,36 @@ namespace ChatServer
             return (true, room, roomUser);
         }
 
+        public int SelectRoom()
+        {
+            int index = -1;
+            foreach (var room in RoomList)
+            {
+                if (room.GetUserCount() == 1)
+                {
+                    index = room.Index;
+                }
+                else
+                {
+                    continue;
+                }
+            }
+
+            if (index == -1)
+            {
+                foreach (var room in RoomList)
+                {
+                    if (room.ChkRoomFull() == false)
+                    {
+                        index = room.Index;
+                        break;
+                    }
+                }
+            }
+
+            return index;
+        }
+        
         public void RequestRoomEnter(ServerPacketData packetData)
         {
             var sessionID = packetData.SessionID;
@@ -91,11 +121,19 @@ namespace ChatServer
                 }
                 
                 // Binary --> Object 직렬화
-                var reqData = MessagePackSerializer.Deserialize<PKTReqRoomEnter>(packetData.BodyData);
-                // room은 Room 객체 
-                var room = GetRoom(reqData.RoomNumber);
-
-                if (room == null)
+                var reqData = MessagePackSerializer.Deserialize<OMKReqRoomEnter>(packetData.BodyData);
+                // room은 Room 객체
+                
+                // 06.04 Client는 항상 -1을 Request Body에 담아서 요청을 한다.
+                // 방을 전부 탐색해서 만약 유저가 1명뿐인 방이 있으면 그 방으로 순차적으로 데이터를 넣어준다
+                // 그렇게 넣어진 방을 return 한다.
+                // 방 객체를 Buffer에 두고 Init 시, userCount 변수도 추가
+                // 방 탐색하는 함수는 또 쓰일 수 있으니, 함수로 빼도록 하자
+                var room = GetRoom(SelectRoom());
+                
+                Console.WriteLine("roomNumber : " + room.Number);
+                
+                if (reqData.RoomNumber != -1 || room == null)
                 {
                     ResponseEnterRoomToClient(ERROR_CODE.ROOM_ENTER_INVALID_ROOM_NUMBER, sessionID);
                     return;
@@ -128,7 +166,7 @@ namespace ChatServer
 
         void ResponseEnterRoomToClient(ERROR_CODE errorCode, string sessionID)
         {
-            var resRoomEnter = new PKTResRoomEnter()
+            var resRoomEnter = new OMKResRoomEnter()
             {
                 Result = (short)errorCode
             };
@@ -208,7 +246,7 @@ namespace ChatServer
         void ResponseLeaveRoomToClient(string sessionID)
         {
             // MessagePack
-            var resRoomLeave = new PKTResRoomLeave()
+            var resRoomLeave = new OMKResRoomLeave()
             {
                 Result = (short)ERROR_CODE.NONE
             };
@@ -258,10 +296,10 @@ namespace ChatServer
                 }
 
                 // Packet의 Body Data에 대한 메세지 직렬화
-                var reqData = MessagePackSerializer.Deserialize<PKTReqRoomChat>(packetData.BodyData);
+                var reqData = MessagePackSerializer.Deserialize<OMKReqRoomChat>(packetData.BodyData);
                 
                 // MessagePack
-                var notifyPacket = new PKTNtfRoomChat()
+                var notifyPacket = new OMKRoomChat()
                 {
                     // RoomUser의 userID, 여기에는 chat을 보내는 이의 ID
                     UserID = roomObject.Item3.UserID,

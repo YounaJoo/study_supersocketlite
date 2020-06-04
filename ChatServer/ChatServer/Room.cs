@@ -14,7 +14,7 @@ namespace ChatServer
         public int Number { get; private set; }
 
         private int MaxUserCount = 0;
-        
+
         List<RoomUser> UserList = new List<RoomUser>();
         // Func 반환값이 있는 메소드를 참조하는 델리게이트 변수
         // 매개변수는 string, byte[]를 가짐
@@ -27,6 +27,23 @@ namespace ChatServer
             this.MaxUserCount = maxUserCount;
         }
 
+        public int GetUserCount()
+        {
+            return UserList.Count;
+        }
+
+        public bool ChkRoomFull() // 꽉 차있으면 return --> 그냥 넘어가게
+        {
+            if (UserList.Count >= MaxUserCount)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        
         // 요청을 보낸 유저를 룸에 들어와있는 형식으로 '추가'
         // 유저를 불러오지 못하면 FAIL
         public bool AddUser(string userID, int netSessionIndex, string netSessionID)
@@ -75,7 +92,7 @@ namespace ChatServer
         public void NotifyPacketUserList(string userNetSessionID)
         {
             // Message Packet 
-            var packet = new CSBaseLib.PKTNtfRoomUserList();
+            var packet = new CSBaseLib.OMKRoomUserList();
             foreach (var user in UserList)
             {
                 packet.UserIDList.Add(user.UserID);
@@ -93,7 +110,7 @@ namespace ChatServer
         // Room에 새로운 유저 추가했다고 널리 알림
         public void NofifyPacketNewUser(int newUserNetSessionIndex, string newUserID)
         {
-            var packet = new PKTNtfRoomNewUser();
+            var packet = new OMKRoomNewUser();
             packet.UserID = newUserID;
 
             var bodyData = MessagePackSerializer.Serialize(packet);
@@ -112,7 +129,7 @@ namespace ChatServer
             
             // packet 속 해당 userID는 삭제되었다고 알려주려고 함.
             // 이 방에 저 userID는 나갔으니까 모두 다 알라~~함
-            var packet = new PKTNtfRoomLeaveUser();
+            var packet = new OMKRoomLeaveUser();
             packet.UserID = userID;
 
             var bodyData = MessagePackSerializer.Serialize(packet);

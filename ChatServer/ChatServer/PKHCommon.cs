@@ -72,7 +72,7 @@ namespace ChatServer
                 }
 
                 // MessagePack : 메시지 직렬화
-                var reqData = MessagePackSerializer.Deserialize<PKTReqLogin>(packetData.BodyData);
+                var reqData = MessagePackSerializer.Deserialize<OMKReqLogin>(packetData.BodyData);
                 var errorCode = UserMgr.AddUser(reqData.UserID, packetData.SessionID, packetData.SessionIndex);
                 if (errorCode != ERROR_CODE.NONE)
                 {
@@ -99,7 +99,7 @@ namespace ChatServer
         public void ResponseLoginToClient(ERROR_CODE errorCode, string sessionID)
         {
             // new PacketMessage
-            var resLogin = new PKTResLogin()
+            var resLogin = new OMKResLogin()
             {
                 Result = (short)errorCode
             };
@@ -112,7 +112,7 @@ namespace ChatServer
 
         public void NotifyMustCloseToClient(ERROR_CODE errorCode, string sessionID)
         {
-            var resLogin = new PKNtfMustClose()
+            var resLogin = new OMKMustClose()
             {
                 Result = (short)errorCode
             };

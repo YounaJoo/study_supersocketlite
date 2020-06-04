@@ -44,9 +44,6 @@ namespace ConnectToServer
         private string prevCommenct = "";
 
         private List<string> msg;
-        
-        // for test
-        public Text room;
 
         enum PLAYER_STATE
         {
@@ -155,7 +152,7 @@ namespace ConnectToServer
         #region Request
         private void requestLogin()
         {
-            var reqLogin = new PKTReqLogin() {UserID = id, AuthToken = pass};
+            var reqLogin = new OMKReqLogin() {UserID = id, AuthToken = pass};
 
             // 2020.06.02 : MessagePack Error!!
             var body = MessagePackSerializer.Serialize(reqLogin);
@@ -172,7 +169,7 @@ namespace ConnectToServer
             
             var reqRoomEnter = new PKTReqRoomEnter()
             {
-                RoomNumber = int.Parse(room.text)
+                RoomNumber = -1
             };
 
             var body = MessagePackSerializer.Serialize(reqRoomEnter);
@@ -192,7 +189,7 @@ namespace ConnectToServer
                 return;
             }
             
-            var request = new PKTReqRoomChat()
+            var request = new OMKReqRoomChat()
             {
                 ChatMessage =  message
             };
@@ -210,7 +207,7 @@ namespace ConnectToServer
             var packet = networkManager.getPacket();
             if (packet.PacketID == (UInt16) PACKETID.RES_LOGIN)
             {
-                var resData = MessagePackSerializer.Deserialize<PKTResLogin>(packet.BodyData);
+                var resData = MessagePackSerializer.Deserialize<OMKResLogin>(packet.BodyData);
                 if (resData.Result == (short)ERROR_CODE.NONE)
                 {
                     // Res에서 제대로 받았으면, 현재는 바로 실행, 백그라운드 실행 고려해보기
@@ -238,7 +235,7 @@ namespace ConnectToServer
             {
                 if (packet.PacketID == (UInt16) PACKETID.NTF_ROOM_CHAT)
                 {
-                    var message = MessagePackSerializer.Deserialize<PKTNtfRoomChat>(packet.BodyData);
+                    var message = MessagePackSerializer.Deserialize<OMKResRoomChat>(packet.BodyData);
                     Debug.Log("UserID :" + message.UserID + " Message : " + message.ChatMessage);
                     GameObject.Find("Canvas_game(Clone)").GetComponent<ChattingRoom>().chatting(message.UserID, message.ChatMessage);
                 }
@@ -285,13 +282,11 @@ namespace ConnectToServer
             ip = input_ip.GetComponentInChildren<Text>().gameObject.GetComponent<Text>().text; 
             port = Int32.Parse(input_port.GetComponentInChildren<Text>().gameObject.GetComponent<Text>().text);
 
-            string roomNum = room.text;
-
             Debug.Log("ID : " + id);
             Debug.Log("PASS : " + pass);
             Debug.Log("IP : " + ip);
         
-            if ((id != "") && (pass != "") && (ip != "") && (port != null) && (roomNum != ""))
+            if ((id != "") && (pass != "") && (ip != "") && (port != null))
             {
                 bool isConnected = networkManager.connect(ip, port);
                 if (isConnected)
