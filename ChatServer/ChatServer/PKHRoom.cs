@@ -129,11 +129,14 @@ namespace ChatServer
                 // 그렇게 넣어진 방을 return 한다.
                 // 방 객체를 Buffer에 두고 Init 시, userCount 변수도 추가
                 // 방 탐색하는 함수는 또 쓰일 수 있으니, 함수로 빼도록 하자
-                var room = GetRoom(SelectRoom());
+                int roomNumber = SelectRoom();
+                var room = GetRoom(roomNumber);
+                //var room = GetRoom(reqData.RoomNumber);
                 
                 Console.WriteLine("roomNumber : " + room.Number);
                 
-                if (reqData.RoomNumber != -1 || room == null)
+                //if (reqData.RoomNumber != -1 || room == null)
+                if(room == null) // test 용
                 {
                     ResponseEnterRoomToClient(ERROR_CODE.ROOM_ENTER_INVALID_ROOM_NUMBER, sessionID);
                     return;
@@ -147,7 +150,7 @@ namespace ChatServer
                 }
                 
                 // User 객체에 유저가 요청하고자 하는 방에 들어갔다고 설정
-                user.EnteredRoom(reqData.RoomNumber);
+                user.EnteredRoom(roomNumber);
                 // UserList 추가 됐다는 응답 : Packet 뭉침 --> MainServer.SendData
                 room.NotifyPacketUserList(sessionID);
                 // newUser 추가 됐다고 확인 : Packet 뭉침 --> BroadCast
