@@ -1,0 +1,15 @@
+[2020/06/05 10:43:39.114] [TID:1] [SocketListenerBase.OnError => SocketServerBase.OnListenerError => NLogLog.Error]: msg:Listener (0.0.0.0:32452) error: 각 소켓 주소(프로토콜/네트워크 주소/포트)는 하나만 사용할 수 있습니다., exception:System.Net.Sockets.SocketException (10048): 각 소켓 주소(프로토콜/네트워크 주소/포트)는 하나만 사용할 수 있습니다.
+   at System.Net.Sockets.Socket.UpdateStatusAfterSocketErrorAndThrowException(SocketError error, String callerName)
+   at System.Net.Sockets.Socket.DoBind(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   at System.Net.Sockets.Socket.Bind(EndPoint localEP)
+   at SuperSocket.SocketEngine.TcpAsyncSocketListener.Start(IServerConfig config) in D:\Dev\github\01_SuperSocketLite\SocketEngine\TcpAsyncSocketListener.cs:line 42
+[2020/06/05 10:43:46.759] [TID:1] [SocketListenerBase.OnError => SocketServerBase.OnListenerError => NLogLog.Error]: msg:Listener (0.0.0.0:32452) error: 각 소켓 주소(프로토콜/네트워크 주소/포트)는 하나만 사용할 수 있습니다., exception:System.Net.Sockets.SocketException (10048): 각 소켓 주소(프로토콜/네트워크 주소/포트)는 하나만 사용할 수 있습니다.
+   at System.Net.Sockets.Socket.UpdateStatusAfterSocketErrorAndThrowException(SocketError error, String callerName)
+   at System.Net.Sockets.Socket.DoBind(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   at System.Net.Sockets.Socket.Bind(EndPoint localEP)
+   at SuperSocket.SocketEngine.TcpAsyncSocketListener.Start(IServerConfig config) in D:\Dev\github\01_SuperSocketLite\SocketEngine\TcpAsyncSocketListener.cs:line 42
+[2020/06/05 10:43:58.303] [TID:1] [SocketListenerBase.OnError => SocketServerBase.OnListenerError => NLogLog.Error]: msg:Listener (0.0.0.0:32452) error: 각 소켓 주소(프로토콜/네트워크 주소/포트)는 하나만 사용할 수 있습니다., exception:System.Net.Sockets.SocketException (10048): 각 소켓 주소(프로토콜/네트워크 주소/포트)는 하나만 사용할 수 있습니다.
+   at System.Net.Sockets.Socket.UpdateStatusAfterSocketErrorAndThrowException(SocketError error, String callerName)
+   at System.Net.Sockets.Socket.DoBind(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   at System.Net.Sockets.Socket.Bind(EndPoint localEP)
+   at SuperSocket.SocketEngine.TcpAsyncSocketListener.Start(IServerConfig config) in D:\Dev\github\01_SuperSocketLite\SocketEngine\TcpAsyncSocketListener.cs:line 42

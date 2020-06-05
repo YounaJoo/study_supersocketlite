@@ -4,3 +4,24 @@
 [2020/06/05 10:34:11.803] [TID:1] [AppServer`2.Start => AppServerBase`2.Start => NLogLog.Info]: The server instance ChatServer has been started!
 [2020/06/05 10:34:11.803] [TID:1] [Program.Main => MainServer.CreateStartServer => NLogLog.Info]: 서버 생성 성공
 [2020/06/05 10:34:11.803] [TID:1] [Program.Main => NLogLog.Info]: Press q to shut down the server
+[2020/06/05 10:37:33.520] [TID:1] [Program.Main => MainServer.CreateStartServer => NLogLog.Info]: 서버 초기화 성공
+[2020/06/05 10:37:33.535] [TID:1] [MainServer.CreateStartServer => MainServer.CreateComponent => NLogLog.Info]: CreateComponent - Success
+[2020/06/05 10:37:33.561] [TID:1] [AsyncSocketServer.Start => SocketServerBase.Start => NLogLog.DebugFormat]: Listener (0.0.0.0:32452) was started
+[2020/06/05 10:37:33.561] [TID:1] [AppServer`2.Start => AppServerBase`2.Start => NLogLog.Info]: The server instance ChatServer has been started!
+[2020/06/05 10:37:33.561] [TID:1] [Program.Main => MainServer.CreateStartServer => NLogLog.Info]: 서버 생성 성공
+[2020/06/05 10:37:33.561] [TID:1] [Program.Main => NLogLog.Info]: Press q to shut down the server
+[2020/06/05 10:43:39.030] [TID:1] [Program.Main => MainServer.CreateStartServer => NLogLog.Info]: 서버 초기화 성공
+[2020/06/05 10:43:39.046] [TID:1] [MainServer.CreateStartServer => MainServer.CreateComponent => NLogLog.Info]: CreateComponent - Success
+[2020/06/05 10:43:39.114] [TID:1] [AsyncSocketServer.Start => SocketServerBase.Start => NLogLog.DebugFormat]: Listener (0.0.0.0:32452) failed to start
+[2020/06/05 10:43:39.114] [TID:1] [Program.Main => MainServer.CreateStartServer => NLogLog.Info]: 서버 생성 성공
+[2020/06/05 10:43:39.114] [TID:1] [Program.Main => NLogLog.Info]: Press q to shut down the server
+[2020/06/05 10:43:46.699] [TID:1] [Program.Main => MainServer.CreateStartServer => NLogLog.Info]: 서버 초기화 성공
+[2020/06/05 10:43:46.715] [TID:1] [MainServer.CreateStartServer => MainServer.CreateComponent => NLogLog.Info]: CreateComponent - Success
+[2020/06/05 10:43:46.759] [TID:1] [AsyncSocketServer.Start => SocketServerBase.Start => NLogLog.DebugFormat]: Listener (0.0.0.0:32452) failed to start
+[2020/06/05 10:43:46.759] [TID:1] [Program.Main => MainServer.CreateStartServer => NLogLog.Info]: 서버 생성 성공
+[2020/06/05 10:43:46.759] [TID:1] [Program.Main => NLogLog.Info]: Press q to shut down the server
+[2020/06/05 10:43:58.244] [TID:1] [Program.Main => MainServer.CreateStartServer => NLogLog.Info]: 서버 초기화 성공
+[2020/06/05 10:43:58.260] [TID:1] [MainServer.CreateStartServer => MainServer.CreateComponent => NLogLog.Info]: CreateComponent - Success
+[2020/06/05 10:43:58.303] [TID:1] [AsyncSocketServer.Start => SocketServerBase.Start => NLogLog.DebugFormat]: Listener (0.0.0.0:32452) failed to start
+[2020/06/05 10:43:58.303] [TID:1] [Program.Main => MainServer.CreateStartServer => NLogLog.Info]: 서버 생성 성공
+[2020/06/05 10:43:58.303] [TID:1] [Program.Main => NLogLog.Info]: Press q to shut down the server
