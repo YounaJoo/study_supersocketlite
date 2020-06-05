@@ -1,0 +1,17 @@
+C:\Project\study_supersocketlite\ChatServer\CSBaseLib\bin\--uniqueID\netcoreapp3.1\CSBaseLib.exe
+C:\Project\study_supersocketlite\ChatServer\CSBaseLib\bin\--uniqueID\netcoreapp3.1\CSBaseLib.deps.json
+C:\Project\study_supersocketlite\ChatServer\CSBaseLib\bin\--uniqueID\netcoreapp3.1\CSBaseLib.runtimeconfig.json
+C:\Project\study_supersocketlite\ChatServer\CSBaseLib\bin\--uniqueID\netcoreapp3.1\CSBaseLib.runtimeconfig.dev.json
+C:\Project\study_supersocketlite\ChatServer\CSBaseLib\bin\--uniqueID\netcoreapp3.1\CSBaseLib.dll
+C:\Project\study_supersocketlite\ChatServer\CSBaseLib\bin\--uniqueID\netcoreapp3.1\CSBaseLib.pdb
+C:\Project\study_supersocketlite\ChatServer\CSBaseLib\bin\--uniqueID\netcoreapp3.1\MessagePack.dll
+C:\Project\study_supersocketlite\ChatServer\CSBaseLib\bin\--uniqueID\netcoreapp3.1\MessagePack.Annotations.dll
+C:\Project\study_supersocketlite\ChatServer\CSBaseLib\bin\--uniqueID\netcoreapp3.1\Microsoft.Bcl.AsyncInterfaces.dll
+C:\Project\study_supersocketlite\ChatServer\CSBaseLib\obj\--uniqueID\netcoreapp3.1\CSBaseLib.csprojAssemblyReference.cache
+C:\Project\study_supersocketlite\ChatServer\CSBaseLib\obj\--uniqueID\netcoreapp3.1\CSBaseLib.csproj.CoreCompileInputs.cache
+C:\Project\study_supersocketlite\ChatServer\CSBaseLib\obj\--uniqueID\netcoreapp3.1\CSBaseLib.AssemblyInfoInputs.cache
+C:\Project\study_supersocketlite\ChatServer\CSBaseLib\obj\--uniqueID\netcoreapp3.1\CSBaseLib.AssemblyInfo.cs
+C:\Project\study_supersocketlite\ChatServer\CSBaseLib\obj\--uniqueID\netcoreapp3.1\CSBaseLib.csproj.CopyComplete
+C:\Project\study_supersocketlite\ChatServer\CSBaseLib\obj\--uniqueID\netcoreapp3.1\CSBaseLib.dll
+C:\Project\study_supersocketlite\ChatServer\CSBaseLib\obj\--uniqueID\netcoreapp3.1\CSBaseLib.pdb
+C:\Project\study_supersocketlite\ChatServer\CSBaseLib\obj\--uniqueID\netcoreapp3.1\CSBaseLib.genruntimeconfig.cache
