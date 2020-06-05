@@ -156,10 +156,10 @@
      <Compile Include="Assets\Scripts\MessagePack\Utilities.cs" />
      <None Include="Assets\Scripts\MessagePack\MessagePack.asmdef" />
  <Reference Include="UnityEditor.UI">
- <HintPath>C:/Project/revert/study_supersocketlite/omok/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
+ <HintPath>C:/Project/study_supersocketlite/omok/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.UI">
- <HintPath>C:/Project/revert/study_supersocketlite/omok/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
+ <HintPath>C:/Project/study_supersocketlite/omok/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.AIModule">
  <HintPath>C:/Program Files/2019.3.13f1/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>
@@ -351,16 +351,16 @@
  <HintPath>C:/Program Files/2019.3.13f1/Editor/Data/PlaybackEngines/AndroidPlayer/UnityEditor.Android.Extensions.dll</HintPath>
  </Reference>
  <Reference Include="System.Buffers">
- <HintPath>C:/Project/revert/study_supersocketlite/omok/Assets/Plugins/System.Buffers.dll</HintPath>
+ <HintPath>C:/Project/study_supersocketlite/omok/Assets/Plugins/System.Buffers.dll</HintPath>
  </Reference>
  <Reference Include="System.Memory">
- <HintPath>C:/Project/revert/study_supersocketlite/omok/Assets/Plugins/System.Memory.dll</HintPath>
+ <HintPath>C:/Project/study_supersocketlite/omok/Assets/Plugins/System.Memory.dll</HintPath>
  </Reference>
  <Reference Include="System.Runtime.CompilerServices.Unsafe">
- <HintPath>C:/Project/revert/study_supersocketlite/omok/Assets/Plugins/System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+ <HintPath>C:/Project/study_supersocketlite/omok/Assets/Plugins/System.Runtime.CompilerServices.Unsafe.dll</HintPath>
  </Reference>
  <Reference Include="System.Threading.Tasks.Extensions">
- <HintPath>C:/Project/revert/study_supersocketlite/omok/Assets/Plugins/System.Threading.Tasks.Extensions.dll</HintPath>
+ <HintPath>C:/Project/study_supersocketlite/omok/Assets/Plugins/System.Threading.Tasks.Extensions.dll</HintPath>
  </Reference>
  <Reference Include="netstandard">
  <HintPath>C:/Program Files/2019.3.13f1/Editor/Data/NetStandard/ref/2.0.0/netstandard.dll</HintPath>

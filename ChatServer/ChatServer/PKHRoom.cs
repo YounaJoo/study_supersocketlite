@@ -135,8 +135,8 @@ namespace ChatServer
                 
                 Console.WriteLine("roomNumber : " + room.Number);
                 
-                //if (reqData.RoomNumber != -1 || room == null)
-                if(room == null) // test 용
+                if (reqData.RoomNumber != -1 || room == null)
+                //if(room == null) // test 용
                 {
                     ResponseEnterRoomToClient(ERROR_CODE.ROOM_ENTER_INVALID_ROOM_NUMBER, sessionID);
                     return;

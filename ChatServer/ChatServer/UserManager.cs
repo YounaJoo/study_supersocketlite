@@ -5,19 +5,15 @@ using CSBaseLib;
 
 namespace ChatServer
 {
-    // PacketProcessor 개발하다가 넘어옴
     // CommandLine에 입력한 MaxUserCount 저장 및 관리 && 유저 별 SequenceNumber 부여하는 관리자
     public class UserManager
     {
         private int MaxUserCount;
-        // c#에서 자료형에 U가 붙어있으면 'unsigned'
-        // TCP에서 SequenceNumber는, 새로운 연결이 생성될 때 마다 발생되는 새로운 번호이다.
-        // (값은 유한하기에 예외 처리 필요, 중복 되어서도 안됨)
-        private UInt16 UserSequenceNumber = 0;
+        private UInt32 UserSequenceNumber = 0;
         
         // 유저를 구분할 Map (sessionIndex, User 객체)
         Dictionary<int, User> UserMap = new Dictionary<int, User>();
-        HashSet<string> hashUserId = new HashSet<string>();
+        Dictionary<string, int> UserIdMap = new Dictionary<string, int>(); 
 
         public void Init(int maxUserCount)
         {
@@ -40,12 +36,12 @@ namespace ChatServer
             }
             
             // userID가 존재할 때 fail
-            if (hashUserId.Contains(userID))
+            if (UserIdMap.ContainsKey(userID))
             {
                 return ERROR_CODE.LOGIN_ALREADY_WORKING;
             }
             
-            hashUserId.Add(userID);
+            UserIdMap.Add(userID, sessionIndex);
 
             ++UserSequenceNumber;
             
@@ -59,11 +55,8 @@ namespace ChatServer
         // 유저 제거
         public ERROR_CODE RemoveUser(int sessionIndex)
         {
-            User user = GetUser(sessionIndex);
-            bool isRemove = hashUserId.Remove(user.ID());
-            
             // 유저 삭제 실패 시 에러 코드 발생
-            if (UserMap.Remove(sessionIndex) == false || isRemove == false)
+            if (UserMap.Remove(sessionIndex) == false || UserIdMap.Remove(GetUser(sessionIndex).ID()) == false)
             {
                 return ERROR_CODE.REMOVE_USER_SEARCH_FAILURE_USER_ID;
             }
@@ -92,14 +85,14 @@ namespace ChatServer
     // User 객체
     public class User
     {
-        private UInt16 SequenceNumber = 0;
+        private UInt32 SequenceNumber = 0;
         private string SessionID;
         private int SessionIndex = -1;
         public int RoomNumber { get; private set; } = -1;
         private int userPos;
         private string UserID;
 
-        public void Set(UInt16 sequence, string sessionID, int sessionIndex, string userID)
+        public void Set(UInt32 sequence, string sessionID, int sessionIndex, string userID)
         {
             this.SequenceNumber = sequence;
             this.SessionID = sessionID;
