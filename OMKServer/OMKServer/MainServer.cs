@@ -86,10 +86,8 @@ namespace OMKServer
         // 네트워크 요소 생성
         public ERROR_CODE CreateComponent()
         {
-            // Q> IndexPool이 과연 필요할까?
-            // A> Pool의 장점(메모리 재사용) + 로그를 통해 유저 수 관리
-            // 게임이 인기가 갑자기 많아졌을 때, 로그에 바로바로 남기 때문에 관리가 용이할거라 생각. 서버 메모리가 갑자기 터지는 것보단 나을 것이라 판단
-            ClientSession.CreateIndexPool(m_Config.MaxConnectionNumber);
+            // Index Pool 삭제 --> Room에서 끊는 것은 괜찮지만 연결 자체를 끊는건 유저들을 떠나보내기 딱 좋은 것 같다.
+            // pool을 써서 서버 메모리 관리 보다는, 오픈 때 서버 개수를 크게 키워서 접속 수에 따라 적절히 관리하는게 좋을 것 같다.
 
             // Room의 NetSendFunc 델리게이트 함수 연결 
             // Q> 델리게이트 함수를 쓴 이유 -> 유지보수 상 MainServer를 instance를 할당하거나 static을 하지 않더라도 타 Class에서 사용 용이
@@ -139,8 +137,6 @@ namespace OMKServer
         // '접속' 
         void OnConnected(ClientSession session)
         {
-            // indexPool 할당 (만일 MaxConnectionNum을 넘어섰다면 이 전에서 프로세스를 끊게 된다.)
-            session.AllocSessionIndex();
             MainLogger.Info(string.Format("세션 번호 {0} 접속", session.SessionID));
 
             var packet = ServerPacketData.MakeNTFInConnectOrDisConnectClientPacket(true, session.SessionID, session.SessionIndex);
@@ -157,7 +153,6 @@ namespace OMKServer
                     session.SessionIndex);
             Distribute(packet);
             
-            session.FreeSessionIndex(session.SessionIndex);
         }
         
         // 'User Action'

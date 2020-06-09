@@ -59,3 +59,16 @@
    at OMKServer.UserManager.RemoveUser(Int32 sessionIndex) in C:\Project\study_supersocketlite\OMKServer\OMKServer\UserManager.cs:line 58
    at OMKServer.PKHCommon.NotifyInDisConnectClient(ServerPacketData requestData) in C:\Project\study_supersocketlite\OMKServer\OMKServer\PKHCommon.cs:line 51
    at OMKServer.PacketProcessor.Process() in C:\Project\study_supersocketlite\OMKServer\OMKServer\PacketProcessor.cs:line 93
+[2020/06/09 13:58:22.489] [TID:9] [Extensions.IfTrue => <>c__DisplayClass12_0.<Process>b__0 => NLogLog.Error]: System.NullReferenceException: Object reference not set to an instance of an object.
+   at OMKServer.UserManager.RemoveUser(Int32 sessionIndex) in C:\Project\study_supersocketlite\OMKServer\OMKServer\UserManager.cs:line 58
+   at OMKServer.PKHCommon.NotifyInDisConnectClient(ServerPacketData requestData) in C:\Project\study_supersocketlite\OMKServer\OMKServer\PKHCommon.cs:line 53
+   at OMKServer.PacketProcessor.Process() in C:\Project\study_supersocketlite\OMKServer\OMKServer\PacketProcessor.cs:line 77
+[2020/06/09 13:58:25.142] [TID:1] [SocketListenerBase.OnError => SocketServerBase.OnListenerError => NLogLog.Error]: msg:Listener (0.0.0.0:12021) error: 각 소켓 주소(프로토콜/네트워크 주소/포트)는 하나만 사용할 수 있습니다., exception:System.Net.Sockets.SocketException (10048): 각 소켓 주소(프로토콜/네트워크 주소/포트)는 하나만 사용할 수 있습니다.
+   at System.Net.Sockets.Socket.UpdateStatusAfterSocketErrorAndThrowException(SocketError error, String callerName)
+   at System.Net.Sockets.Socket.DoBind(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   at System.Net.Sockets.Socket.Bind(EndPoint localEP)
+   at SuperSocket.SocketEngine.TcpAsyncSocketListener.Start(IServerConfig config) in D:\Dev\github\01_SuperSocketLite\SocketEngine\TcpAsyncSocketListener.cs:line 42
+[2020/06/09 13:59:15.439] [TID:9] [Extensions.IfTrue => <>c__DisplayClass12_0.<Process>b__0 => NLogLog.Error]: System.NullReferenceException: Object reference not set to an instance of an object.
+   at OMKServer.UserManager.RemoveUser(Int32 sessionIndex) in C:\Project\study_supersocketlite\OMKServer\OMKServer\UserManager.cs:line 58
+   at OMKServer.PKHCommon.NotifyInDisConnectClient(ServerPacketData requestData) in C:\Project\study_supersocketlite\OMKServer\OMKServer\PKHCommon.cs:line 53
+   at OMKServer.PacketProcessor.Process() in C:\Project\study_supersocketlite\OMKServer\OMKServer\PacketProcessor.cs:line 77
