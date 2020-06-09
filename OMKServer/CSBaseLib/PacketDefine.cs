@@ -58,7 +58,8 @@
         NTF_ROOM_CHAT = 1027,
         
         REQ_GAME_READY = 1028,
-        NTF_GAME_READY = 1029,
+        RES_GAME_READY = 1029,
+        NTF_GAME_READY = 1030,
 
         CS_END          = 1100,
 

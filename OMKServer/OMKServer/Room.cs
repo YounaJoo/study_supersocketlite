@@ -16,7 +16,7 @@ namespace OMKServer
         List<RoomUser> UserList = new List<RoomUser>();
 
         // index --> userPos 
-        private bool[] isReady = new [] { false, false }; 
+        public bool[] isReady { get; set; } = new[] {false, false}; 
         
         // Func 반환값이 있는 메소드를 참조하는 델리게이트 변수
         public static Func<string, byte[], bool> NetSendFunc;

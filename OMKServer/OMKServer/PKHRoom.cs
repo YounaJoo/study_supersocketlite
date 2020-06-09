@@ -143,10 +143,10 @@ namespace OMKServer
                 else { user.setUserPos(1); }
                 
                 user.EnteredRoom(roomNumber);
-                room.NotifyPacketUserList(sessionID);
-                room.NofifyPacketNewUser(sessionIndex, user.ID());
+                room.NotifyPacketUserList(sessionID); // Room에 있는 유저 정보
+                room.NofifyPacketNewUser(sessionIndex, user.ID()); // 새로운 유저 정보
                 
-                ResponseEnterRoomToClient(ERROR_CODE.NONE, sessionID, user.UserPos);
+                ResponseEnterRoomToClient(ERROR_CODE.NONE, sessionID, user.UserPos); // 유저 정보
                 
                 MainServer.MainLogger.Debug("RequestEnterInternal = Success, UserPos : " + user.UserPos);
             }
@@ -169,6 +169,7 @@ namespace OMKServer
             var bodyData = MessagePackSerializer.Serialize(resRoomEnter);
             var sendData = PacketToBytes.Make(PACKETID.RES_ROOM_ENTER, bodyData);
             
+            MainServer.MainLogger.Info("RoomEnterResponse");
             // Room 에 잘 들어갔다고 MainServer.SendData 실행
             ServerNetwork.SendData(sessionID, sendData);
         }
@@ -244,6 +245,21 @@ namespace OMKServer
             // 해당 유저에게 SendData
             ServerNetwork.SendData(sessionID, sendData);
         }
+
+        void ResponseGameReadyToClient(ERROR_CODE errorCode, string sessionID)
+        {
+            var resRoomEnter = new OMKResGameReady()
+            {
+                Result = (short)errorCode
+            };
+
+            var bodyData = MessagePackSerializer.Serialize(resRoomEnter);
+            var sendData = PacketToBytes.Make(PACKETID.RES_GAME_READY, bodyData);
+            
+            MainServer.MainLogger.Info("RESGAMEREADY");
+            // Room 에 잘 들어갔다고 MainServer.SendData 실행
+            ServerNetwork.SendData(sessionID, sendData);
+        }
         
         public void NotifyLeaveInternal(ServerPacketData packetData)
         {
@@ -303,8 +319,31 @@ namespace OMKServer
             {
                 // User 객체
                 var user = UserMgr.GetUser(sessionIndex);
+                if (user == null)
+                {
+                    ResponseGameReadyToClient(ERROR_CODE.GAME_READY_INVALIED_USER, sessionID);
+                    return; // error
+                }
                 
-            }
+                var reqData = MessagePackSerializer.Deserialize<OMKReqGameReady>(packetData.BodyData);
+
+                var room = GetRoom(user.RoomNumber);
+                // Logic 처리
+                if (user.UserPos == 0)
+                { 
+                    // user에게 roomNumber 정보가 있다
+                    if (room.isReady[1] == false)
+                    {
+                        // error 반환
+                        ResponseGameReadyToClient(ERROR_CODE.GAME_READY_INVALID_CHECK_OTHER_USER, sessionID);
+                        return;
+                    }
+                }
+                room.isReady[user.UserPos] = true;
+                
+                // 결과 반환 Noti -> Response
+                ResponseGameReadyToClient(ERROR_CODE.NONE, sessionID);
+            } 
             
             catch (Exception e)
             {

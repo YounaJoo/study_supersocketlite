@@ -169,7 +169,7 @@ namespace CSBaseLib
     [MessagePackObject]
     public class OMKResGameReady
     {
-        [Key(0)] public short UserPos;
-        [Key(1)] public short Result;
+        //[Key(0)] public short UserPos;
+        [Key(0)] public short Result;
     }
 }
