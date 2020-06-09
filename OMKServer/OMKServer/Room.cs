@@ -126,6 +126,18 @@ namespace OMKServer
             
             Broadcast(-1, sendPakcet);
         }
+
+        public void NofifyPacketGameReady()
+        {
+            // 이게 보내지면 GameStart
+            var packet = new OMKResGameReady();
+            packet.Result = (short)ERROR_CODE.NONE; 
+
+            var body = MessagePackSerializer.Serialize(packet);
+            var sendPacket = PacketToBytes.Make(PACKETID.NTF_GAME_READY, body);
+            
+            Broadcast(-1, sendPacket);
+        }
         
         public void Broadcast(int excludeNetSessionIndex, byte[] sendPacket)
         {

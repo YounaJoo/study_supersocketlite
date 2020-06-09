@@ -338,11 +338,20 @@ namespace OMKServer
                         ResponseGameReadyToClient(ERROR_CODE.GAME_READY_INVALID_CHECK_OTHER_USER, sessionID);
                         return;
                     }
+                    else
+                    {
+                        room.isReady[user.UserPos] = true;
+                    }
                 }
-                room.isReady[user.UserPos] = true;
+                else
+                {
+                    room.isReady[user.UserPos] = true;
+                    ResponseGameReadyToClient(ERROR_CODE.NONE, sessionID);
+                    return;
+                }
                 
-                // 결과 반환 Noti -> Response
-                ResponseGameReadyToClient(ERROR_CODE.NONE, sessionID);
+                // 결과 반환 Noti -> Response -> GameStart
+                room.NofifyPacketGameReady();
             } 
             
             catch (Exception e)
