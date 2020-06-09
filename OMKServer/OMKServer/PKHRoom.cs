@@ -24,6 +24,8 @@ namespace OMKServer
             pakcetHandlerMap.Add((int)PACKETID.REQ_ROOM_LEAVE, RequestLeave);
             pakcetHandlerMap.Add((int)PACKETID.NTF_IN_ROOM_LEAVE, NotifyLeaveInternal);
             pakcetHandlerMap.Add((int)PACKETID.REQ_ROOM_CHAT, RequestChat);
+            
+            pakcetHandlerMap.Add((int)PACKETID.REQ_GAME_READY, RequestGameReady);
         }
 
         Room GetRoom(int roomNumber)
@@ -71,7 +73,7 @@ namespace OMKServer
             int index = -1;
             foreach (var room in RoomList)
             {
-                if (room.GetUserCount() == 1)
+                if (room.CurrentUserCount() == 1)
                 {
                     index = room.Index;
                 }
@@ -109,13 +111,13 @@ namespace OMKServer
 
                 if (user == null || user.IsConfirm(sessionID) == false)
                 {
-                    ResponseEnterRoomToClient(ERROR_CODE.ROOM_ENTER_INVALID_USER, sessionID);
+                    ResponseEnterRoomToClient(ERROR_CODE.ROOM_ENTER_INVALID_USER, sessionID, -1);
                     return;
                 }
 
                 if (user.IsStateRoom())
                 {
-                    ResponseEnterRoomToClient(ERROR_CODE.ROOM_ENTER_INVALID_STATE, sessionID);
+                    ResponseEnterRoomToClient(ERROR_CODE.ROOM_ENTER_INVALID_STATE, sessionID, -1);
                     return;
                 }
                 
@@ -126,36 +128,42 @@ namespace OMKServer
                 
                 if (reqData.RoomNumber != -1 || room == null)
                 {
-                    ResponseEnterRoomToClient(ERROR_CODE.ROOM_ENTER_INVALID_ROOM_NUMBER, sessionID);
+                    ResponseEnterRoomToClient(ERROR_CODE.ROOM_ENTER_INVALID_ROOM_NUMBER, sessionID, -1);
                     return;
                 }
 
                 // UserList<RoomUser> 객체 추가
                 if (room.AddUser(user.ID(), sessionIndex, sessionID) == false)
                 {
-                    ResponseEnterRoomToClient(ERROR_CODE.ROOM_ENTER_FAIL_ADD_USER, sessionID);
+                    ResponseEnterRoomToClient(ERROR_CODE.ROOM_ENTER_FAIL_ADD_USER, sessionID, -1);
                     return;
                 }
+
+                if (room.CurrentUserCount() <= 1) { user.setUserPos(0);}
+                else { user.setUserPos(1); }
                 
                 user.EnteredRoom(roomNumber);
                 room.NotifyPacketUserList(sessionID);
                 room.NofifyPacketNewUser(sessionIndex, user.ID());
-
-                ResponseEnterRoomToClient(ERROR_CODE.NONE, sessionID);
                 
-                MainServer.MainLogger.Debug("RequestEnterInternal = Success");
+                ResponseEnterRoomToClient(ERROR_CODE.NONE, sessionID, user.UserPos);
+                
+                MainServer.MainLogger.Debug("RequestEnterInternal = Success, UserPos : " + user.UserPos);
             }
             catch (Exception e)
             {
                 MainServer.MainLogger.Error(e.ToString());
             }
         }
-
-        void ResponseEnterRoomToClient(ERROR_CODE errorCode, string sessionID)
+        
+        void ResponseEnterRoomToClient(ERROR_CODE errorCode, string sessionID, short userPos)
         {
+            // 0609 여기에 userPos 
+            // sessionID로 userPos
             var resRoomEnter = new OMKResRoomEnter()
             {
-                Result = (short)errorCode
+                Result = (short)errorCode,
+                userPos = userPos
             };
 
             var bodyData = MessagePackSerializer.Serialize(resRoomEnter);
@@ -279,6 +287,25 @@ namespace OMKServer
                 
                 MainServer.MainLogger.Debug("Room RequestChat - Success");
             }
+            catch (Exception e)
+            {
+                MainServer.MainLogger.Error(e.ToString());
+            }
+        }
+
+        public void RequestGameReady(ServerPacketData packetData)
+        {
+            var sessionID = packetData.SessionID;
+            var sessionIndex = packetData.SessionIndex;
+            MainServer.MainLogger.Debug("게임 준비 요청 받음");
+            
+            try
+            {
+                // User 객체
+                var user = UserMgr.GetUser(sessionIndex);
+                
+            }
+            
             catch (Exception e)
             {
                 MainServer.MainLogger.Error(e.ToString());

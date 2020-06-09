@@ -26,6 +26,10 @@
         ROOM_ENTER_ERROR_SYSTEM = 1023,
         ROOM_ENTER_INVALID_ROOM_NUMBER = 1024,
         ROOM_ENTER_FAIL_ADD_USER = 1025,
+        
+        GAME_READY_INVALID_CHECK_OTHER_USER = 1031,
+        GAME_READY_INVALID_STATE = 1032,
+        GAME_READY_INVALIED_USER = 1033,
     }
 
     // 1 ~ 10000
@@ -52,6 +56,9 @@
 
         REQ_ROOM_CHAT = 1026,
         NTF_ROOM_CHAT = 1027,
+        
+        REQ_GAME_READY = 1028,
+        NTF_GAME_READY = 1029,
 
         CS_END          = 1100,
 

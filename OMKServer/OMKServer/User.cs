@@ -7,8 +7,8 @@ namespace OMKServer
         private UInt32 SequenceNumber = 0;
         private string SessionID;
         private int SessionIndex = -1;
+        public short UserPos { get; private set; } = -1;
         public int RoomNumber { get; private set; } = -1;
-        private int userPos;
         private string UserID;
 
         public void Set(UInt32 sequence, string sessionID, int sessionIndex, string userID)
@@ -17,7 +17,8 @@ namespace OMKServer
             this.SessionID = sessionID;
             this.SessionIndex = sessionIndex;
             this.UserID = userID;
-            this.userPos = -1;
+
+            this.UserPos = -1;
         }
 
         public bool IsConfirm(string netSessionID)
@@ -29,10 +30,10 @@ namespace OMKServer
         {
             return this.UserID;
         }
-
-        public void setUserPos(int pos)
+        
+        public void setUserPos(short pos)
         {
-            this.userPos = pos; // 0 : 흑(방장), 1 : 백(일반), -1 : none
+            this.UserPos = pos; // 0 : 흑(방장), 1 : 백(일반), -1 : none
         }
 
         public void EnteredRoom(int roomNumber)

@@ -14,6 +14,9 @@ namespace OMKServer
         private int MaxUserCount = 0;
 
         List<RoomUser> UserList = new List<RoomUser>();
+
+        // index --> userPos 
+        private bool[] isReady = new [] { false, false }; 
         
         // Func 반환값이 있는 메소드를 참조하는 델리게이트 변수
         public static Func<string, byte[], bool> NetSendFunc;
@@ -23,11 +26,6 @@ namespace OMKServer
             this.Index = index;
             this.Number = number;
             this.MaxUserCount = maxUserCount;
-        }
-
-        public int GetUserCount()
-        {
-            return UserList.Count;
         }
 
         public bool ChkRoomFull() // 꽉 차있으면 return --> 그냥 넘어가게

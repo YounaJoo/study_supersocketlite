@@ -76,11 +76,12 @@ namespace OMKServer
                 var errorCode = UserMgr.AddUser(reqData.UserID, packetData.SessionID, packetData.SessionIndex);
                 if (errorCode != ERROR_CODE.NONE)
                 {
+                    // 접속을 끊지 않아도 되는 에러
                     ResponseLoginToClient(errorCode, packetData.SessionID);
-
-                    // Q> 이미 Response를 해놓고 왜 또 NotifyMustCLoseToClient, Packet을 Send하는가?
+                    
                     if (errorCode == ERROR_CODE.LOGIN_FULL_USER_COUNT)
                     {
+                        // 접속을 끊어야 하는 에러(클라이언트에서도 해도 되긴 하다.)
                         NotifyMustCloseToClient(ERROR_CODE.LOGIN_FULL_USER_COUNT, packetData.SessionID);
                     }
 
