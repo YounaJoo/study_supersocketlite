@@ -1,0 +1,16 @@
+C:\Project\study_supersocketlite\00_server_bins\netcoreapp3.1\CSBaseLib.exe
+C:\Project\study_supersocketlite\00_server_bins\netcoreapp3.1\OMKServer.exe
+C:\Project\study_supersocketlite\00_server_bins\netcoreapp3.1\NLog.config
+C:\Project\study_supersocketlite\00_server_bins\netcoreapp3.1\OMKServer.deps.json
+C:\Project\study_supersocketlite\00_server_bins\netcoreapp3.1\OMKServer.runtimeconfig.json
+C:\Project\study_supersocketlite\00_server_bins\netcoreapp3.1\OMKServer.runtimeconfig.dev.json
+C:\Project\study_supersocketlite\00_server_bins\netcoreapp3.1\OMKServer.dll
+C:\Project\study_supersocketlite\00_server_bins\netcoreapp3.1\OMKServer.pdb
+C:\Project\study_supersocketlite\OMKServer\OMKServer\obj\Debug\netcoreapp3.1\OMKServer.csprojAssemblyReference.cache
+C:\Project\study_supersocketlite\OMKServer\OMKServer\obj\Debug\netcoreapp3.1\OMKServer.csproj.CoreCompileInputs.cache
+C:\Project\study_supersocketlite\OMKServer\OMKServer\obj\Debug\netcoreapp3.1\OMKServer.AssemblyInfoInputs.cache
+C:\Project\study_supersocketlite\OMKServer\OMKServer\obj\Debug\netcoreapp3.1\OMKServer.AssemblyInfo.cs
+C:\Project\study_supersocketlite\OMKServer\OMKServer\obj\Debug\netcoreapp3.1\OMKServer.csproj.CopyComplete
+C:\Project\study_supersocketlite\OMKServer\OMKServer\obj\Debug\netcoreapp3.1\OMKServer.dll
+C:\Project\study_supersocketlite\OMKServer\OMKServer\obj\Debug\netcoreapp3.1\OMKServer.pdb
+C:\Project\study_supersocketlite\OMKServer\OMKServer\obj\Debug\netcoreapp3.1\OMKServer.genruntimeconfig.cache

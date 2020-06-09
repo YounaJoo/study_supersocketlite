@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OMKServer", "OMKServer\OMKServer.csproj", "{6E505E3B-9F68-4372-ACB3-170D4291FA8A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSBaseLib", "CSBaseLib\CSBaseLib.csproj", "{7D6BCF38-2FEA-43D5-A4FE-9F89F7635C42}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6E505E3B-9F68-4372-ACB3-170D4291FA8A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6E505E3B-9F68-4372-ACB3-170D4291FA8A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6E505E3B-9F68-4372-ACB3-170D4291FA8A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6E505E3B-9F68-4372-ACB3-170D4291FA8A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7D6BCF38-2FEA-43D5-A4FE-9F89F7635C42}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7D6BCF38-2FEA-43D5-A4FE-9F89F7635C42}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7D6BCF38-2FEA-43D5-A4FE-9F89F7635C42}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7D6BCF38-2FEA-43D5-A4FE-9F89F7635C42}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

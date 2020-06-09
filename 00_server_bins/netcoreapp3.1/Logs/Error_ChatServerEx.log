@@ -54,3 +54,8 @@
 [2020/05/28 17:04:37.911] [TID:9] [Extensions.IfTrue => <>c__DisplayClass13_0.<Process>b__0 => NLogLog.Error]: System.ArgumentNullException: Array cannot be null. (Parameter 'bytes')
    at System.Text.Encoding.GetString(Byte[] bytes)
    at ChatServer.PacketProcessor.Process() in C:\Project\study_supersocketlite\ChatServer\ChatServer\PacketProcessor.cs:line 98
+[2020/06/09 12:02:21.582] [TID:10] [AsyncSocketServer.OnNewClientAccepted => AsyncSocketServer.ProcessNewClient => NLogLog.ErrorFormat]: Max connection number 2 was reached!
+[2020/06/09 12:02:28.079] [TID:9] [Extensions.IfTrue => <>c__DisplayClass13_0.<Process>b__0 => NLogLog.Error]: System.NullReferenceException: Object reference not set to an instance of an object.
+   at OMKServer.UserManager.RemoveUser(Int32 sessionIndex) in C:\Project\study_supersocketlite\OMKServer\OMKServer\UserManager.cs:line 58
+   at OMKServer.PKHCommon.NotifyInDisConnectClient(ServerPacketData requestData) in C:\Project\study_supersocketlite\OMKServer\OMKServer\PKHCommon.cs:line 51
+   at OMKServer.PacketProcessor.Process() in C:\Project\study_supersocketlite\OMKServer\OMKServer\PacketProcessor.cs:line 93

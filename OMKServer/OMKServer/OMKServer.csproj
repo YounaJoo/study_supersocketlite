@@ -1,0 +1,46 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <OutputType>Exe</OutputType>
+        <TargetFramework>netcoreapp3.1</TargetFramework>
+    </PropertyGroup>
+
+    <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+        <OutputPath>..\..\00_server_bins</OutputPath>
+    </PropertyGroup>
+
+    <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+        <OutputPath>..\..\00_server_bins</OutputPath>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="CommandLineParser" Version="2.8.0" />
+      <PackageReference Include="MessagePack" Version="2.1.115" />
+      <PackageReference Include="NLog" Version="4.7.2" />
+      <PackageReference Include="System.Configuration.ConfigurationManager" Version="5.0.0-preview.4.20251.6" />
+      <PackageReference Include="Z.ExtensionMethods" Version="2.1.1" />
+    </ItemGroup>
+    
+    <ItemGroup>
+        <None Update="NLog.config">
+            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </None>
+    </ItemGroup>
+    
+    <ItemGroup>
+      <Reference Include="SuperSocket.Common, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null">
+        <HintPath>..\..\00_superSocketLite_libs\netstandard2.1\SuperSocket.Common.dll</HintPath>
+      </Reference>
+      <Reference Include="SuperSocket.SocketBase, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null">
+        <HintPath>..\..\00_superSocketLite_libs\netstandard2.1\SuperSocket.SocketBase.dll</HintPath>
+      </Reference>
+      <Reference Include="SuperSocket.SocketEngine, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null">
+        <HintPath>..\..\00_superSocketLite_libs\netstandard2.1\SuperSocket.SocketEngine.dll</HintPath>
+      </Reference>
+    </ItemGroup>
+    
+    <ItemGroup>
+      <ProjectReference Include="..\CSBaseLib\CSBaseLib.csproj" />
+    </ItemGroup>
+    
+</Project>
