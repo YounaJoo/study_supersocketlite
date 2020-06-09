@@ -152,7 +152,6 @@ namespace OMKServer
                 ServerPacketData.MakeNTFInConnectOrDisConnectClientPacket(false, session.SessionID,
                     session.SessionIndex);
             Distribute(packet);
-            
         }
         
         // 'User Action'

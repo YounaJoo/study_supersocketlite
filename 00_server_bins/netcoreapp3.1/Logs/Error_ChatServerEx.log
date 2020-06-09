@@ -72,3 +72,7 @@
    at OMKServer.UserManager.RemoveUser(Int32 sessionIndex) in C:\Project\study_supersocketlite\OMKServer\OMKServer\UserManager.cs:line 58
    at OMKServer.PKHCommon.NotifyInDisConnectClient(ServerPacketData requestData) in C:\Project\study_supersocketlite\OMKServer\OMKServer\PKHCommon.cs:line 53
    at OMKServer.PacketProcessor.Process() in C:\Project\study_supersocketlite\OMKServer\OMKServer\PacketProcessor.cs:line 77
+[2020/06/09 14:12:20.265] [TID:9] [Extensions.IfTrue => <>c__DisplayClass12_0.<Process>b__0 => NLogLog.Error]: System.NullReferenceException: Object reference not set to an instance of an object.
+   at OMKServer.UserManager.RemoveUser(Int32 sessionIndex) in C:\Project\study_supersocketlite\OMKServer\OMKServer\UserManager.cs:line 58
+   at OMKServer.PKHCommon.NotifyInDisConnectClient(ServerPacketData requestData) in C:\Project\study_supersocketlite\OMKServer\OMKServer\PKHCommon.cs:line 53
+   at OMKServer.PacketProcessor.Process() in C:\Project\study_supersocketlite\OMKServer\OMKServer\PacketProcessor.cs:line 77

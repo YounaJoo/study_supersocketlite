@@ -55,7 +55,8 @@ namespace OMKServer
         public ERROR_CODE RemoveUser(int sessionIndex)
         {
             // 유저 삭제 실패 시 에러 코드 발생
-            if (UserMap.Remove(sessionIndex) == false || UserIdMap.Remove(GetUser(sessionIndex).ID()) == false)
+            string userID = GetUser(sessionIndex).ID();
+            if (UserMap.Remove(sessionIndex) == false || UserIdMap.Remove(userID) == false)
             {
                 return ERROR_CODE.REMOVE_USER_SEARCH_FAILURE_USER_ID;
             }

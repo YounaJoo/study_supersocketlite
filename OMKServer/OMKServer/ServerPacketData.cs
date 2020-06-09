@@ -74,6 +74,7 @@ namespace OMKServer
         [Key(2)] public string UserID;
     }
 
+    // '방 나가기' 버튼과 '연결 끊기'는 동일하게 작용
     [MessagePackObject]
     public class PKTInternalNTFRoomLeave
     {

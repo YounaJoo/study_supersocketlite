@@ -15,13 +15,13 @@ namespace OMKServer
             pakcetHandlerMap.Add((int)PACKETID.REQ_LOGIN, RequestLogin);
         }
 
-        // '접속'시 MainServer에서 작업, PKHCommon에서는 로그 저장
+        // '접속' --> Accept 까지는 SuperSocket 역할, Server는 Log 저장
         public void NotifyInConnectClient(ServerPacketData requestData)
         {
             MainServer.MainLogger.Debug($"Current Connected Session Count : {ServerNetwork.SessionCount}");
         }
 
-        // '접속 해제' 시 MainServer에서도 작업 + 
+        // '접속 해제' 
         public void NotifyInDisConnectClient(ServerPacketData requestData)
         {
             var sessionIndex = requestData.SessionIndex;
@@ -32,6 +32,7 @@ namespace OMKServer
                 var roomNum = user.RoomNumber;
 
                 // 현재 유저가 방에 들어간 채 접속 끊기 버튼을 눌렀다면 room에 들어가있는 user 정보 삭제
+                // 꽤 많은 비용이 발생되지만 유지보수를 위해, 일반적으로 유저가 '방 나가기' 버튼을 눌렀을 때와 일관성 맞춤
                 if (roomNum != PacketDef.INVALID_ROOM_NUMBER)
                 {
                     var packet = new PKTInternalNTFRoomLeave()
@@ -59,27 +60,25 @@ namespace OMKServer
         // Login 요청 받았을 시 PacketID와 연결되는 method
         public void RequestLogin(ServerPacketData packetData)
         {
-            var sessionID = packetData.SessionID;
             var sessionIndex = packetData.SessionIndex;
             MainServer.MainLogger.Debug("로그인 요청 받음");
 
             try
             {
-                // 해당 sessionIndex를 가지고 있는 User 객체가 return 되면
+                // 로그인 중복 방지
                 if (UserMgr.GetUser(sessionIndex) != null)
                 {
-                    // Error Code 를 보내고 return
                     ResponseLoginToClient(ERROR_CODE.LOGIN_ALREADY_WORKING, packetData.SessionID);
                     return;
                 }
-
-                // MessagePack : 메시지 직렬화
+                
                 var reqData = MessagePackSerializer.Deserialize<OMKReqLogin>(packetData.BodyData);
                 var errorCode = UserMgr.AddUser(reqData.UserID, packetData.SessionID, packetData.SessionIndex);
                 if (errorCode != ERROR_CODE.NONE)
                 {
                     ResponseLoginToClient(errorCode, packetData.SessionID);
 
+                    // Q> 이미 Response를 해놓고 왜 또 NotifyMustCLoseToClient, Packet을 Send하는가?
                     if (errorCode == ERROR_CODE.LOGIN_FULL_USER_COUNT)
                     {
                         NotifyMustCloseToClient(ERROR_CODE.LOGIN_FULL_USER_COUNT, packetData.SessionID);
