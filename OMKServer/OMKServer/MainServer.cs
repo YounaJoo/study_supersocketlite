@@ -86,8 +86,7 @@ namespace OMKServer
         // 네트워크 요소 생성
         public ERROR_CODE CreateComponent()
         {
-            // Index Pool 삭제 --> Room에서 끊는 것은 괜찮지만 연결 자체를 끊는건 유저들을 떠나보내기 딱 좋은 것 같다.
-            // pool을 써서 서버 메모리 관리 보다는, 오픈 때 서버 개수를 크게 키워서 접속 수에 따라 적절히 관리하는게 좋을 것 같다.
+            ClientSession.CreateIndexPool(m_Config.MaxConnectionNumber);
 
             // Room의 NetSendFunc 델리게이트 함수 연결 
             // Q> 델리게이트 함수를 쓴 이유 -> 유지보수 상 MainServer를 instance를 할당하거나 static을 하지 않더라도 타 Class에서 사용 용이
@@ -137,9 +136,11 @@ namespace OMKServer
         // '접속' 
         void OnConnected(ClientSession session)
         {
+            session.AllocSessionIndex();
             MainLogger.Info(string.Format("세션 번호 {0} 접속", session.SessionID));
 
             var packet = ServerPacketData.MakeNTFInConnectOrDisConnectClientPacket(true, session.SessionID, session.SessionIndex);
+            MainLogger.Info("접속 시 세션 번호 : " + session.SessionIndex);
             Distribute(packet);
         }
 
@@ -152,6 +153,8 @@ namespace OMKServer
                 ServerPacketData.MakeNTFInConnectOrDisConnectClientPacket(false, session.SessionID,
                     session.SessionIndex);
             Distribute(packet);
+            
+            session.FreeSessionIndex(session.SessionIndex);
         }
         
         // 'User Action'

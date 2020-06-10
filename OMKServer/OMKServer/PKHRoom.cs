@@ -68,33 +68,34 @@ namespace OMKServer
             return (true, room, roomUser);
         }
 
-        public int SelectRoom()
+        public int GetUsableRoom()
         {
             int index = -1;
             foreach (var room in RoomList)
             {
-                if (room.CurrentUserCount() == 1)
-                {
-                    index = room.Index;
-                }
-                else
+                if (room.CurrentUserCount() != 1)
                 {
                     continue;
                 }
+                index = room.Index;
+                break;
             }
 
-            if (index == -1)
+            if (index != -1)
             {
-                foreach (var room in RoomList)
-                {
-                    if (room.ChkRoomFull() == false)
-                    {
-                        index = room.Index;
-                        break;
-                    }
-                }
+                return index;
             }
 
+            foreach (var room in RoomList)
+            {
+                if (room.ChkRoomFull())
+                {
+                    continue;
+                }
+                index = room.Index;
+                break;
+            }
+            
             return index;
         }
         
@@ -123,7 +124,7 @@ namespace OMKServer
                 
                 var reqData = MessagePackSerializer.Deserialize<OMKReqRoomEnter>(packetData.BodyData);
                 
-                int roomNumber = SelectRoom();
+                int roomNumber = GetUsableRoom();
                 var room = GetRoom(roomNumber);
                 
                 if (reqData.RoomNumber != -1 || room == null)

@@ -37,7 +37,7 @@ namespace OMKServer
             // userID가 존재할 때 fail
             if (UserIdMap.ContainsKey(userID))
             {
-                return ERROR_CODE.LOGIN_ALREADY_WORKING;
+                return ERROR_CODE.LOGIN_ALREADY_SERVER;
             }
             
             UserIdMap.Add(userID, sessionIndex);

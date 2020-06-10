@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using CSBaseLib;
 using MessagePack;
 
@@ -65,6 +66,7 @@ namespace OMKServer
 
             try
             {
+                MainServer.MainLogger.Info("sessionIndex : " + sessionIndex);
                 // 로그인 중복 방지
                 if (UserMgr.GetUser(sessionIndex) != null)
                 {
