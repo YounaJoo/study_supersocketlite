@@ -201,7 +201,7 @@ namespace ConnectToServer
 
         public void requestGameReady(short userPos)
         {
-            /*var request = new OMKReqGameReady()
+            var request = new OMKReqGameReady()
             {
                 UserPos = userPos
             };
@@ -210,7 +210,7 @@ namespace ConnectToServer
             var Body = MessagePackSerializer.Serialize(request);
             var sendData = CSBaseLib.PacketToBytes.Make(PACKETID.REQ_GAME_READY, Body);
             
-            PostSendPacket(sendData);*/
+            PostSendPacket(sendData);
         }
         #endregion
 
@@ -258,8 +258,8 @@ namespace ConnectToServer
                     
                 } else if (packet.PacketID == (UInt16) PACKETID.RES_GAME_READY)
                 {
-                    /*var resData = MessagePackSerializer.Deserialize<OMKResGameReady>(packet.BodyData);
-                    Debug.Log(resData.Result);*/
+                    var resData = MessagePackSerializer.Deserialize<OMKResGameReady>(packet.BodyData);
+                    Debug.Log(resData.Result);
                 }
                 else if (packet.PacketID == (UInt16) PACKETID.NTF_GAME_READY)
                 {
