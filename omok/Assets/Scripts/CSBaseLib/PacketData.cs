@@ -98,6 +98,9 @@ namespace CSBaseLib
     {
         [Key(0)]
         public short Result;
+
+        [Key(1)] 
+        public short UserPos;
     }
 
     [MessagePackObject]
@@ -152,4 +155,24 @@ namespace CSBaseLib
         [Key(1)]
         public string ChatMessage;
     }
+
+    [MessagePackObject]
+    public class OMKReqGameReady
+    {
+        [Key(0)] public short UserPos;
+    }
+
+    [MessagePackObject()]
+    public class OMKResGameReady
+    {
+        [Key(0)] public short Result;
+    }
+    
+    [MessagePackObject()]
+    public class OMKNtfGameReady
+    {
+        [Key(0)] public short UserPos;
+        [Key(1)] public short Result;
+    }
+
 }

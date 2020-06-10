@@ -11,6 +11,7 @@ public class RoomUIManager : MonoBehaviour
 {
     private GameObject Canvas;
     private int num;
+    private List<string> remoteUserID;
 
     public RoomUIManager()
     {
@@ -23,9 +24,8 @@ public class RoomUIManager : MonoBehaviour
         num = 0; // Login
     }
 
-    public void roomEnterUIChange()
+    public void roomEnterUIChange(List<string> remoteUserID, short userPos)
     {
-
         if (num == 1)
         {
             return;
@@ -35,7 +35,8 @@ public class RoomUIManager : MonoBehaviour
         {
             Destroy(Canvas.gameObject);
         }
-        
+
+        this.remoteUserID = remoteUserID;
         Canvas = (GameObject)Instantiate(Resources.Load("Canvas_game"));
         num = 1; // room
     }

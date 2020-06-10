@@ -29,6 +29,7 @@ public class ChattingRoom : MonoBehaviour
         chatRoomPanel = gameCanvas.transform.GetChild(1).gameObject;
 
         startBtn = chatRoomPanel.transform.GetChild(0).transform.GetChild(3).GetComponentInChildren<Button>();
+        startBtn.onClick.AddListener(delegate { MainClient.Instance.gameReady(); });
 
         exitBtn = chatRoomPanel.transform.GetChild(0).transform.GetChild(4).GetComponentInChildren<Button>();
         exitBtn.onClick.AddListener(delegate { MainClient.Instance.exitBtn(); });

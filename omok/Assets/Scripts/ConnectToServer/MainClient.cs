@@ -29,6 +29,7 @@ namespace ConnectToServer
         private static MainClient instance = null; 
         
         private bool serializerRegistered = false;
+        public short userPos = -1;
         
         private NetworkManager networkManager;
         private RoomUIManager roomUIManager;
@@ -76,6 +77,7 @@ namespace ConnectToServer
             msg = new List<string>();
 
             roomUIManager = new RoomUIManager();
+            userPos = -1;
 
             if (instance == null)
             {
@@ -93,10 +95,7 @@ namespace ConnectToServer
             // Init MessagePack
             if (!serializerRegistered)
             {
-                StaticCompositeResolver.Instance.Register(
-                    GeneratedResolver.Instance,
-                    StandardResolver.Instance
-                );
+                StaticCompositeResolver.Instance.Register(GeneratedResolver.Instance, StandardResolver.Instance );
 
                 var option = MessagePackSerializerOptions.Standard.WithResolver(StaticCompositeResolver.Instance);
                 MessagePackSerializer.DefaultOptions = option;
@@ -108,7 +107,7 @@ namespace ConnectToServer
         {
             switch (p_state)
             {
-                case PLAYER_STATE.NONE :  
+                case PLAYER_STATE.NONE :
                     msg.Clear();
                     break;
                     
@@ -120,10 +119,13 @@ namespace ConnectToServer
                     receiveLogin();
                     break;
                 
+                case PLAYER_STATE.ROOMENTER :
+                    receiveRoomEnter();
+                    break;
+                
                 case PLAYER_STATE.IN_ROOM : // Ready, Chatting
                     // 상대방, 유저 둘 다 게임 준비 완료를 하면 Game 시작
-                    receiveChat();
-                    gameReady();
+                    receiveGameRoom();
                     break;
                 
                 case PLAYER_STATE.GAME : // 게임 턴
@@ -165,7 +167,6 @@ namespace ConnectToServer
 
         private void requestRoomEnter()
         {
-            var packetList = networkManager.GetPacket();
             
             var reqRoomEnter = new PKTReqRoomEnter()
             {
@@ -177,8 +178,7 @@ namespace ConnectToServer
             
             PostSendPacket(sendData);
             
-            roomUIManager.roomEnterUIChange();
-            p_state = PLAYER_STATE.IN_ROOM;
+            p_state = PLAYER_STATE.ROOMENTER;
         }
 
         public void requestChatting(string message)
@@ -198,6 +198,20 @@ namespace ConnectToServer
             var sendData = CSBaseLib.PacketToBytes.Make(CSBaseLib.PACKETID.REQ_ROOM_CHAT, Body);
             PostSendPacket(sendData);
         }
+
+        public void requestGameReady(short userPos)
+        {
+            /*var request = new OMKReqGameReady()
+            {
+                UserPos = userPos
+            };
+
+            Debug.Log(userPos);
+            var Body = MessagePackSerializer.Serialize(request);
+            var sendData = CSBaseLib.PacketToBytes.Make(PACKETID.REQ_GAME_READY, Body);
+            
+            PostSendPacket(sendData);*/
+        }
         #endregion
 
         #region receive
@@ -210,8 +224,6 @@ namespace ConnectToServer
                 var resData = MessagePackSerializer.Deserialize<OMKResLogin>(packet.BodyData);
                 if (resData.Result == (short)ERROR_CODE.NONE)
                 {
-                    // Res에서 제대로 받았으면, 현재는 바로 실행, 백그라운드 실행 고려해보기
-                    //p_state = PLAYER_STATE.ROOMENTER;
                     requestRoomEnter();
                 }
                 else
@@ -227,7 +239,7 @@ namespace ConnectToServer
             }
         }
 
-        public void receiveChat()
+        public void receiveGameRoom()
         { 
             var packetList = networkManager.GetPacket();
             
@@ -238,6 +250,48 @@ namespace ConnectToServer
                     var message = MessagePackSerializer.Deserialize<OMKResRoomChat>(packet.BodyData);
                     Debug.Log("UserID :" + message.UserID + " Message : " + message.ChatMessage);
                     GameObject.Find("Canvas_game(Clone)").GetComponent<ChattingRoom>().chatting(message.UserID, message.ChatMessage);
+                } else if (packet.PacketID == (UInt16) PACKETID.NTF_ROOM_NEW_USER)
+                {
+                    
+                } else if (packet.PacketID == (UInt16) PACKETID.NTF_ROOM_LEAVE_USER)
+                {
+                    
+                } else if (packet.PacketID == (UInt16) PACKETID.RES_GAME_READY)
+                {
+                    /*var resData = MessagePackSerializer.Deserialize<OMKResGameReady>(packet.BodyData);
+                    Debug.Log(resData.Result);*/
+                }
+                else if (packet.PacketID == (UInt16) PACKETID.NTF_GAME_READY)
+                {
+                    
+                }
+                else if (packet.PacketID == PacketDef.SYS_PACKET_ID_DISCONNECT_FROM_SERVER)
+                {
+                    Debug.Log("error");
+                }
+            }
+        }
+
+        public void receiveRoomEnter()
+        {
+            var packetList = networkManager.GetPacket();
+            List<string> remoteUserID = null;
+            
+            foreach (var packet in packetList)
+            {
+                if (packet.PacketID == (UInt16) PACKETID.NTF_ROOM_USER_LIST)
+                {
+                    var resData = MessagePackSerializer.Deserialize<OMKRoomUserList>(packet.BodyData);
+                    remoteUserID = resData.UserIDList;
+                } 
+                else if (packet.PacketID == (UInt16) PACKETID.RES_ROOM_ENTER) // 룸에 있는 유저 정보
+                {
+                    var resData = MessagePackSerializer.Deserialize<OMKResRoomEnter>(packet.BodyData);
+                    Debug.Log("userPos : " + resData.UserPos);
+                    this.userPos = resData.UserPos;
+                    
+                    roomUIManager.roomEnterUIChange(remoteUserID, userPos);
+                    p_state = PLAYER_STATE.IN_ROOM;
                 }
                 else if (packet.PacketID == PacketDef.SYS_PACKET_ID_DISCONNECT_FROM_SERVER)
                 {
@@ -263,9 +317,15 @@ namespace ConnectToServer
 
         #region Game
 
-        private void gameReady()
+        public void gameReady()
         {
-            
+            if (userPos == -1)
+            {
+                // 알림
+                return;
+            }
+
+            requestGameReady(userPos);
         }
         #endregion
         
