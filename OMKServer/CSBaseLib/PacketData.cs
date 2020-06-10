@@ -172,4 +172,11 @@ namespace CSBaseLib
         //[Key(0)] public short UserPos;
         [Key(0)] public short Result;
     }
+
+    [MessagePackObject()]
+    public class OMKNtfGameReady
+    {
+        [Key(0)] public short UserPos;
+        [Key(1)] public short Result;
+    }
 }
