@@ -30,7 +30,7 @@ namespace ConnectToServer
         
         private bool serializerRegistered = false;
         public short userPos = -1;
-        
+
         private NetworkManager networkManager;
         private RoomUIManager roomUIManager;
 
@@ -186,7 +186,8 @@ namespace ConnectToServer
         {
             if (p_state != PLAYER_STATE.IN_ROOM)
             {
-                Debug.Log("Error");
+                roomUIManager.createNotice("방 입장 오류\n연결을 끊습니다.");
+                p_state = PLAYER_STATE.LEAVE;
                 return;
             }
             
@@ -206,8 +207,7 @@ namespace ConnectToServer
             {
                 UserPos = userPos
             };
-
-            Debug.Log(userPos);
+            
             var Body = MessagePackSerializer.Serialize(request);
             var sendData = CSBaseLib.PacketToBytes.Make(PACKETID.REQ_GAME_READY, Body);
             
@@ -229,14 +229,14 @@ namespace ConnectToServer
                 }
                 else
                 {
-                    Debug.Log("Message : " + resData.Result);
-                    p_state = PLAYER_STATE.ERROR;
+                    roomUIManager.createNotice((ERROR_CODE)resData.Result);
+                    p_state = PLAYER_STATE.NONE;
                 }
             }
             else if (packet.PacketID == PacketDef.SYS_PACKET_ID_DISCONNECT_FROM_SERVER)
             {
+                roomUIManager.createNotice("문제 발생\n연결을 끊습니다.");
                 p_state = PLAYER_STATE.LEAVE;
-                Debug.Log("문제 발생");
             }
         }
 
@@ -249,14 +249,18 @@ namespace ConnectToServer
                 if (packet.PacketID == (UInt16) PACKETID.NTF_ROOM_CHAT)
                 {
                     var message = MessagePackSerializer.Deserialize<OMKResRoomChat>(packet.BodyData);
-                    Debug.Log("UserID :" + message.UserID + " Message : " + message.ChatMessage);
                     GameObject.Find("Canvas_game(Clone)").GetComponent<ChattingRoom>().chatting(message.UserID, message.ChatMessage);
+                    
                 } else if (packet.PacketID == (UInt16) PACKETID.NTF_ROOM_NEW_USER)
                 {
-                    
-                } else if (packet.PacketID == (UInt16) PACKETID.NTF_ROOM_LEAVE_USER)
+                    // 새로운 유저 입장
+                    var reqData = MessagePackSerializer.Deserialize<OMKRoomNewUser>(packet.BodyData);
+                    Debug.Log(reqData.UserID);
+                } else if (packet.PacketID == (UInt16) PACKETID.NTF_ROOM_LEAVE_USER) 
                 {
-                    
+                    // 유저가 떠날 때
+                    var reqData = MessagePackSerializer.Deserialize<OMKRoomLeaveUser>(packet.BodyData);
+                    Debug.Log(reqData.UserID);
                 } else if (packet.PacketID == (UInt16) PACKETID.RES_GAME_READY)
                 {
                     var resData = MessagePackSerializer.Deserialize<OMKResGameReady>(packet.BodyData);
@@ -264,11 +268,13 @@ namespace ConnectToServer
                 }
                 else if (packet.PacketID == (UInt16) PACKETID.NTF_GAME_READY)
                 {
-                    
+                    var reqData = MessagePackSerializer.Deserialize<OMKNtfGameReady>(packet.BodyData);
+                    Debug.Log(reqData.Result);
                 }
                 else if (packet.PacketID == PacketDef.SYS_PACKET_ID_DISCONNECT_FROM_SERVER)
                 {
-                    Debug.Log("error");
+                    roomUIManager.createNotice("문제 발생\n연결을 끊습니다.");
+                    p_state = PLAYER_STATE.LEAVE;
                 }
             }
         }
@@ -288,15 +294,24 @@ namespace ConnectToServer
                 else if (packet.PacketID == (UInt16) PACKETID.RES_ROOM_ENTER) // 룸에 있는 유저 정보
                 {
                     var resData = MessagePackSerializer.Deserialize<OMKResRoomEnter>(packet.BodyData);
-                    Debug.Log("userPos : " + resData.UserPos);
+
+                    if (resData.Result != (short) ERROR_CODE.NONE)
+                    {
+                        roomUIManager.createNotice((ERROR_CODE)resData.Result);
+                        p_state = PLAYER_STATE.LEAVE;
+                        return;
+                    }
+                    
                     this.userPos = resData.UserPos;
                     
-                    roomUIManager.roomEnterUIChange(remoteUserID, userPos);
+                    roomUIManager.roomEnterUIChange(id, remoteUserID, userPos);
+                    
                     p_state = PLAYER_STATE.IN_ROOM;
                 }
                 else if (packet.PacketID == PacketDef.SYS_PACKET_ID_DISCONNECT_FROM_SERVER)
                 {
-                    Debug.Log("error");
+                    roomUIManager.createNotice("문제 발생\n연결을 끊습니다.");
+                    p_state = PLAYER_STATE.LEAVE;
                 }
             }
         }
@@ -307,7 +322,8 @@ namespace ConnectToServer
         {
             if (networkManager.IsConnected == false)
             {
-                Debug.Log("서버 연결이 되어 있지 않습니다");
+                roomUIManager.createNotice("서버 연결이 되어 있지 않습니다.");
+                p_state = PLAYER_STATE.NONE;
                 return;
             }
 
@@ -322,7 +338,8 @@ namespace ConnectToServer
         {
             if (userPos == -1)
             {
-                // 알림
+                roomUIManager.createNotice("알 수 없는 오류 발생");
+                p_state = PLAYER_STATE.ERROR;
                 return;
             }
 
@@ -356,19 +373,19 @@ namespace ConnectToServer
                 }
                 else
                 {
-                    Debug.Log("연결을 확인해 주세요");
+                    roomUIManager.createNotice("서버 연결 실패\n서버 상태를 확인해주세요.");
+                    p_state = PLAYER_STATE.LEAVE;
                 }
             }
             else
             {
-                Debug.Log("ID, Pass, IP, Port 를 입력해주세요.");
+                roomUIManager.createNotice("ID, PASS, IP를\n확인해주세요.");
+                p_state = PLAYER_STATE.NONE;
             }
         }
         #endregion
 
         #region Test
-
-        // test
         public void exitBtn()
         {
             p_state = PLAYER_STATE.LEAVE;

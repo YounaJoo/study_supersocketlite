@@ -130,8 +130,11 @@ namespace OMKServer
         public void NofifyPacketGameReady()
         {
             // 이게 보내지면 GameStart
-            var packet = new OMKResGameReady();
-            packet.Result = (short)ERROR_CODE.NONE; 
+            var packet = new OMKNtfGameReady()
+            {
+                UserPos = -1,
+                Result = (short) ERROR_CODE.NONE
+            };
 
             var body = MessagePackSerializer.Serialize(packet);
             var sendPacket = PacketToBytes.Make(PACKETID.NTF_GAME_READY, body);

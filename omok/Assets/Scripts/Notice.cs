@@ -13,7 +13,16 @@ public class Notice : MonoBehaviour
 
     public void init(ERROR_CODE error_code)
     {
-        string str = errorMsg((int) error_code);
+        noticePanel.GetComponent<RectTransform>().localPosition = Vector3.zero;
+        
+        string str = errorMsg((short)error_code);
+
+        text_notice.text = str;
+    }
+
+    public void init(string str)
+    {
+        noticePanel.GetComponent<RectTransform>().localPosition = Vector3.zero;
 
         text_notice.text = str;
     }
@@ -30,61 +39,66 @@ public class Notice : MonoBehaviour
 
     private void exitBtn()
     {
-        //this.gameObject.SetActive(false);
         Destroy(this.gameObject);
     }
 
-    private string errorMsg(int error_code)
+    private string errorMsg(short error_code)
     {
         string str = null;
         switch (error_code)
         {
-            case (int)ERROR_CODE.NONE :
+            case (short)ERROR_CODE.NONE :
                 return str = "null";
-            case (int) ERROR_CODE.LOGIN_INVALID_AUTHTOKEN :
+            case (short) ERROR_CODE.LOGIN_INVALID_AUTHTOKEN :
                 str = "LOGIN_INVALID_AUTHTOKEN";
                 break;
-            case (int) ERROR_CODE.ADD_USER_DUPLICATION :
+            case (short) ERROR_CODE.ADD_USER_DUPLICATION :
                 str = "ADD_USER_DUPLICATION";
                 break;
-            case (int) ERROR_CODE.REMOVE_USER_SEARCH_FAILURE_USER_ID :
+            case (short) ERROR_CODE.REMOVE_USER_SEARCH_FAILURE_USER_ID :
                 str = "REMOVE_USER_SEARCH_FAILURE_USER_ID";
                 break;
-            case (int) ERROR_CODE.USER_AUTH_ALREADY_SET_AUTH :
+            case (short) ERROR_CODE.USER_AUTH_ALREADY_SET_AUTH :
                 str = "USER_AUTH_ALREADY_SET_AUTH";
                 break;
-            case (int) ERROR_CODE.USER_AUTH_SEARCH_FAILURE_USER_ID :
+            case (short) ERROR_CODE.USER_AUTH_SEARCH_FAILURE_USER_ID :
                 str = "USER_AUTH_SEARCH_FAILURE_USER_ID";
                 break;
-            case (int) ERROR_CODE.LOGIN_ALREADY_WORKING :
+            case (short) ERROR_CODE.LOGIN_ALREADY_SERVER :
+                str = "LOGIN_ALREADY_SERVER";
+                break;
+            case (short) ERROR_CODE.LOGIN_ALREADY_WORKING :
                 str = "LOGIN_ALREADY_WORKING";
                 break;
-            case (int) ERROR_CODE.LOGIN_FULL_USER_COUNT :
+            case (short) ERROR_CODE.LOGIN_FULL_USER_COUNT :
                 str = "LOGIN_FULL_USER_COUNT";
                 break;
-            case (int) ERROR_CODE.ROOM_ENTER_INVALID_STATE :
+            case (short) ERROR_CODE.ROOM_ENTER_INVALID_STATE :
                 str = "ROOM_ENTER_INVALID_STATE";
                 break;
-            case (int) ERROR_CODE.ROOM_ENTER_INVALID_USER :
+            case (short) ERROR_CODE.ROOM_ENTER_INVALID_USER :
                 str = "ROOM_ENTER_INVALID_USER";
                 break;
-            case (int) ERROR_CODE.ROOM_ENTER_ERROR_SYSTEM :
+            case (short) ERROR_CODE.ROOM_ENTER_ERROR_SYSTEM :
                 str = "ROOM_ENTER_ERROR_SYSTEM";
                 break;
-            case (int) ERROR_CODE.ROOM_ENTER_INVALID_ROOM_NUMBER :
+            case (short) ERROR_CODE.ROOM_ENTER_INVALID_ROOM_NUMBER :
                 str = "ROOM_ENTER_INVALID_ROOM_NUMBER";
                 break;
-            case (int) ERROR_CODE.ROOM_ENTER_FAIL_ADD_USER :
+            case (short) ERROR_CODE.ROOM_ENTER_FAIL_ADD_USER :
                 str = "ROOM_ENTER_FAIL_ADD_USER";
                 break;
-            case (int) ERROR_CODE.GAME_READY_INVALID_STATE :
+            case (short) ERROR_CODE.GAME_READY_INVALID_STATE :
                 str = "GAME_READY_INVALID_STATE";
                 break;
-            case (int) ERROR_CODE.GAME_READY_INVALIED_USER :
+            case (short) ERROR_CODE.GAME_READY_INVALIED_USER :
                 str = "GAME_READY_INVALIED_USER";
                 break;
-            case (int) ERROR_CODE.GAME_READY_INVALID_CHECK_OTHER_USER :
+            case (short) ERROR_CODE.GAME_READY_INVALID_CHECK_OTHER_USER :
                 str = "GAME_READY_INVALID_CHECK_OTHER_USER";
+                break;
+            case (short) ERROR_CODE.REDIS_INIT_FAIL :
+                str = "REDIS_INIT_FAIL";
                 break;
         }
 
