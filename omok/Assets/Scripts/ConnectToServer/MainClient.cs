@@ -78,6 +78,7 @@ namespace ConnectToServer
 
             roomUIManager = new RoomUIManager();
             userPos = -1;
+            
 
             if (instance == null)
             {
