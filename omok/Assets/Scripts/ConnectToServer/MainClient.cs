@@ -246,29 +246,83 @@ namespace ConnectToServer
             
             foreach (var packet in packetList)
             {
-                if (packet.PacketID == (UInt16) PACKETID.NTF_ROOM_CHAT)
+                /*switch (packet.PacketID)
+                {
+                    case (UInt16) PACKETID.NTF_ROOM_CHAT : // 채팅 중
+                        var message = MessagePackSerializer.Deserialize<OMKResRoomChat>(packet.BodyData);
+                        GameObject.Find("Canvas_game(Clone)").GetComponent<ChattingRoom>().chatting(message.UserID, message.ChatMessage);
+                        break;
+                    
+                    case (UInt16) PACKETID.NTF_ROOM_NEW_USER : // 새로운 유저 입장
+                        var reqData = MessagePackSerializer.Deserialize<OMKRoomNewUser>(packet.BodyData);
+                        roomUIManager.setPlayerList(true, reqData.UserID);
+                        break;
+                    
+                    case (UInt16) PACKETID.NTF_ROOM_LEAVE_USER : // 유저가 나감 
+                        var reqData = MessagePackSerializer.Deserialize<OMKRoomLeaveUser>(packet.BodyData);
+                        roomUIManager.setPlayerList(false, reqData.UserID);
+                        break;
+                    
+                    case (UInt16) PACKETID.RES_GAME_READY : // 게임 레디 None 일 때에는 player 2가 ready 했을 뿐
+                        var resData = MessagePackSerializer.Deserialize<OMKResGameReady>(packet.BodyData);
+                    
+                        if (resData.Result == (UInt16) ERROR_CODE.NONE && userPos == 1)
+                        {
+                            // ready 
+                            
+                        }
+                        roomUIManager.createNotice((ERROR_CODE)resData.Result);
+                        break;
+                    
+                    case (UInt16) PACKETID.NTF_GAME_READY : // 게임 시작
+                        var reqData = MessagePackSerializer.Deserialize<OMKNtfGameReady>(packet.BodyData);
+                        Debug.Log(reqData.Result);
+                        break;
+                    
+                    case (UInt16) PacketDef.SYS_PACKET_ID_DISCONNECT_FROM_SERVER : 
+                        roomUIManager.createNotice("문제 발생\n연결을 끊습니다.");
+                        p_state = PLAYER_STATE.LEAVE;
+                        break;
+                }*/
+                
+                if (packet.PacketID == (UInt16) PACKETID.NTF_ROOM_CHAT) // 채팅 중
                 {
                     var message = MessagePackSerializer.Deserialize<OMKResRoomChat>(packet.BodyData);
                     GameObject.Find("Canvas_game(Clone)").GetComponent<ChattingRoom>().chatting(message.UserID, message.ChatMessage);
                     
-                } else if (packet.PacketID == (UInt16) PACKETID.NTF_ROOM_NEW_USER)
+                } else if (packet.PacketID == (UInt16) PACKETID.NTF_ROOM_NEW_USER) // 새로운 유저 입장
                 {
-                    // 새로운 유저 입장
                     var reqData = MessagePackSerializer.Deserialize<OMKRoomNewUser>(packet.BodyData);
                     roomUIManager.setPlayerList(true, reqData.UserID);
-                } else if (packet.PacketID == (UInt16) PACKETID.NTF_ROOM_LEAVE_USER) 
+                    
+                } else if (packet.PacketID == (UInt16) PACKETID.NTF_ROOM_LEAVE_USER) // 유저가 나감 
                 {
                     var reqData = MessagePackSerializer.Deserialize<OMKRoomLeaveUser>(packet.BodyData);
                     roomUIManager.setPlayerList(false, reqData.UserID);
-                } else if (packet.PacketID == (UInt16) PACKETID.RES_GAME_READY)
+                    
+                } else if (packet.PacketID == (UInt16) PACKETID.RES_GAME_READY) // 게임 레디 None 일 때에는 player 2가 ready 했을 뿐
                 {
                     var resData = MessagePackSerializer.Deserialize<OMKResGameReady>(packet.BodyData);
-                    Debug.Log(resData.Result);
+                    
+                    if (resData.Result == (UInt16) ERROR_CODE.NONE && userPos == 1)
+                    {
+                        // ready 
+                        roomUIManager.getGameReady();
+                        continue;
+                    }
+                    roomUIManager.createNotice((ERROR_CODE)resData.Result);
                 }
-                else if (packet.PacketID == (UInt16) PACKETID.NTF_GAME_READY)
+                else if (packet.PacketID == (UInt16) PACKETID.NTF_GAME_READY) // 게임 시작
                 {
-                    var reqData = MessagePackSerializer.Deserialize<OMKNtfGameReady>(packet.BodyData);
-                    Debug.Log(reqData.Result);
+                    var resData = MessagePackSerializer.Deserialize<OMKNtfGameReady>(packet.BodyData);
+                    if (resData.Result != (UInt16) ERROR_CODE.NONE)
+                    {
+                        roomUIManager.createNotice((ERROR_CODE)resData.Result);
+                        continue;
+                    }
+                    
+                    // Room Object Destory? SetActive false?
+                    GameObject.Find("Room").gameObject.SetActive(false);
                 }
                 else if (packet.PacketID == PacketDef.SYS_PACKET_ID_DISCONNECT_FROM_SERVER)
                 {
@@ -281,7 +335,7 @@ namespace ConnectToServer
         public void receiveRoomEnter()
         {
             var packetList = networkManager.GetPacket();
-            List<string> remoteUserID = null;
+            string[] remoteUserID = null;
             
             foreach (var packet in packetList)
             {

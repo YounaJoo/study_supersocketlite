@@ -49,24 +49,23 @@ namespace MessagePack.Resolvers
 
         static GeneratedResolverGetFormatterHelper()
         {
-            lookup = new global::System.Collections.Generic.Dictionary<Type, int>(16)
+            lookup = new global::System.Collections.Generic.Dictionary<Type, int>(15)
             {
-                { typeof(global::System.Collections.Generic.List<string>), 0 },
-                { typeof(global::CSBaseLib.OMKMustClose), 1 },
-                { typeof(global::CSBaseLib.OMKNtfGameReady), 2 },
-                { typeof(global::CSBaseLib.OMKReqGameReady), 3 },
-                { typeof(global::CSBaseLib.OMKReqLogin), 4 },
-                { typeof(global::CSBaseLib.OMKReqRoomChat), 5 },
-                { typeof(global::CSBaseLib.OMKReqRoomLeave), 6 },
-                { typeof(global::CSBaseLib.OMKResGameReady), 7 },
-                { typeof(global::CSBaseLib.OMKResLogin), 8 },
-                { typeof(global::CSBaseLib.OMKResRoomChat), 9 },
-                { typeof(global::CSBaseLib.OMKResRoomEnter), 10 },
-                { typeof(global::CSBaseLib.OMKResRoomLeave), 11 },
-                { typeof(global::CSBaseLib.OMKRoomLeaveUser), 12 },
-                { typeof(global::CSBaseLib.OMKRoomNewUser), 13 },
-                { typeof(global::CSBaseLib.OMKRoomUserList), 14 },
-                { typeof(global::CSBaseLib.PKTReqRoomEnter), 15 },
+                { typeof(global::CSBaseLib.OMKMustClose), 0 },
+                { typeof(global::CSBaseLib.OMKNtfGameReady), 1 },
+                { typeof(global::CSBaseLib.OMKReqGameReady), 2 },
+                { typeof(global::CSBaseLib.OMKReqLogin), 3 },
+                { typeof(global::CSBaseLib.OMKReqRoomChat), 4 },
+                { typeof(global::CSBaseLib.OMKReqRoomLeave), 5 },
+                { typeof(global::CSBaseLib.OMKResGameReady), 6 },
+                { typeof(global::CSBaseLib.OMKResLogin), 7 },
+                { typeof(global::CSBaseLib.OMKResRoomChat), 8 },
+                { typeof(global::CSBaseLib.OMKResRoomEnter), 9 },
+                { typeof(global::CSBaseLib.OMKResRoomLeave), 10 },
+                { typeof(global::CSBaseLib.OMKRoomLeaveUser), 11 },
+                { typeof(global::CSBaseLib.OMKRoomNewUser), 12 },
+                { typeof(global::CSBaseLib.OMKRoomUserList), 13 },
+                { typeof(global::CSBaseLib.PKTReqRoomEnter), 14 },
             };
         }
 
@@ -80,22 +79,21 @@ namespace MessagePack.Resolvers
 
             switch (key)
             {
-                case 0: return new global::MessagePack.Formatters.ListFormatter<string>();
-                case 1: return new MessagePack.Formatters.CSBaseLib.OMKMustCloseFormatter();
-                case 2: return new MessagePack.Formatters.CSBaseLib.OMKNtfGameReadyFormatter();
-                case 3: return new MessagePack.Formatters.CSBaseLib.OMKReqGameReadyFormatter();
-                case 4: return new MessagePack.Formatters.CSBaseLib.OMKReqLoginFormatter();
-                case 5: return new MessagePack.Formatters.CSBaseLib.OMKReqRoomChatFormatter();
-                case 6: return new MessagePack.Formatters.CSBaseLib.OMKReqRoomLeaveFormatter();
-                case 7: return new MessagePack.Formatters.CSBaseLib.OMKResGameReadyFormatter();
-                case 8: return new MessagePack.Formatters.CSBaseLib.OMKResLoginFormatter();
-                case 9: return new MessagePack.Formatters.CSBaseLib.OMKResRoomChatFormatter();
-                case 10: return new MessagePack.Formatters.CSBaseLib.OMKResRoomEnterFormatter();
-                case 11: return new MessagePack.Formatters.CSBaseLib.OMKResRoomLeaveFormatter();
-                case 12: return new MessagePack.Formatters.CSBaseLib.OMKRoomLeaveUserFormatter();
-                case 13: return new MessagePack.Formatters.CSBaseLib.OMKRoomNewUserFormatter();
-                case 14: return new MessagePack.Formatters.CSBaseLib.OMKRoomUserListFormatter();
-                case 15: return new MessagePack.Formatters.CSBaseLib.PKTReqRoomEnterFormatter();
+                case 0: return new MessagePack.Formatters.CSBaseLib.OMKMustCloseFormatter();
+                case 1: return new MessagePack.Formatters.CSBaseLib.OMKNtfGameReadyFormatter();
+                case 2: return new MessagePack.Formatters.CSBaseLib.OMKReqGameReadyFormatter();
+                case 3: return new MessagePack.Formatters.CSBaseLib.OMKReqLoginFormatter();
+                case 4: return new MessagePack.Formatters.CSBaseLib.OMKReqRoomChatFormatter();
+                case 5: return new MessagePack.Formatters.CSBaseLib.OMKReqRoomLeaveFormatter();
+                case 6: return new MessagePack.Formatters.CSBaseLib.OMKResGameReadyFormatter();
+                case 7: return new MessagePack.Formatters.CSBaseLib.OMKResLoginFormatter();
+                case 8: return new MessagePack.Formatters.CSBaseLib.OMKResRoomChatFormatter();
+                case 9: return new MessagePack.Formatters.CSBaseLib.OMKResRoomEnterFormatter();
+                case 10: return new MessagePack.Formatters.CSBaseLib.OMKResRoomLeaveFormatter();
+                case 11: return new MessagePack.Formatters.CSBaseLib.OMKRoomLeaveUserFormatter();
+                case 12: return new MessagePack.Formatters.CSBaseLib.OMKRoomNewUserFormatter();
+                case 13: return new MessagePack.Formatters.CSBaseLib.OMKRoomUserListFormatter();
+                case 14: return new MessagePack.Formatters.CSBaseLib.PKTReqRoomEnterFormatter();
                 default: return null;
             }
         }
@@ -825,7 +823,7 @@ namespace MessagePack.Formatters.CSBaseLib
 
             IFormatterResolver formatterResolver = options.Resolver;
             writer.WriteArrayHeader(1);
-            formatterResolver.GetFormatterWithVerify<global::System.Collections.Generic.List<string>>().Serialize(ref writer, value.UserIDList, options);
+            formatterResolver.GetFormatterWithVerify<string[]>().Serialize(ref writer, value.UserIDList, options);
         }
 
         public global::CSBaseLib.OMKRoomUserList Deserialize(ref MessagePackReader reader, global::MessagePack.MessagePackSerializerOptions options)
@@ -838,7 +836,7 @@ namespace MessagePack.Formatters.CSBaseLib
             options.Security.DepthStep(ref reader);
             IFormatterResolver formatterResolver = options.Resolver;
             var length = reader.ReadArrayHeader();
-            var __UserIDList__ = default(global::System.Collections.Generic.List<string>);
+            var __UserIDList__ = default(string[]);
 
             for (int i = 0; i < length; i++)
             {
@@ -847,7 +845,7 @@ namespace MessagePack.Formatters.CSBaseLib
                 switch (key)
                 {
                     case 0:
-                        __UserIDList__ = formatterResolver.GetFormatterWithVerify<global::System.Collections.Generic.List<string>>().Deserialize(ref reader, options);
+                        __UserIDList__ = formatterResolver.GetFormatterWithVerify<string[]>().Deserialize(ref reader, options);
                         break;
                     default:
                         reader.Skip();

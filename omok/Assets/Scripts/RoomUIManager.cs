@@ -11,16 +11,16 @@ using UnityEngine.UIElements;
 /// </summary>
 public class RoomUIManager : MonoBehaviour
 {
-    private const int userCount = 2;
+    private const int remoteUserCount = 2;
     
     private int num;
     
-    private GameObject Canvas;
-    private GameObject Notice;
-    public GameObject ready;
+    private GameObject Canvas = null;
+    private GameObject Notice = null;
+    public GameObject ready = null;
  
     //private List<string> remoteUserID;
-    private string[] remoteUserID = new string[userCount];
+    private string[] remoteUserID = new string[remoteUserCount];
     private string userID;
     
     private short userPos = -1;
@@ -28,7 +28,7 @@ public class RoomUIManager : MonoBehaviour
 
     public RoomUIManager()
     {
-        for (int i = 0; i < userCount; i++)
+        for (int i = 0; i < remoteUserCount; i++)
         {
             remoteUserID[i] = null;
         }
@@ -42,23 +42,19 @@ public class RoomUIManager : MonoBehaviour
         num = 0; // Login
     }
 
-    public void roomEnterUIChange(string userID, List<string> remoteUserID, short userPos)
+    public void roomEnterUIChange(string userID, string[] remoteUserID, short userPos)
     {
-        if (num == 1)
-        {
-            return;
-        } 
-        
-        if(num == 0)   
-        {
-            Destroy(Canvas.gameObject);
-        }
+        if (num == 0) Destroy(Canvas.gameObject);
+        else if (num == 1) return;
 
         this.remoteUserID = remoteUserID;
         this.userPos = userPos;
         this.userID = userID;
+        
         Canvas = (GameObject)Instantiate(Resources.Load("Canvas_game"));
+        
         num = 1; // room
+        
         setRoomUI();
     }
 
@@ -95,9 +91,9 @@ public class RoomUIManager : MonoBehaviour
 
     private void setPlayerUI()
     {
-        GameObject[] userList = new GameObject[remoteUserID.Count];
+        GameObject[] userList = new GameObject[remoteUserCount];
 
-        for (int i = 0; i < remoteUserID.Count; i++)
+        for (int i = 0; i < remoteUserCount; i++)
         {
             userList[i] = GameObject.Find("player" + i).gameObject;
             if (i == 0)
@@ -106,9 +102,11 @@ public class RoomUIManager : MonoBehaviour
             } else if (i == 1)
             {
                 userList[i].GetComponent<Text>().text = "백 : " + remoteUserID[i];
-                ready = userList[i].transform.GetChild(0).gameObject;
-                Debug.Log(ready.name);
             }
+        }
+        if (ready == null)
+        {
+            ready = userList[1].transform.GetChild(0).gameObject;
         }
     }
 
@@ -116,17 +114,24 @@ public class RoomUIManager : MonoBehaviour
     {
         if (isAdd) // 유저 추가
         {
-            remoteUserID.Add(userID);
+            for (int i = 0; i < remoteUserCount; i++)
+            {
+                if (remoteUserID[i] == null)
+                {
+                    remoteUserID[i] = userID;
+                    break;
+                }
+            }
             setPlayerUI();
             return;
         }
         
         // 유저 삭제
-        foreach (string user in remoteUserID)
+        for (int i = 0; i < remoteUserCount; i++)
         {
-            if (user == userID)
+            if (userID == remoteUserID[i])
             {
-                remoteUserID.Remove(user);
+                remoteUserID[i] = null;
                 break;
             }
         }
@@ -134,6 +139,21 @@ public class RoomUIManager : MonoBehaviour
         setPlayerUI();
     }
 
+    public void getGameReady()
+    {
+        if (num != 1 || ready.activeSelf)
+        {
+            return;
+        }
+        
+        if (ready == null)
+        {
+            ready = GameObject.Find("player" + 1).gameObject.transform.GetChild(0).gameObject;
+        }
+        
+        ready.SetActive(true);
+    }
+    
     public void createNotice(ERROR_CODE errorCode)
     {
         Notice = (GameObject) Instantiate(Resources.Load("panel_notice"));
