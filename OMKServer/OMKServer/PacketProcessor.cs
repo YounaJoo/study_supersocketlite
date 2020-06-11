@@ -8,13 +8,6 @@ namespace OMKServer
 {
     public class PacketProcessor
     {
-        private const float MIN_X = -5.0f;
-        private const float MIN_Y = -3.5f;
-        private const float MAX_X = 5.0f;
-        private const float MAX_Y = 3.5f;
-        private const float DIS = 0.5f;
-        private const int OMOK_COUNT = 10;
-        
         bool IsThreadRunning = false;
         private Thread ProcessThread = null;
         
@@ -40,7 +33,7 @@ namespace OMKServer
             UserMgr.Init(maxUserCount);
             
             // Omok Init 
-            OmokInit(MAX_X, MAX_Y, MIN_X, MIN_Y, DIS);
+            // OmokInit(MAX_X, MAX_Y, MIN_X, MIN_Y, DIS);
 
             RoomList = roomList;
 
@@ -90,7 +83,7 @@ namespace OMKServer
             RoomPacketHandler.RegistPacketHandler(PacketHandlerMap);
             
             OmokHandler.Init(serverNetwork, UserMgr);
-            OmokHandler.SetOmokList(OmokList, OMOK_COUNT);
+            //OmokHandler.SetOmokList(OmokList, OMOK_COUNT);
             OmokHandler.RegistPacketHandler(PacketHandlerMap);
         }
 
