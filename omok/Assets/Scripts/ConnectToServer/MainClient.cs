@@ -320,6 +320,7 @@ namespace ConnectToServer
                     }
                     
                     // Room Object Destory? SetActive false?
+                    Debug.Log(1234);
                     roomUIManager.gameStart();
                 }
                 else if (packet.PacketID == PacketDef.SYS_PACKET_ID_DISCONNECT_FROM_SERVER)

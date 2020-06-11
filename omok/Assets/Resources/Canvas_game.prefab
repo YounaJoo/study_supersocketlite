@@ -619,7 +619,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -1323,7 +1323,7 @@ GameObject:
   - component: {fileID: 1632091578112524490}
   - component: {fileID: 1632091578112524489}
   m_Layer: 5
-  m_Name: player1
+  m_Name: ready_player1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1585,7 +1585,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1632091579243012359}
   m_HandleRect: {fileID: 1632091579243012358}
   m_Direction: 2
-  m_Value: -0.000001932027
+  m_Value: 0
   m_Size: 0.58452076
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -1944,7 +1944,7 @@ GameObject:
   - component: {fileID: 1632091578406712999}
   - component: {fileID: 1632091578406712998}
   m_Layer: 5
-  m_Name: player0
+  m_Name: ready_player0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2903,7 +2903,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.0000051171987, y: 142.16093}
+  m_AnchoredPosition: {x: 0.0000051171987, y: 142.16064}
   m_SizeDelta: {x: 0, y: 342.16064}
   m_Pivot: {x: 0, y: 1}
 --- !u!1 &1632091579175393773
@@ -3268,7 +3268,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1632091579470084042
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3697,12 +3697,12 @@ GameObject:
   - component: {fileID: 1977769759753071542}
   - component: {fileID: 6543272772492185935}
   m_Layer: 5
-  m_Name: Image
+  m_Name: ready
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &9147298425078571061
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3743,7 +3743,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:

@@ -907,3 +907,206 @@
 [2020/06/11 12:21:10.522] [TID:7] [ThreadHelper.ThreadStart_Context => PacketProcessor.Process => PKHRoom.RequestRoomEnter]: RequestRoonEnter
 [2020/06/11 12:21:10.522] [TID:7] [PacketProcessor.Process => PKHRoom.RequestRoomEnter => PKHRoom.ResponseEnterRoomToClient]: RoomEnterResponse
 [2020/06/11 12:21:10.522] [TID:7] [ThreadHelper.ThreadStart_Context => PacketProcessor.Process => PKHRoom.RequestRoomEnter]: RequestEnterInternal = Success, UserPos : 1
+[2020/06/11 12:23:08.421] [TID:71] [ExecutionContext.RunFromThreadPoolDispatchLoop => <>c__DisplayClass141_0.<OnSessionClosed>b__0 => MainServer.OnClosed]: 세션 번호 d101fad2-ca0e-4f03-ae92-e99db4bb007d 접속 해제 : ClientClosing
+[2020/06/11 12:23:08.421] [TID:7] [ThreadHelper.ThreadStart_Context => PacketProcessor.Process => PKHCommon.NotifyInDisConnectClient]: Current Connected Session Count : 1
+[2020/06/11 12:23:08.421] [TID:7] [ThreadHelper.ThreadStart_Context => PacketProcessor.Process => PKHRoom.NotifyLeaveInternal]: NotifyLeaveInternal. SessionIndex:2
+[2020/06/11 12:23:08.421] [TID:7] [PacketProcessor.Process => PKHRoom.NotifyLeaveInternal => PKHRoom.LeaveRoomUser]: LeaveRoomUser. SessionIndex:2
+[2020/06/11 12:26:52.900] [TID:71] [ExecutionContext.RunFromThreadPoolDispatchLoop => <>c__DisplayClass133_0.<OnNewSessionConnected>b__0 => MainServer.OnConnected]: 세션 번호 256137f2-d7e5-45cf-962f-a74b08ef4d51 접속
+[2020/06/11 12:26:52.900] [TID:71] [ExecutionContext.RunFromThreadPoolDispatchLoop => <>c__DisplayClass133_0.<OnNewSessionConnected>b__0 => MainServer.OnConnected]: 접속 시 세션 번호 : 2
+[2020/06/11 12:26:52.900] [TID:7] [ThreadHelper.ThreadStart_Context => PacketProcessor.Process => PKHCommon.NotifyInConnectClient]: Current Connected Session Count : 2
+[2020/06/11 12:26:52.919] [TID:71] [AppSession`2.SuperSocket.SocketBase.IAppSession.ProcessRequest => AppServerBase`2.ExecuteCommand => MainServer.OnPacketReceived]: 세션 번호 256137f2-d7e5-45cf-962f-a74b08ef4d51 받은 데이터 크기 : 10 ThreadID : 71
+[2020/06/11 12:26:52.919] [TID:7] [ThreadHelper.ThreadStart_Context => PacketProcessor.Process => PKHCommon.RequestLogin]: 로그인 요청 받음
+[2020/06/11 12:26:52.919] [TID:7] [ThreadHelper.ThreadStart_Context => PacketProcessor.Process => PKHCommon.RequestLogin]: sessionIndex : 2
+[2020/06/11 12:26:52.919] [TID:7] [ThreadHelper.ThreadStart_Context => PacketProcessor.Process => PKHCommon.RequestLogin]: 로그인 요청 답변 보냄
+[2020/06/11 12:26:52.937] [TID:64] [AppSession`2.SuperSocket.SocketBase.IAppSession.ProcessRequest => AppServerBase`2.ExecuteCommand => MainServer.OnPacketReceived]: 세션 번호 256137f2-d7e5-45cf-962f-a74b08ef4d51 받은 데이터 크기 : 2 ThreadID : 64
+[2020/06/11 12:26:52.937] [TID:7] [ThreadHelper.ThreadStart_Context => PacketProcessor.Process => PKHRoom.RequestRoomEnter]: RequestRoonEnter
+[2020/06/11 12:26:52.937] [TID:7] [PacketProcessor.Process => PKHRoom.RequestRoomEnter => PKHRoom.ResponseEnterRoomToClient]: RoomEnterResponse
+[2020/06/11 12:26:52.937] [TID:7] [ThreadHelper.ThreadStart_Context => PacketProcessor.Process => PKHRoom.RequestRoomEnter]: RequestEnterInternal = Success, UserPos : 1
+[2020/06/11 12:26:53.530] [TID:66] [AppSession`2.SuperSocket.SocketBase.IAppSession.ProcessRequest => AppServerBase`2.ExecuteCommand => MainServer.OnPacketReceived]: 세션 번호 256137f2-d7e5-45cf-962f-a74b08ef4d51 받은 데이터 크기 : 2 ThreadID : 66
+[2020/06/11 12:26:53.530] [TID:7] [ThreadHelper.ThreadStart_Context => PacketProcessor.Process => PKHRoom.RequestGameReady]: 게임 준비 요청 받음
+[2020/06/11 12:26:53.530] [TID:7] [PacketProcessor.Process => PKHRoom.RequestGameReady => PKHRoom.ResponseGameReadyToClient]: RESGAMEREADY
+[2020/06/11 12:26:55.823] [TID:63] [AppSession`2.SuperSocket.SocketBase.IAppSession.ProcessRequest => AppServerBase`2.ExecuteCommand => MainServer.OnPacketReceived]: 세션 번호 256137f2-d7e5-45cf-962f-a74b08ef4d51 받은 데이터 크기 : 2 ThreadID : 63
+[2020/06/11 12:26:55.823] [TID:7] [ThreadHelper.ThreadStart_Context => PacketProcessor.Process => PKHRoom.RequestGameReady]: 게임 준비 요청 받음
+[2020/06/11 12:26:55.823] [TID:7] [PacketProcessor.Process => PKHRoom.RequestGameReady => PKHRoom.ResponseGameReadyToClient]: RESGAMEREADY
+[2020/06/11 12:27:14.020] [TID:66] [ExecutionContext.RunFromThreadPoolDispatchLoop => <>c__DisplayClass141_0.<OnSessionClosed>b__0 => MainServer.OnClosed]: 세션 번호 256137f2-d7e5-45cf-962f-a74b08ef4d51 접속 해제 : ClientClosing
+[2020/06/11 12:27:14.020] [TID:7] [ThreadHelper.ThreadStart_Context => PacketProcessor.Process => PKHCommon.NotifyInDisConnectClient]: Current Connected Session Count : 1
+[2020/06/11 12:27:14.020] [TID:7] [ThreadHelper.ThreadStart_Context => PacketProcessor.Process => PKHRoom.NotifyLeaveInternal]: NotifyLeaveInternal. SessionIndex:2
+[2020/06/11 12:27:14.020] [TID:7] [PacketProcessor.Process => PKHRoom.NotifyLeaveInternal => PKHRoom.LeaveRoomUser]: LeaveRoomUser. SessionIndex:2
+[2020/06/11 12:28:00.471] [TID:61] [ExecutionContext.RunFromThreadPoolDispatchLoop => <>c__DisplayClass133_0.<OnNewSessionConnected>b__0 => MainServer.OnConnected]: 세션 번호 d5a49865-2256-43ec-9560-86157fd28ab3 접속
+[2020/06/11 12:28:00.471] [TID:61] [ExecutionContext.RunFromThreadPoolDispatchLoop => <>c__DisplayClass133_0.<OnNewSessionConnected>b__0 => MainServer.OnConnected]: 접속 시 세션 번호 : 2
+[2020/06/11 12:28:00.471] [TID:7] [ThreadHelper.ThreadStart_Context => PacketProcessor.Process => PKHCommon.NotifyInConnectClient]: Current Connected Session Count : 2
+[2020/06/11 12:28:00.490] [TID:58] [AppSession`2.SuperSocket.SocketBase.IAppSession.ProcessRequest => AppServerBase`2.ExecuteCommand => MainServer.OnPacketReceived]: 세션 번호 d5a49865-2256-43ec-9560-86157fd28ab3 받은 데이터 크기 : 10 ThreadID : 58
+[2020/06/11 12:28:00.490] [TID:7] [ThreadHelper.ThreadStart_Context => PacketProcessor.Process => PKHCommon.RequestLogin]: 로그인 요청 받음
+[2020/06/11 12:28:00.490] [TID:7] [ThreadHelper.ThreadStart_Context => PacketProcessor.Process => PKHCommon.RequestLogin]: sessionIndex : 2
+[2020/06/11 12:28:00.490] [TID:7] [ThreadHelper.ThreadStart_Context => PacketProcessor.Process => PKHCommon.RequestLogin]: 로그인 요청 답변 보냄
+[2020/06/11 12:28:00.490] [TID:57] [AppSession`2.SuperSocket.SocketBase.IAppSession.ProcessRequest => AppServerBase`2.ExecuteCommand => MainServer.OnPacketReceived]: 세션 번호 d5a49865-2256-43ec-9560-86157fd28ab3 받은 데이터 크기 : 2 ThreadID : 57
+[2020/06/11 12:28:00.490] [TID:7] [ThreadHelper.ThreadStart_Context => PacketProcessor.Process => PKHRoom.RequestRoomEnter]: RequestRoonEnter
+[2020/06/11 12:28:00.490] [TID:7] [PacketProcessor.Process => PKHRoom.RequestRoomEnter => PKHRoom.ResponseEnterRoomToClient]: RoomEnterResponse
+[2020/06/11 12:28:00.490] [TID:7] [ThreadHelper.ThreadStart_Context => PacketProcessor.Process => PKHRoom.RequestRoomEnter]: RequestEnterInternal = Success, UserPos : 1
+[2020/06/11 12:28:01.529] [TID:54] [AppSession`2.SuperSocket.SocketBase.IAppSession.ProcessRequest => AppServerBase`2.ExecuteCommand => MainServer.OnPacketReceived]: 세션 번호 d5a49865-2256-43ec-9560-86157fd28ab3 받은 데이터 크기 : 2 ThreadID : 54
+[2020/06/11 12:28:01.529] [TID:7] [ThreadHelper.ThreadStart_Context => PacketProcessor.Process => PKHRoom.RequestGameReady]: 게임 준비 요청 받음
+[2020/06/11 12:28:01.529] [TID:7] [PacketProcessor.Process => PKHRoom.RequestGameReady => PKHRoom.ResponseGameReadyToClient]: RESGAMEREADY
+[2020/06/11 12:28:03.334] [TID:59] [AppSession`2.SuperSocket.SocketBase.IAppSession.ProcessRequest => AppServerBase`2.ExecuteCommand => MainServer.OnPacketReceived]: 세션 번호 41b9b792-bc73-4258-b17f-4ad3c26d0296 받은 데이터 크기 : 2 ThreadID : 59
+[2020/06/11 12:28:03.334] [TID:7] [ThreadHelper.ThreadStart_Context => PacketProcessor.Process => PKHRoom.RequestGameReady]: 게임 준비 요청 받음
+[2020/06/11 12:28:03.334] [TID:7] [PacketProcessor.Process => PKHRoom.RequestGameReady => PKHRoom.ResponseGameReadyToClient]: RESGAMEREADY
+[2020/06/11 12:28:05.094] [TID:57] [AppSession`2.SuperSocket.SocketBase.IAppSession.ProcessRequest => AppServerBase`2.ExecuteCommand => MainServer.OnPacketReceived]: 세션 번호 d5a49865-2256-43ec-9560-86157fd28ab3 받은 데이터 크기 : 2 ThreadID : 57
+[2020/06/11 12:28:05.094] [TID:7] [ThreadHelper.ThreadStart_Context => PacketProcessor.Process => PKHRoom.RequestGameReady]: 게임 준비 요청 받음
+[2020/06/11 12:28:05.094] [TID:7] [PacketProcessor.Process => PKHRoom.RequestGameReady => PKHRoom.ResponseGameReadyToClient]: RESGAMEREADY
+[2020/06/11 12:28:06.582] [TID:59] [AppSession`2.SuperSocket.SocketBase.IAppSession.ProcessRequest => AppServerBase`2.ExecuteCommand => MainServer.OnPacketReceived]: 세션 번호 41b9b792-bc73-4258-b17f-4ad3c26d0296 받은 데이터 크기 : 2 ThreadID : 59
+[2020/06/11 12:28:06.582] [TID:7] [ThreadHelper.ThreadStart_Context => PacketProcessor.Process => PKHRoom.RequestGameReady]: 게임 준비 요청 받음
+[2020/06/11 12:28:06.582] [TID:7] [PacketProcessor.Process => PKHRoom.RequestGameReady => PKHRoom.ResponseGameReadyToClient]: RESGAMEREADY
+[2020/06/11 12:28:33.717] [TID:57] [ExecutionContext.RunFromThreadPoolDispatchLoop => <>c__DisplayClass141_0.<OnSessionClosed>b__0 => MainServer.OnClosed]: 세션 번호 d5a49865-2256-43ec-9560-86157fd28ab3 접속 해제 : ClientClosing
+[2020/06/11 12:28:33.717] [TID:7] [ThreadHelper.ThreadStart_Context => PacketProcessor.Process => PKHCommon.NotifyInDisConnectClient]: Current Connected Session Count : 1
+[2020/06/11 12:28:33.717] [TID:7] [ThreadHelper.ThreadStart_Context => PacketProcessor.Process => PKHRoom.NotifyLeaveInternal]: NotifyLeaveInternal. SessionIndex:2
+[2020/06/11 12:28:33.717] [TID:7] [PacketProcessor.Process => PKHRoom.NotifyLeaveInternal => PKHRoom.LeaveRoomUser]: LeaveRoomUser. SessionIndex:2
+[2020/06/11 12:28:45.549] [TID:53] [ExecutionContext.RunFromThreadPoolDispatchLoop => <>c__DisplayClass133_0.<OnNewSessionConnected>b__0 => MainServer.OnConnected]: 세션 번호 43045d53-fe50-4bf3-8fb9-9ed5ea5a9975 접속
+[2020/06/11 12:28:45.549] [TID:53] [ExecutionContext.RunFromThreadPoolDispatchLoop => <>c__DisplayClass133_0.<OnNewSessionConnected>b__0 => MainServer.OnConnected]: 접속 시 세션 번호 : 2
+[2020/06/11 12:28:45.549] [TID:7] [ThreadHelper.ThreadStart_Context => PacketProcessor.Process => PKHCommon.NotifyInConnectClient]: Current Connected Session Count : 2
+[2020/06/11 12:28:45.605] [TID:56] [AppSession`2.SuperSocket.SocketBase.IAppSession.ProcessRequest => AppServerBase`2.ExecuteCommand => MainServer.OnPacketReceived]: 세션 번호 43045d53-fe50-4bf3-8fb9-9ed5ea5a9975 받은 데이터 크기 : 10 ThreadID : 56
+[2020/06/11 12:28:45.605] [TID:7] [ThreadHelper.ThreadStart_Context => PacketProcessor.Process => PKHCommon.RequestLogin]: 로그인 요청 받음
+[2020/06/11 12:28:45.605] [TID:7] [ThreadHelper.ThreadStart_Context => PacketProcessor.Process => PKHCommon.RequestLogin]: sessionIndex : 2
+[2020/06/11 12:28:45.605] [TID:7] [ThreadHelper.ThreadStart_Context => PacketProcessor.Process => PKHCommon.RequestLogin]: 로그인 요청 답변 보냄
+[2020/06/11 12:28:45.623] [TID:53] [AppSession`2.SuperSocket.SocketBase.IAppSession.ProcessRequest => AppServerBase`2.ExecuteCommand => MainServer.OnPacketReceived]: 세션 번호 43045d53-fe50-4bf3-8fb9-9ed5ea5a9975 받은 데이터 크기 : 2 ThreadID : 53
+[2020/06/11 12:28:45.623] [TID:7] [ThreadHelper.ThreadStart_Context => PacketProcessor.Process => PKHRoom.RequestRoomEnter]: RequestRoonEnter
+[2020/06/11 12:28:45.623] [TID:7] [PacketProcessor.Process => PKHRoom.RequestRoomEnter => PKHRoom.ResponseEnterRoomToClient]: RoomEnterResponse
+[2020/06/11 12:28:45.623] [TID:7] [ThreadHelper.ThreadStart_Context => PacketProcessor.Process => PKHRoom.RequestRoomEnter]: RequestEnterInternal = Success, UserPos : 1
+[2020/06/11 12:28:46.254] [TID:56] [AppSession`2.SuperSocket.SocketBase.IAppSession.ProcessRequest => AppServerBase`2.ExecuteCommand => MainServer.OnPacketReceived]: 세션 번호 43045d53-fe50-4bf3-8fb9-9ed5ea5a9975 받은 데이터 크기 : 2 ThreadID : 56
+[2020/06/11 12:28:46.254] [TID:7] [ThreadHelper.ThreadStart_Context => PacketProcessor.Process => PKHRoom.RequestGameReady]: 게임 준비 요청 받음
+[2020/06/11 12:28:46.254] [TID:7] [PacketProcessor.Process => PKHRoom.RequestGameReady => PKHRoom.ResponseGameReadyToClient]: RESGAMEREADY
+[2020/06/11 12:28:48.667] [TID:53] [AppSession`2.SuperSocket.SocketBase.IAppSession.ProcessRequest => AppServerBase`2.ExecuteCommand => MainServer.OnPacketReceived]: 세션 번호 41b9b792-bc73-4258-b17f-4ad3c26d0296 받은 데이터 크기 : 2 ThreadID : 53
+[2020/06/11 12:28:48.667] [TID:7] [ThreadHelper.ThreadStart_Context => PacketProcessor.Process => PKHRoom.RequestGameReady]: 게임 준비 요청 받음
+[2020/06/11 12:28:48.667] [TID:7] [PacketProcessor.Process => PKHRoom.RequestGameReady => PKHRoom.ResponseGameReadyToClient]: RESGAMEREADY
+[2020/06/11 12:28:49.500] [TID:56] [AppSession`2.SuperSocket.SocketBase.IAppSession.ProcessRequest => AppServerBase`2.ExecuteCommand => MainServer.OnPacketReceived]: 세션 번호 41b9b792-bc73-4258-b17f-4ad3c26d0296 받은 데이터 크기 : 2 ThreadID : 56
+[2020/06/11 12:28:49.500] [TID:7] [ThreadHelper.ThreadStart_Context => PacketProcessor.Process => PKHRoom.RequestGameReady]: 게임 준비 요청 받음
+[2020/06/11 12:28:49.500] [TID:7] [PacketProcessor.Process => PKHRoom.RequestGameReady => PKHRoom.ResponseGameReadyToClient]: RESGAMEREADY
+[2020/06/11 12:28:50.114] [TID:57] [AppSession`2.SuperSocket.SocketBase.IAppSession.ProcessRequest => AppServerBase`2.ExecuteCommand => MainServer.OnPacketReceived]: 세션 번호 41b9b792-bc73-4258-b17f-4ad3c26d0296 받은 데이터 크기 : 2 ThreadID : 57
+[2020/06/11 12:28:50.114] [TID:7] [ThreadHelper.ThreadStart_Context => PacketProcessor.Process => PKHRoom.RequestGameReady]: 게임 준비 요청 받음
+[2020/06/11 12:28:50.114] [TID:7] [PacketProcessor.Process => PKHRoom.RequestGameReady => PKHRoom.ResponseGameReadyToClient]: RESGAMEREADY
+[2020/06/11 12:28:50.282] [TID:53] [AppSession`2.SuperSocket.SocketBase.IAppSession.ProcessRequest => AppServerBase`2.ExecuteCommand => MainServer.OnPacketReceived]: 세션 번호 41b9b792-bc73-4258-b17f-4ad3c26d0296 받은 데이터 크기 : 2 ThreadID : 53
+[2020/06/11 12:28:50.282] [TID:7] [ThreadHelper.ThreadStart_Context => PacketProcessor.Process => PKHRoom.RequestGameReady]: 게임 준비 요청 받음
+[2020/06/11 12:28:50.282] [TID:7] [PacketProcessor.Process => PKHRoom.RequestGameReady => PKHRoom.ResponseGameReadyToClient]: RESGAMEREADY
+[2020/06/11 12:28:50.466] [TID:52] [AppSession`2.SuperSocket.SocketBase.IAppSession.ProcessRequest => AppServerBase`2.ExecuteCommand => MainServer.OnPacketReceived]: 세션 번호 41b9b792-bc73-4258-b17f-4ad3c26d0296 받은 데이터 크기 : 2 ThreadID : 52
+[2020/06/11 12:28:50.466] [TID:7] [ThreadHelper.ThreadStart_Context => PacketProcessor.Process => PKHRoom.RequestGameReady]: 게임 준비 요청 받음
+[2020/06/11 12:28:50.466] [TID:7] [PacketProcessor.Process => PKHRoom.RequestGameReady => PKHRoom.ResponseGameReadyToClient]: RESGAMEREADY
+[2020/06/11 12:28:50.633] [TID:57] [AppSession`2.SuperSocket.SocketBase.IAppSession.ProcessRequest => AppServerBase`2.ExecuteCommand => MainServer.OnPacketReceived]: 세션 번호 41b9b792-bc73-4258-b17f-4ad3c26d0296 받은 데이터 크기 : 2 ThreadID : 57
+[2020/06/11 12:28:50.633] [TID:7] [ThreadHelper.ThreadStart_Context => PacketProcessor.Process => PKHRoom.RequestGameReady]: 게임 준비 요청 받음
+[2020/06/11 12:28:50.633] [TID:7] [PacketProcessor.Process => PKHRoom.RequestGameReady => PKHRoom.ResponseGameReadyToClient]: RESGAMEREADY
+[2020/06/11 12:28:51.530] [TID:52] [ExecutionContext.RunFromThreadPoolDispatchLoop => <>c__DisplayClass141_0.<OnSessionClosed>b__0 => MainServer.OnClosed]: 세션 번호 41b9b792-bc73-4258-b17f-4ad3c26d0296 접속 해제 : ClientClosing
+[2020/06/11 12:28:51.530] [TID:7] [ThreadHelper.ThreadStart_Context => PacketProcessor.Process => PKHCommon.NotifyInDisConnectClient]: Current Connected Session Count : 1
+[2020/06/11 12:28:51.530] [TID:7] [ThreadHelper.ThreadStart_Context => PacketProcessor.Process => PKHRoom.NotifyLeaveInternal]: NotifyLeaveInternal. SessionIndex:1
+[2020/06/11 12:28:51.530] [TID:7] [PacketProcessor.Process => PKHRoom.NotifyLeaveInternal => PKHRoom.LeaveRoomUser]: LeaveRoomUser. SessionIndex:1
+[2020/06/11 12:28:52.430] [TID:52] [ExecutionContext.RunFromThreadPoolDispatchLoop => <>c__DisplayClass133_0.<OnNewSessionConnected>b__0 => MainServer.OnConnected]: 세션 번호 28dd03d9-4b58-4bcd-a8ab-15e9d8498dda 접속
+[2020/06/11 12:28:52.430] [TID:52] [ExecutionContext.RunFromThreadPoolDispatchLoop => <>c__DisplayClass133_0.<OnNewSessionConnected>b__0 => MainServer.OnConnected]: 접속 시 세션 번호 : 1
+[2020/06/11 12:28:52.430] [TID:57] [AppSession`2.SuperSocket.SocketBase.IAppSession.ProcessRequest => AppServerBase`2.ExecuteCommand => MainServer.OnPacketReceived]: 세션 번호 28dd03d9-4b58-4bcd-a8ab-15e9d8498dda 받은 데이터 크기 : 10 ThreadID : 57
+[2020/06/11 12:28:52.430] [TID:7] [ThreadHelper.ThreadStart_Context => PacketProcessor.Process => PKHCommon.NotifyInConnectClient]: Current Connected Session Count : 2
+[2020/06/11 12:28:52.430] [TID:7] [ThreadHelper.ThreadStart_Context => PacketProcessor.Process => PKHCommon.RequestLogin]: 로그인 요청 받음
+[2020/06/11 12:28:52.430] [TID:7] [ThreadHelper.ThreadStart_Context => PacketProcessor.Process => PKHCommon.RequestLogin]: sessionIndex : 1
+[2020/06/11 12:28:54.864] [TID:50] [ExecutionContext.RunFromThreadPoolDispatchLoop => <>c__DisplayClass133_0.<OnNewSessionConnected>b__0 => MainServer.OnConnected]: 세션 번호 1945dd76-dc61-4d69-9aa0-a35781ba5713 접속
+[2020/06/11 12:28:54.864] [TID:50] [ExecutionContext.RunFromThreadPoolDispatchLoop => <>c__DisplayClass133_0.<OnNewSessionConnected>b__0 => MainServer.OnConnected]: 접속 시 세션 번호 : 0
+[2020/06/11 12:28:54.864] [TID:7] [ThreadHelper.ThreadStart_Context => PacketProcessor.Process => PKHCommon.NotifyInConnectClient]: Current Connected Session Count : 3
+[2020/06/11 12:28:54.864] [TID:56] [AppSession`2.SuperSocket.SocketBase.IAppSession.ProcessRequest => AppServerBase`2.ExecuteCommand => MainServer.OnPacketReceived]: 세션 번호 1945dd76-dc61-4d69-9aa0-a35781ba5713 받은 데이터 크기 : 13 ThreadID : 56
+[2020/06/11 12:28:54.864] [TID:7] [ThreadHelper.ThreadStart_Context => PacketProcessor.Process => PKHCommon.RequestLogin]: 로그인 요청 받음
+[2020/06/11 12:28:54.864] [TID:7] [ThreadHelper.ThreadStart_Context => PacketProcessor.Process => PKHCommon.RequestLogin]: sessionIndex : 0
+[2020/06/11 12:28:54.864] [TID:7] [ThreadHelper.ThreadStart_Context => PacketProcessor.Process => PKHCommon.RequestLogin]: 로그인 요청 답변 보냄
+[2020/06/11 12:28:54.887] [TID:49] [AppSession`2.SuperSocket.SocketBase.IAppSession.ProcessRequest => AppServerBase`2.ExecuteCommand => MainServer.OnPacketReceived]: 세션 번호 1945dd76-dc61-4d69-9aa0-a35781ba5713 받은 데이터 크기 : 2 ThreadID : 49
+[2020/06/11 12:28:54.887] [TID:7] [ThreadHelper.ThreadStart_Context => PacketProcessor.Process => PKHRoom.RequestRoomEnter]: RequestRoonEnter
+[2020/06/11 12:28:54.887] [TID:7] [PacketProcessor.Process => PKHRoom.RequestRoomEnter => PKHRoom.ResponseEnterRoomToClient]: RoomEnterResponse
+[2020/06/11 12:28:54.887] [TID:7] [ThreadHelper.ThreadStart_Context => PacketProcessor.Process => PKHRoom.RequestRoomEnter]: RequestEnterInternal = Success, UserPos : 1
+[2020/06/11 12:28:54.954] [TID:49] [ExecutionContext.RunFromThreadPoolDispatchLoop => <>c__DisplayClass141_0.<OnSessionClosed>b__0 => MainServer.OnClosed]: 세션 번호 28dd03d9-4b58-4bcd-a8ab-15e9d8498dda 접속 해제 : ClientClosing
+[2020/06/11 12:28:54.954] [TID:7] [ThreadHelper.ThreadStart_Context => PacketProcessor.Process => PKHCommon.NotifyInDisConnectClient]: Current Connected Session Count : 2
+[2020/06/11 12:28:57.051] [TID:49] [AppSession`2.SuperSocket.SocketBase.IAppSession.ProcessRequest => AppServerBase`2.ExecuteCommand => MainServer.OnPacketReceived]: 세션 번호 1945dd76-dc61-4d69-9aa0-a35781ba5713 받은 데이터 크기 : 2 ThreadID : 49
+[2020/06/11 12:28:57.051] [TID:7] [ThreadHelper.ThreadStart_Context => PacketProcessor.Process => PKHRoom.RequestGameReady]: 게임 준비 요청 받음
+[2020/06/11 12:28:57.051] [TID:7] [PacketProcessor.Process => PKHRoom.RequestGameReady => PKHRoom.ResponseGameReadyToClient]: RESGAMEREADY
+[2020/06/11 12:28:57.616] [TID:52] [AppSession`2.SuperSocket.SocketBase.IAppSession.ProcessRequest => AppServerBase`2.ExecuteCommand => MainServer.OnPacketReceived]: 세션 번호 1945dd76-dc61-4d69-9aa0-a35781ba5713 받은 데이터 크기 : 2 ThreadID : 52
+[2020/06/11 12:28:57.616] [TID:7] [ThreadHelper.ThreadStart_Context => PacketProcessor.Process => PKHRoom.RequestGameReady]: 게임 준비 요청 받음
+[2020/06/11 12:28:57.616] [TID:7] [PacketProcessor.Process => PKHRoom.RequestGameReady => PKHRoom.ResponseGameReadyToClient]: RESGAMEREADY
+[2020/06/11 12:28:57.783] [TID:51] [AppSession`2.SuperSocket.SocketBase.IAppSession.ProcessRequest => AppServerBase`2.ExecuteCommand => MainServer.OnPacketReceived]: 세션 번호 1945dd76-dc61-4d69-9aa0-a35781ba5713 받은 데이터 크기 : 2 ThreadID : 51
+[2020/06/11 12:28:57.783] [TID:7] [ThreadHelper.ThreadStart_Context => PacketProcessor.Process => PKHRoom.RequestGameReady]: 게임 준비 요청 받음
+[2020/06/11 12:28:57.783] [TID:7] [PacketProcessor.Process => PKHRoom.RequestGameReady => PKHRoom.ResponseGameReadyToClient]: RESGAMEREADY
+[2020/06/11 12:28:57.969] [TID:51] [AppSession`2.SuperSocket.SocketBase.IAppSession.ProcessRequest => AppServerBase`2.ExecuteCommand => MainServer.OnPacketReceived]: 세션 번호 1945dd76-dc61-4d69-9aa0-a35781ba5713 받은 데이터 크기 : 2 ThreadID : 51
+[2020/06/11 12:28:57.969] [TID:7] [ThreadHelper.ThreadStart_Context => PacketProcessor.Process => PKHRoom.RequestGameReady]: 게임 준비 요청 받음
+[2020/06/11 12:28:57.969] [TID:7] [PacketProcessor.Process => PKHRoom.RequestGameReady => PKHRoom.ResponseGameReadyToClient]: RESGAMEREADY
+[2020/06/11 12:28:58.146] [TID:51] [AppSession`2.SuperSocket.SocketBase.IAppSession.ProcessRequest => AppServerBase`2.ExecuteCommand => MainServer.OnPacketReceived]: 세션 번호 1945dd76-dc61-4d69-9aa0-a35781ba5713 받은 데이터 크기 : 2 ThreadID : 51
+[2020/06/11 12:28:58.146] [TID:7] [ThreadHelper.ThreadStart_Context => PacketProcessor.Process => PKHRoom.RequestGameReady]: 게임 준비 요청 받음
+[2020/06/11 12:28:58.146] [TID:7] [PacketProcessor.Process => PKHRoom.RequestGameReady => PKHRoom.ResponseGameReadyToClient]: RESGAMEREADY
+[2020/06/11 12:28:58.331] [TID:50] [AppSession`2.SuperSocket.SocketBase.IAppSession.ProcessRequest => AppServerBase`2.ExecuteCommand => MainServer.OnPacketReceived]: 세션 번호 1945dd76-dc61-4d69-9aa0-a35781ba5713 받은 데이터 크기 : 2 ThreadID : 50
+[2020/06/11 12:28:58.331] [TID:7] [ThreadHelper.ThreadStart_Context => PacketProcessor.Process => PKHRoom.RequestGameReady]: 게임 준비 요청 받음
+[2020/06/11 12:28:58.331] [TID:7] [PacketProcessor.Process => PKHRoom.RequestGameReady => PKHRoom.ResponseGameReadyToClient]: RESGAMEREADY
+[2020/06/11 12:28:58.515] [TID:56] [AppSession`2.SuperSocket.SocketBase.IAppSession.ProcessRequest => AppServerBase`2.ExecuteCommand => MainServer.OnPacketReceived]: 세션 번호 1945dd76-dc61-4d69-9aa0-a35781ba5713 받은 데이터 크기 : 2 ThreadID : 56
+[2020/06/11 12:28:58.515] [TID:7] [ThreadHelper.ThreadStart_Context => PacketProcessor.Process => PKHRoom.RequestGameReady]: 게임 준비 요청 받음
+[2020/06/11 12:28:58.515] [TID:7] [PacketProcessor.Process => PKHRoom.RequestGameReady => PKHRoom.ResponseGameReadyToClient]: RESGAMEREADY
+[2020/06/11 12:29:05.947] [TID:50] [ExecutionContext.RunFromThreadPoolDispatchLoop => <>c__DisplayClass141_0.<OnSessionClosed>b__0 => MainServer.OnClosed]: 세션 번호 1945dd76-dc61-4d69-9aa0-a35781ba5713 접속 해제 : ClientClosing
+[2020/06/11 12:29:05.947] [TID:7] [ThreadHelper.ThreadStart_Context => PacketProcessor.Process => PKHCommon.NotifyInDisConnectClient]: Current Connected Session Count : 1
+[2020/06/11 12:29:05.947] [TID:7] [ThreadHelper.ThreadStart_Context => PacketProcessor.Process => PKHRoom.NotifyLeaveInternal]: NotifyLeaveInternal. SessionIndex:0
+[2020/06/11 12:29:05.947] [TID:7] [PacketProcessor.Process => PKHRoom.NotifyLeaveInternal => PKHRoom.LeaveRoomUser]: LeaveRoomUser. SessionIndex:0
+[2020/06/11 12:29:09.482] [TID:50] [ExecutionContext.RunFromThreadPoolDispatchLoop => <>c__DisplayClass141_0.<OnSessionClosed>b__0 => MainServer.OnClosed]: 세션 번호 43045d53-fe50-4bf3-8fb9-9ed5ea5a9975 접속 해제 : ClientClosing
+[2020/06/11 12:29:09.482] [TID:7] [ThreadHelper.ThreadStart_Context => PacketProcessor.Process => PKHCommon.NotifyInDisConnectClient]: Current Connected Session Count : 0
+[2020/06/11 12:29:09.482] [TID:7] [ThreadHelper.ThreadStart_Context => PacketProcessor.Process => PKHRoom.NotifyLeaveInternal]: NotifyLeaveInternal. SessionIndex:2
+[2020/06/11 12:29:09.482] [TID:7] [PacketProcessor.Process => PKHRoom.NotifyLeaveInternal => PKHRoom.LeaveRoomUser]: LeaveRoomUser. SessionIndex:2
+[2020/06/11 12:29:11.602] [TID:51] [ExecutionContext.RunFromThreadPoolDispatchLoop => <>c__DisplayClass133_0.<OnNewSessionConnected>b__0 => MainServer.OnConnected]: 세션 번호 f22e830b-e45c-46ba-a00f-83ca62d928f7 접속
+[2020/06/11 12:29:11.602] [TID:51] [ExecutionContext.RunFromThreadPoolDispatchLoop => <>c__DisplayClass133_0.<OnNewSessionConnected>b__0 => MainServer.OnConnected]: 접속 시 세션 번호 : 0
+[2020/06/11 12:29:11.602] [TID:7] [ThreadHelper.ThreadStart_Context => PacketProcessor.Process => PKHCommon.NotifyInConnectClient]: Current Connected Session Count : 1
+[2020/06/11 12:29:11.602] [TID:50] [AppSession`2.SuperSocket.SocketBase.IAppSession.ProcessRequest => AppServerBase`2.ExecuteCommand => MainServer.OnPacketReceived]: 세션 번호 f22e830b-e45c-46ba-a00f-83ca62d928f7 받은 데이터 크기 : 11 ThreadID : 50
+[2020/06/11 12:29:11.602] [TID:7] [ThreadHelper.ThreadStart_Context => PacketProcessor.Process => PKHCommon.RequestLogin]: 로그인 요청 받음
+[2020/06/11 12:29:11.602] [TID:7] [ThreadHelper.ThreadStart_Context => PacketProcessor.Process => PKHCommon.RequestLogin]: sessionIndex : 0
+[2020/06/11 12:29:11.602] [TID:7] [ThreadHelper.ThreadStart_Context => PacketProcessor.Process => PKHCommon.RequestLogin]: 로그인 요청 답변 보냄
+[2020/06/11 12:29:15.708] [TID:56] [ExecutionContext.RunFromThreadPoolDispatchLoop => <>c__DisplayClass141_0.<OnSessionClosed>b__0 => MainServer.OnClosed]: 세션 번호 f22e830b-e45c-46ba-a00f-83ca62d928f7 접속 해제 : ClientClosing
+[2020/06/11 12:29:15.708] [TID:7] [ThreadHelper.ThreadStart_Context => PacketProcessor.Process => PKHCommon.NotifyInDisConnectClient]: Current Connected Session Count : 0
+[2020/06/11 12:29:21.869] [TID:1] [SocketListenerBase.OnStopped => SocketServerBase.OnListenerStopped => NLogLog.DebugFormat]: Listener (0.0.0.0:12021) was stoppped
+[2020/06/11 12:29:21.869] [TID:1] [MainServer.StopServer => AppServer`2.Stop => AppServerBase`2.Stop]: The server instance OMKServer has been stopped!
+[2020/06/11 12:29:23.106] [TID:1] [Program.Main => MainServer.CreateStartServer => NLogLog.Info]: 서버 초기화 성공
+[2020/06/11 12:29:23.122] [TID:1] [MainServer.CreateStartServer => MainServer.CreateComponent => NLogLog.Info]: CreateComponent - Success
+[2020/06/11 12:29:23.156] [TID:1] [AsyncSocketServer.Start => SocketServerBase.Start => NLogLog.DebugFormat]: Listener (0.0.0.0:12021) was started
+[2020/06/11 12:29:23.156] [TID:1] [AppServer`2.Start => AppServerBase`2.Start => NLogLog.Info]: The server instance OMKServer has been started!
+[2020/06/11 12:29:23.156] [TID:1] [Program.Main => MainServer.CreateStartServer => NLogLog.Info]: 서버 생성 성공
+[2020/06/11 12:29:23.156] [TID:1] [Program.Main => NLogLog.Info]: Press q to shut down the server
+[2020/06/11 12:29:45.953] [TID:6] [<>c__DisplayClass133_0.<OnNewSessionConnected>b__0 => MainServer.OnConnected => NLogLog.Info]: 세션 번호 d1e85056-829c-4e4f-8908-5cabc7d550cb 접속
+[2020/06/11 12:29:45.953] [TID:6] [<>c__DisplayClass133_0.<OnNewSessionConnected>b__0 => MainServer.OnConnected => NLogLog.Info]: 접속 시 세션 번호 : 0
+[2020/06/11 12:29:45.953] [TID:9] [PacketProcessor.Process => PKHCommon.NotifyInConnectClient => NLogLog.Debug]: Current Connected Session Count : 1
+[2020/06/11 12:29:45.994] [TID:6] [AppServerBase`2.ExecuteCommand => MainServer.OnPacketReceived => NLogLog.Debug]: 세션 번호 d1e85056-829c-4e4f-8908-5cabc7d550cb 받은 데이터 크기 : 11 ThreadID : 6
+[2020/06/11 12:29:45.994] [TID:9] [PacketProcessor.Process => PKHCommon.RequestLogin => NLogLog.Debug]: 로그인 요청 받음
+[2020/06/11 12:29:45.994] [TID:9] [PacketProcessor.Process => PKHCommon.RequestLogin => NLogLog.Info]: sessionIndex : 0
+[2020/06/11 12:29:46.079] [TID:9] [PacketProcessor.Process => PKHCommon.RequestLogin => NLogLog.Debug]: 로그인 요청 답변 보냄
+[2020/06/11 12:29:46.091] [TID:13] [AppServerBase`2.ExecuteCommand => MainServer.OnPacketReceived => NLogLog.Debug]: 세션 번호 d1e85056-829c-4e4f-8908-5cabc7d550cb 받은 데이터 크기 : 2 ThreadID : 13
+[2020/06/11 12:29:46.091] [TID:9] [PacketProcessor.Process => PKHRoom.RequestRoomEnter => NLogLog.Debug]: RequestRoonEnter
+[2020/06/11 12:29:46.099] [TID:9] [PKHRoom.RequestRoomEnter => PKHRoom.ResponseEnterRoomToClient => NLogLog.Info]: RoomEnterResponse
+[2020/06/11 12:29:46.099] [TID:9] [PacketProcessor.Process => PKHRoom.RequestRoomEnter => NLogLog.Debug]: RequestEnterInternal = Success, UserPos : 0
+[2020/06/11 12:29:52.386] [TID:14] [<>c__DisplayClass133_0.<OnNewSessionConnected>b__0 => MainServer.OnConnected => NLogLog.Info]: 세션 번호 60324eef-7024-47f8-833f-e0f49da70ef1 접속
+[2020/06/11 12:29:52.386] [TID:14] [<>c__DisplayClass133_0.<OnNewSessionConnected>b__0 => MainServer.OnConnected => NLogLog.Info]: 접속 시 세션 번호 : 1
+[2020/06/11 12:29:52.386] [TID:9] [PacketProcessor.Process => PKHCommon.NotifyInConnectClient => NLogLog.Debug]: Current Connected Session Count : 2
+[2020/06/11 12:29:52.405] [TID:13] [AppServerBase`2.ExecuteCommand => MainServer.OnPacketReceived => NLogLog.Debug]: 세션 번호 60324eef-7024-47f8-833f-e0f49da70ef1 받은 데이터 크기 : 10 ThreadID : 13
+[2020/06/11 12:29:52.405] [TID:9] [PacketProcessor.Process => PKHCommon.RequestLogin => NLogLog.Debug]: 로그인 요청 받음
+[2020/06/11 12:29:52.405] [TID:9] [PacketProcessor.Process => PKHCommon.RequestLogin => NLogLog.Info]: sessionIndex : 1
+[2020/06/11 12:29:52.405] [TID:9] [PacketProcessor.Process => PKHCommon.RequestLogin => NLogLog.Debug]: 로그인 요청 답변 보냄
+[2020/06/11 12:29:52.422] [TID:8] [AppServerBase`2.ExecuteCommand => MainServer.OnPacketReceived => NLogLog.Debug]: 세션 번호 60324eef-7024-47f8-833f-e0f49da70ef1 받은 데이터 크기 : 2 ThreadID : 8
+[2020/06/11 12:29:52.422] [TID:9] [PacketProcessor.Process => PKHRoom.RequestRoomEnter => NLogLog.Debug]: RequestRoonEnter
+[2020/06/11 12:29:52.422] [TID:9] [PKHRoom.RequestRoomEnter => PKHRoom.ResponseEnterRoomToClient => NLogLog.Info]: RoomEnterResponse
+[2020/06/11 12:29:52.422] [TID:9] [PacketProcessor.Process => PKHRoom.RequestRoomEnter => NLogLog.Debug]: RequestEnterInternal = Success, UserPos : 1
+[2020/06/11 12:29:52.972] [TID:8] [AppServerBase`2.ExecuteCommand => MainServer.OnPacketReceived => NLogLog.Debug]: 세션 번호 60324eef-7024-47f8-833f-e0f49da70ef1 받은 데이터 크기 : 2 ThreadID : 8
+[2020/06/11 12:29:52.972] [TID:9] [PacketProcessor.Process => PKHRoom.RequestGameReady => NLogLog.Debug]: 게임 준비 요청 받음
+[2020/06/11 12:29:52.972] [TID:9] [PKHRoom.RequestGameReady => PKHRoom.ResponseGameReadyToClient => NLogLog.Info]: RESGAMEREADY
+[2020/06/11 12:29:54.869] [TID:8] [AppServerBase`2.ExecuteCommand => MainServer.OnPacketReceived => NLogLog.Debug]: 세션 번호 d1e85056-829c-4e4f-8908-5cabc7d550cb 받은 데이터 크기 : 2 ThreadID : 8
+[2020/06/11 12:29:54.869] [TID:9] [PacketProcessor.Process => PKHRoom.RequestGameReady => NLogLog.Debug]: 게임 준비 요청 받음
+[2020/06/11 12:29:57.285] [TID:14] [<>c__DisplayClass141_0.<OnSessionClosed>b__0 => MainServer.OnClosed => NLogLog.Info]: 세션 번호 d1e85056-829c-4e4f-8908-5cabc7d550cb 접속 해제 : ClientClosing
+[2020/06/11 12:29:57.285] [TID:9] [PacketProcessor.Process => PKHCommon.NotifyInDisConnectClient => NLogLog.Debug]: Current Connected Session Count : 1
+[2020/06/11 12:29:57.285] [TID:9] [PacketProcessor.Process => PKHRoom.NotifyLeaveInternal => NLogLog.Debug]: NotifyLeaveInternal. SessionIndex:0
+[2020/06/11 12:29:57.285] [TID:9] [PKHRoom.NotifyLeaveInternal => PKHRoom.LeaveRoomUser => NLogLog.Debug]: LeaveRoomUser. SessionIndex:0
+[2020/06/11 12:29:59.716] [TID:6] [<>c__DisplayClass133_0.<OnNewSessionConnected>b__0 => MainServer.OnConnected => NLogLog.Info]: 세션 번호 12d2ebbf-be31-4ae0-a5d6-e133cb4bc89d 접속
+[2020/06/11 12:29:59.716] [TID:6] [<>c__DisplayClass133_0.<OnNewSessionConnected>b__0 => MainServer.OnConnected => NLogLog.Info]: 접속 시 세션 번호 : 0
+[2020/06/11 12:29:59.716] [TID:9] [PacketProcessor.Process => PKHCommon.NotifyInConnectClient => NLogLog.Debug]: Current Connected Session Count : 2
+[2020/06/11 12:29:59.716] [TID:8] [AppServerBase`2.ExecuteCommand => MainServer.OnPacketReceived => NLogLog.Debug]: 세션 번호 12d2ebbf-be31-4ae0-a5d6-e133cb4bc89d 받은 데이터 크기 : 11 ThreadID : 8
+[2020/06/11 12:29:59.716] [TID:9] [PacketProcessor.Process => PKHCommon.RequestLogin => NLogLog.Debug]: 로그인 요청 받음
+[2020/06/11 12:29:59.716] [TID:9] [PacketProcessor.Process => PKHCommon.RequestLogin => NLogLog.Info]: sessionIndex : 0
+[2020/06/11 12:29:59.716] [TID:9] [PacketProcessor.Process => PKHCommon.RequestLogin => NLogLog.Debug]: 로그인 요청 답변 보냄
+[2020/06/11 12:29:59.736] [TID:8] [AppServerBase`2.ExecuteCommand => MainServer.OnPacketReceived => NLogLog.Debug]: 세션 번호 12d2ebbf-be31-4ae0-a5d6-e133cb4bc89d 받은 데이터 크기 : 2 ThreadID : 8
+[2020/06/11 12:29:59.736] [TID:9] [PacketProcessor.Process => PKHRoom.RequestRoomEnter => NLogLog.Debug]: RequestRoonEnter
+[2020/06/11 12:29:59.736] [TID:9] [PKHRoom.RequestRoomEnter => PKHRoom.ResponseEnterRoomToClient => NLogLog.Info]: RoomEnterResponse
+[2020/06/11 12:29:59.736] [TID:9] [PacketProcessor.Process => PKHRoom.RequestRoomEnter => NLogLog.Debug]: RequestEnterInternal = Success, UserPos : 1
+[2020/06/11 12:30:17.748] [TID:14] [<>c__DisplayClass141_0.<OnSessionClosed>b__0 => MainServer.OnClosed => NLogLog.Info]: 세션 번호 12d2ebbf-be31-4ae0-a5d6-e133cb4bc89d 접속 해제 : ClientClosing
+[2020/06/11 12:30:17.748] [TID:9] [PacketProcessor.Process => PKHCommon.NotifyInDisConnectClient => NLogLog.Debug]: Current Connected Session Count : 1
+[2020/06/11 12:30:17.748] [TID:9] [PacketProcessor.Process => PKHRoom.NotifyLeaveInternal => NLogLog.Debug]: NotifyLeaveInternal. SessionIndex:0
+[2020/06/11 12:30:17.748] [TID:9] [PKHRoom.NotifyLeaveInternal => PKHRoom.LeaveRoomUser => NLogLog.Debug]: LeaveRoomUser. SessionIndex:0
+[2020/06/11 12:30:20.588] [TID:14] [<>c__DisplayClass141_0.<OnSessionClosed>b__0 => MainServer.OnClosed => NLogLog.Info]: 세션 번호 60324eef-7024-47f8-833f-e0f49da70ef1 접속 해제 : ClientClosing
+[2020/06/11 12:30:20.588] [TID:9] [PacketProcessor.Process => PKHCommon.NotifyInDisConnectClient => NLogLog.Debug]: Current Connected Session Count : 0
+[2020/06/11 12:30:20.588] [TID:9] [PacketProcessor.Process => PKHRoom.NotifyLeaveInternal => NLogLog.Debug]: NotifyLeaveInternal. SessionIndex:1
+[2020/06/11 12:30:20.588] [TID:9] [PKHRoom.NotifyLeaveInternal => PKHRoom.LeaveRoomUser => NLogLog.Debug]: LeaveRoomUser. SessionIndex:1

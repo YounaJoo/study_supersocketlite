@@ -5,6 +5,7 @@ using CSBaseLib;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.UIElements;
+using Image = UnityEngine.UI.Image;
 
 /// <summary> RoomUIManager 
 /// 1. 
@@ -17,8 +18,8 @@ public class RoomUIManager : MonoBehaviour
     
     private GameObject Canvas;
     private GameObject Notice;
-    private GameObject ready;
 
+    private Image ready;
     private GameMenu gameMenu;
     
     //private List<string> remoteUserID;
@@ -73,6 +74,8 @@ public class RoomUIManager : MonoBehaviour
 
         roomIntro.transform.GetChild(1).gameObject.GetComponent<Text>().text = introStr[userPos];
 
+        ready = GameObject.Find("ready").gameObject.GetComponent<Image>();
+        
         setPlayerUI();
     }
 
@@ -82,14 +85,13 @@ public class RoomUIManager : MonoBehaviour
 
         for (int i = 0; i < remoteUserCount; i++)
         {
-            userList[i] = GameObject.Find("player" + i).gameObject;
+            userList[i] = GameObject.Find("ready_player" + i).gameObject;
             if (i == 0)
             {
                 userList[i].GetComponent<Text>().text = "흑 : " + remoteUserID[i];
             } else if (i == 1)
             {
                 userList[i].GetComponent<Text>().text = "백 : " + remoteUserID[i];
-                ready = userList[i].transform.GetChild(0).gameObject;
             }
         }
     }
@@ -125,14 +127,14 @@ public class RoomUIManager : MonoBehaviour
 
     public void getGameReady()
     {
-        if (num != 1 || ready.activeSelf)
+        if (num != 1)
         {
             return;
         }
-        
-        ready = GameObject.Find("player" + 1).gameObject.transform.GetChild(0).gameObject;
-        
-        ready.SetActive(true);
+
+        var tempColor = ready.color;
+        tempColor.a = 255.0f;
+        ready.color = tempColor;
     }
     
     public void createNotice(ERROR_CODE errorCode)
@@ -156,6 +158,7 @@ public class RoomUIManager : MonoBehaviour
     // 게임 시작
     public void gameStart()
     {
+        Debug.Log("GameStart");
         GameObject.Find("Room").gameObject.SetActive(false);
 
         gameMenu = GameObject.Find("Menu").GetComponent<GameMenu>();
