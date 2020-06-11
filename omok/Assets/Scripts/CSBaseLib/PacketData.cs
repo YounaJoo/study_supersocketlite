@@ -106,8 +106,11 @@ namespace CSBaseLib
     [MessagePackObject]
     public class OMKRoomUserList
     {
+        /*[Key(0)]
+        public List<string> UserIDList = new List<string>();*/
         [Key(0)]
-        public List<string> UserIDList = new List<string>();
+        public string[] UserIDList = new string[2];
+        
     }
 
     [MessagePackObject]
@@ -171,8 +174,8 @@ namespace CSBaseLib
     [MessagePackObject()]
     public class OMKNtfGameReady
     {
-        [Key(0)] public short UserPos;
-        [Key(1)] public short Result;
+        //[Key(0)] public short UserPos;
+        [Key(0)] public short Result;
     }
 
 }

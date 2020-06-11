@@ -89,7 +89,8 @@ namespace OMKServer
             var packet = new CSBaseLib.OMKRoomUserList();
             foreach (var user in UserList)
             {
-                packet.UserIDList.Add(user.UserID);
+                int i = UserList.IndexOf(user);
+                packet.UserIDList[i] = user.UserID;
             }
 
             var bodyData = MessagePackSerializer.Serialize(packet);
@@ -132,7 +133,6 @@ namespace OMKServer
             // 이게 보내지면 GameStart
             var packet = new OMKNtfGameReady()
             {
-                UserPos = -1,
                 Result = (short) ERROR_CODE.NONE
             };
 

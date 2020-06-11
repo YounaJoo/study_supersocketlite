@@ -255,12 +255,11 @@ namespace ConnectToServer
                 {
                     // 새로운 유저 입장
                     var reqData = MessagePackSerializer.Deserialize<OMKRoomNewUser>(packet.BodyData);
-                    Debug.Log(reqData.UserID);
+                    roomUIManager.setPlayerList(true, reqData.UserID);
                 } else if (packet.PacketID == (UInt16) PACKETID.NTF_ROOM_LEAVE_USER) 
                 {
-                    // 유저가 떠날 때
                     var reqData = MessagePackSerializer.Deserialize<OMKRoomLeaveUser>(packet.BodyData);
-                    Debug.Log(reqData.UserID);
+                    roomUIManager.setPlayerList(false, reqData.UserID);
                 } else if (packet.PacketID == (UInt16) PACKETID.RES_GAME_READY)
                 {
                     var resData = MessagePackSerializer.Deserialize<OMKResGameReady>(packet.BodyData);

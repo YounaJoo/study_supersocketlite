@@ -200,8 +200,7 @@ namespace MessagePack.Formatters.CSBaseLib
             }
 
             IFormatterResolver formatterResolver = options.Resolver;
-            writer.WriteArrayHeader(2);
-            writer.Write(value.UserPos);
+            writer.WriteArrayHeader(1);
             writer.Write(value.Result);
         }
 
@@ -215,7 +214,6 @@ namespace MessagePack.Formatters.CSBaseLib
             options.Security.DepthStep(ref reader);
             IFormatterResolver formatterResolver = options.Resolver;
             var length = reader.ReadArrayHeader();
-            var __UserPos__ = default(short);
             var __Result__ = default(short);
 
             for (int i = 0; i < length; i++)
@@ -225,9 +223,6 @@ namespace MessagePack.Formatters.CSBaseLib
                 switch (key)
                 {
                     case 0:
-                        __UserPos__ = reader.ReadInt16();
-                        break;
-                    case 1:
                         __Result__ = reader.ReadInt16();
                         break;
                     default:
@@ -237,7 +232,6 @@ namespace MessagePack.Formatters.CSBaseLib
             }
 
             var ____result = new global::CSBaseLib.OMKNtfGameReady();
-            ____result.UserPos = __UserPos__;
             ____result.Result = __Result__;
             reader.Depth--;
             return ____result;

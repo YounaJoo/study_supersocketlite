@@ -327,28 +327,41 @@ namespace OMKServer
                 }
                 
                 var reqData = MessagePackSerializer.Deserialize<OMKReqGameReady>(packetData.BodyData);
+                short userPos = reqData.UserPos;
+
+                if (userPos != user.UserPos || userPos == -1)
+                {
+                    ResponseGameReadyToClient(ERROR_CODE.GAME_READY_INVALID_STATE, sessionID);
+                    return;
+                }
 
                 var room = GetRoom(user.RoomNumber);
-                // Logic 처리
-                if (user.UserPos == 0)
+                // Player 2의 게임 준비 결과 반환
+                if (userPos == 1)
                 { 
-                    // user에게 roomNumber 정보가 있다
-                    if (room.isReady[1] == false)
-                    {
-                        // error 반환
-                        ResponseGameReadyToClient(ERROR_CODE.GAME_READY_INVALID_CHECK_OTHER_USER, sessionID);
-                        return;
-                    }
-                    else
-                    {
-                        room.isReady[user.UserPos] = true;
-                    }
-                }
-                else
-                {
                     room.isReady[user.UserPos] = true;
                     ResponseGameReadyToClient(ERROR_CODE.NONE, sessionID);
                     return;
+                }
+                
+                // Player 1일 때 다른 플레이어가 아직 준비가 되어있지 않으면 오류
+                if (room.isReady[1] == false)
+                {
+                    // error 반환
+                    ResponseGameReadyToClient(ERROR_CODE.GAME_READY_INVALID_CHECK_OTHER_USER, sessionID);
+                    return;
+                }
+                
+                // Player 1의 결과를 true 로 변환하고, 모든 유저들에게 게임 시작한다는 알림
+                room.isReady[user.UserPos] = true;
+                // 반복되는 부분인가? 사용하지 않아도 되는가?
+                foreach (var isReady in room.isReady)
+                {
+                    if (isReady == false)
+                    {
+                        ResponseGameReadyToClient(ERROR_CODE.GAME_READY_INVALID_STATE, sessionID);
+                        return;
+                    }
                 }
                 
                 // 결과 반환 Noti -> Response -> GameStart

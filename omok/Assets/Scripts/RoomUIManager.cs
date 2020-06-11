@@ -11,12 +11,16 @@ using UnityEngine.UIElements;
 /// </summary>
 public class RoomUIManager : MonoBehaviour
 {
+    private const int userCount = 2;
+    
     private int num;
     
     private GameObject Canvas;
     private GameObject Notice;
+    public GameObject ready;
  
-    private List<string> remoteUserID;
+    //private List<string> remoteUserID;
+    private string[] remoteUserID = new string[userCount];
     private string userID;
     
     private short userPos = -1;
@@ -24,6 +28,10 @@ public class RoomUIManager : MonoBehaviour
 
     public RoomUIManager()
     {
+        for (int i = 0; i < userCount; i++)
+        {
+            remoteUserID[i] = null;
+        }
         createLoginUI();
     }
 
@@ -98,8 +106,32 @@ public class RoomUIManager : MonoBehaviour
             } else if (i == 1)
             {
                 userList[i].GetComponent<Text>().text = "백 : " + remoteUserID[i];
+                ready = userList[i].transform.GetChild(0).gameObject;
+                Debug.Log(ready.name);
             }
         }
+    }
+
+    public void setPlayerList(bool isAdd, string userID)
+    {
+        if (isAdd) // 유저 추가
+        {
+            remoteUserID.Add(userID);
+            setPlayerUI();
+            return;
+        }
+        
+        // 유저 삭제
+        foreach (string user in remoteUserID)
+        {
+            if (user == userID)
+            {
+                remoteUserID.Remove(user);
+                break;
+            }
+        }
+        
+        setPlayerUI();
     }
 
     public void createNotice(ERROR_CODE errorCode)
