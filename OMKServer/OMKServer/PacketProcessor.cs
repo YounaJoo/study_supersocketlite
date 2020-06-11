@@ -8,6 +8,13 @@ namespace OMKServer
 {
     public class PacketProcessor
     {
+        private const float MIN_X = -5.0f;
+        private const float MIN_Y = -3.5f;
+        private const float MAX_X = 5.0f;
+        private const float MAX_Y = 3.5f;
+        private const float DIS = 0.5f;
+        private const int OMOK_COUNT = 10;
+        
         bool IsThreadRunning = false;
         private Thread ProcessThread = null;
         
@@ -19,15 +26,21 @@ namespace OMKServer
         
         List<Room> RoomList = new List<Room>();
         
+        List<Omok> OmokList = new List<Omok>();
+        
         Dictionary<int, Action<ServerPacketData>> PacketHandlerMap = new Dictionary<int, Action<ServerPacketData>>();
         PKHCommon CommonPacketHandler = new PKHCommon();
         PKHRoom RoomPacketHandler = new PKHRoom();
+        PKHOmok OmokHandler = new PKHOmok();
         
         public void CreateAndStart(List<Room> roomList, MainServer mainServer)
         {
             var maxUserCount = MainServer.ServerOption.RoomMaxCount * MainServer.ServerOption.RoomMaxCount;
             // 접근할 수 있는 user의 Max 치 설정
             UserMgr.Init(maxUserCount);
+            
+            // Omok Init 
+            OmokInit(MAX_X, MAX_Y, MIN_X, MIN_Y, DIS);
 
             RoomList = roomList;
 
@@ -37,6 +50,21 @@ namespace OMKServer
             IsThreadRunning = true;
             ProcessThread = new Thread(this.Process);
             ProcessThread.Start();
+        }
+
+        private void OmokInit(float maxX, float maxY, float minX, float minY, float dis)
+        {
+            /*float x = minX;
+            float y = minY;
+            float temp = 0.0f;*/
+
+            for (float y = minY; y < maxY; y += dis)
+            {
+                for (float x = minX; x < maxX; x += dis)
+                {
+                    OmokList.Add(new Omok(x, y));
+                }
+            }
         }
 
         // Message를 Send 하고 있던 Thread Destroy
@@ -60,6 +88,10 @@ namespace OMKServer
             RoomPacketHandler.Init(serverNetwork, UserMgr);
             RoomPacketHandler.SetRoomList(RoomList);
             RoomPacketHandler.RegistPacketHandler(PacketHandlerMap);
+            
+            OmokHandler.Init(serverNetwork, UserMgr);
+            OmokHandler.SetOmokList(OmokList, OMOK_COUNT);
+            OmokHandler.RegistPacketHandler(PacketHandlerMap);
         }
 
         void Process()

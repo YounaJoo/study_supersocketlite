@@ -31,6 +31,13 @@
         GAME_READY_INVALID_CHECK_OTHER_USER = 1031,
         GAME_READY_INVALID_STATE = 1032,
         GAME_READY_INVALIED_USER = 1033,
+        
+        OMOK_GAME_RESULT_WIN = 1034,
+        OMOK_GAME_RESULT_LOSS = 1035,
+        
+        OMOK_GAME_INVALIED_POSITION = 1036,
+        OMOK_GAME_INVALIED_PACKET = 1037,
+        OMOK_GAME_ALREADY_OMOK = 1038,
     }
 
     // 1 ~ 10000
@@ -61,6 +68,10 @@
         REQ_GAME_READY = 1028,
         RES_GAME_READY = 1029,
         NTF_GAME_READY = 1030,
+        
+        REQ_OMOK_GAME = 1031,
+        RES_OMOK_GAME = 1032,
+        NTF_OMOK_GAME = 1034,
 
         CS_END          = 1100,
 

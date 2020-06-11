@@ -24,6 +24,8 @@ public class Gane : MonoBehaviour
         {
             mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             
+            Debug.Log(mousePos);
+            
             createOmok(1, mousePos);
         }
     }

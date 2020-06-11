@@ -177,5 +177,27 @@ namespace CSBaseLib
         //[Key(0)] public short UserPos;
         [Key(0)] public short Result;
     }
+    
+    [MessagePackObject]
+    public class OMKReqOmokGame
+    {
+        [Key(0)] public float X;
+        [Key(1)] public float Y;
+    }
+    
+    
+    [MessagePackObject]
+    public class OMKResOmokGame
+    {
+        [Key(0)] public float Result;
+    }
+    
+    [MessagePackObject]
+    public class OMKNtfOmokGame
+    {
+        [Key(0)] public short UserPos;
+        [Key(1)] public float X;
+        [Key(2)] public float Y;
+    }
 
 }

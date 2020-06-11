@@ -130,6 +130,7 @@ namespace ConnectToServer
                     break;
                 
                 case PLAYER_STATE.GAME : // 게임 턴
+                    requestOmok();
                     break;
                     
                 case PLAYER_STATE.IDLE : // 쉬어가기
@@ -210,6 +211,27 @@ namespace ConnectToServer
             var sendData = CSBaseLib.PacketToBytes.Make(PACKETID.REQ_GAME_READY, Body);
             
             PostSendPacket(sendData);
+        }
+
+        public void requestOmok()
+        {
+            if (Input.GetMouseButtonDown(0))
+            {
+                Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            
+                Debug.Log(mousePos);
+                
+                var request = new OMKReqOmokGame()
+                {
+                    X = mousePos.x,
+                    Y = mousePos.y
+                };
+
+                var Body = MessagePackSerializer.Serialize(request);
+                var sendData = CSBaseLib.PacketToBytes.Make(PACKETID.REQ_OMOK_GAME, Body);
+                
+                PostSendPacket(sendData);
+            }
         }
         #endregion
 
