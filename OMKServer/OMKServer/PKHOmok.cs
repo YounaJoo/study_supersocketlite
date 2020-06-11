@@ -79,6 +79,7 @@ namespace OMKServer
             MainServer.MainLogger.Info($"reqOmok X : {reqOmok.x} Y : {reqOmok.y}");
             MainServer.MainLogger.Info($"NewOmok X : {newOmok.x} Y : {newOmok.y}");
             // Notify
+            
         }
 
         public void responseOmokGameToClinet(ERROR_CODE errorCode, string sessionID)

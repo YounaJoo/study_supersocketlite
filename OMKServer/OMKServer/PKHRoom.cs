@@ -12,6 +12,8 @@ namespace OMKServer
         List<Room> RoomList = new List<Room>();
         private int StartRoomNumber;
 
+        private List<Omok> OmokList = new List<Omok>();
+        
         public void SetRoomList(List<Room> roomList)
         {
             RoomList = roomList;
@@ -26,6 +28,9 @@ namespace OMKServer
             pakcetHandlerMap.Add((int)PACKETID.REQ_ROOM_CHAT, RequestChat);
             
             pakcetHandlerMap.Add((int)PACKETID.REQ_GAME_READY, RequestGameReady);
+            
+            
+            pakcetHandlerMap.Add((int)PACKETID.REQ_OMOK_GAME, requestOmokGame);
         }
 
         Room GetRoom(int roomNumber)
@@ -207,6 +212,63 @@ namespace OMKServer
             }
         }
         
+        public void requestOmokGame(ServerPacketData packetData)
+        {
+            var sessionIndex = packetData.SessionIndex;
+            var sessionID = packetData.SessionID;
+
+            var user = UserMgr.GetUser(sessionIndex);
+
+            if (user == null) // 유저가 없을 경우 에러
+            {
+                responseOmokGameToClinet(ERROR_CODE.OMOK_GAME_INVALIED_PACKET, sessionID);
+                return;
+            }
+            
+            var reqData = MessagePackSerializer.Deserialize<OMKReqOmokGame>(packetData.BodyData);
+            var reqOmok = new Omok(reqData.X, reqData.Y);
+            
+            // min과 max 를 넘어서면 error
+            if (reqOmok.x < OmokManager.MIN_X || reqOmok.x > OmokManager.MAX_X ||
+                reqOmok.y < OmokManager.MIN_Y || reqOmok.y > OmokManager.MAX_Y)
+            {
+                responseOmokGameToClinet(ERROR_CODE.OMOK_GAME_INVALIED_POSITION, sessionID);
+                return;
+            }
+
+            // 해당 패킷에 있는 x와 y에서 가장 가까운 점을 찾고(근사값) isActivity 체크
+            float tempX = (float)Math.Round(reqOmok.x - (reqOmok.x % OmokManager.DIS), 2);
+            float tempY = (float)Math.Round(reqOmok.y - (reqOmok.y % OmokManager.DIS), 2);
+            
+            var newOmok = new Omok(tempX, tempY);
+            
+            // Omok 있는지 찾기
+            if (OmokList.IsEmpty()) // 
+            {
+                newOmok.setActivity(true);
+                OmokList.Add(newOmok);
+            }
+            else
+            {
+                foreach (var omok in OmokList)
+                {
+                    if (omok.x == newOmok.x && omok.y == newOmok.y && omok.isActivity)
+                    {
+                        responseOmokGameToClinet(ERROR_CODE.OMOK_GAME_ALREADY_OMOK, sessionID);
+                        return;
+                    }
+                }
+                newOmok.setActivity(true);
+                OmokList.Add(newOmok);
+            }
+            
+            responseOmokGameToClinet(ERROR_CODE.NONE, sessionID);
+            MainServer.MainLogger.Info($"reqOmok X : {reqOmok.x} Y : {reqOmok.y}");
+            MainServer.MainLogger.Info($"NewOmok X : {newOmok.x} Y : {newOmok.y}");
+            // Notify
+            
+        }
+        
         // 해당 룸에 (roomNumber) 해당 유저(sessinIndex) 떠남
         bool LeaveRoomUser(int sessionIndex, int roomNumber)
         {  
@@ -260,6 +322,21 @@ namespace OMKServer
             MainServer.MainLogger.Info("RESGAMEREADY");
             // Room 에 잘 들어갔다고 MainServer.SendData 실행
             ServerNetwork.SendData(sessionID, sendData);
+        }
+        
+        public void responseOmokGameToClinet(ERROR_CODE errorCode, string sessionID)
+        {
+            var resOmokGame = new OMKResOmokGame()
+            {
+                Result = (short)errorCode
+            };
+
+            var bodyData = MessagePackSerializer.Serialize(resOmokGame);
+            var sendData = PacketToBytes.Make(PACKETID.RES_LOGIN, bodyData);
+
+            ServerNetwork.SendData(sessionID, sendData);
+            
+            MainServer.MainLogger.Info($"RequestOmok, Send Response Omok Message : {resOmokGame.Result}");
         }
         
         public void NotifyLeaveInternal(ServerPacketData packetData)
