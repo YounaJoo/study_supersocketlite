@@ -12,13 +12,15 @@ using UnityEngine.UIElements;
 public class RoomUIManager : MonoBehaviour
 {
     private const int remoteUserCount = 2;
-    
+
     private int num;
     
-    private GameObject Canvas = null;
-    private GameObject Notice = null;
-    public GameObject ready = null;
- 
+    private GameObject Canvas;
+    private GameObject Notice;
+    private GameObject ready;
+
+    private GameMenu gameMenu;
+    
     //private List<string> remoteUserID;
     private string[] remoteUserID = new string[remoteUserCount];
     private string userID;
@@ -58,21 +60,6 @@ public class RoomUIManager : MonoBehaviour
         setRoomUI();
     }
 
-    // 게임 방에서 게임 나가기 시 접속 종료 -> UI 변경
-    public void exitUIChange()
-    {
-        if (num == 1)
-        {
-            Destroy(Canvas.gameObject);
-
-            createLoginUI();
-        }
-        else
-        {
-            return;
-        }
-    }
-
     private void setRoomUI()
     {
         // HI, 인삿말, 흑, 백
@@ -102,11 +89,8 @@ public class RoomUIManager : MonoBehaviour
             } else if (i == 1)
             {
                 userList[i].GetComponent<Text>().text = "백 : " + remoteUserID[i];
+                ready = userList[i].transform.GetChild(0).gameObject;
             }
-        }
-        if (ready == null)
-        {
-            ready = userList[1].transform.GetChild(0).gameObject;
         }
     }
 
@@ -146,10 +130,7 @@ public class RoomUIManager : MonoBehaviour
             return;
         }
         
-        if (ready == null)
-        {
-            ready = GameObject.Find("player" + 1).gameObject.transform.GetChild(0).gameObject;
-        }
+        ready = GameObject.Find("player" + 1).gameObject.transform.GetChild(0).gameObject;
         
         ready.SetActive(true);
     }
@@ -170,5 +151,29 @@ public class RoomUIManager : MonoBehaviour
         
         Notice.GetComponent<Notice>().init(str);
         Notice = null;
+    }
+    
+    // 게임 시작
+    public void gameStart()
+    {
+        GameObject.Find("Room").gameObject.SetActive(false);
+
+        gameMenu = GameObject.Find("Menu").GetComponent<GameMenu>();
+        gameMenu.setPlayer(remoteUserID);
+    }
+
+    // 게임 방에서 게임 나가기 시 접속 종료 -> UI 변경
+    public void exitUIChange()
+    {
+        if (num == 1)
+        {
+            Destroy(Canvas.gameObject);
+
+            createLoginUI();
+        }
+        else
+        {
+            return;
+        }
     }
 }
