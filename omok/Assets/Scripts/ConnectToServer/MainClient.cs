@@ -146,8 +146,6 @@ namespace ConnectToServer
                     p_state = PLAYER_STATE.NONE;
                     break;
             }
-            
-            
         }
 
         #endregion
