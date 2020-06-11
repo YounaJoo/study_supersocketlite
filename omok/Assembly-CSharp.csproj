@@ -65,6 +65,7 @@
      <Compile Include="Assets\Scripts\ConnectToServer\NetworkManager.cs" />
      <Compile Include="Assets\Scripts\ConnectToServer\PacketBufferManager.cs" />
      <Compile Include="Assets\Scripts\GameMenu.cs" />
+     <Compile Include="Assets\Scripts\Gane.cs" />
      <Compile Include="Assets\Scripts\Login.cs" />
      <Compile Include="Assets\Scripts\Notice.cs" />
      <Compile Include="Assets\Scripts\RoomUIManager.cs" />

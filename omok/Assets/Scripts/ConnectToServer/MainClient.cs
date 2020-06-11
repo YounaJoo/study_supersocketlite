@@ -319,9 +319,21 @@ namespace ConnectToServer
                         continue;
                     }
                     
-                    // Room Object Destory? SetActive false?
-                    Debug.Log(1234);
                     roomUIManager.gameStart();
+
+                    switch (userPos)
+                    {
+                        case -1 :
+                            roomUIManager.createNotice("문제 발생\n연결을 끊습니다.");
+                            p_state = PLAYER_STATE.NONE;
+                            return;
+                        case 0 : // 선
+                            p_state = PLAYER_STATE.GAME;
+                            break; 
+                        case 1 : // 후
+                            p_state = PLAYER_STATE.IDLE;
+                            break;
+                    }
                 }
                 else if (packet.PacketID == PacketDef.SYS_PACKET_ID_DISCONNECT_FROM_SERVER)
                 {
