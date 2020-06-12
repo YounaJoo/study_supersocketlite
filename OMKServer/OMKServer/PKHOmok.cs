@@ -90,7 +90,7 @@ namespace OMKServer
             };
 
             var bodyData = MessagePackSerializer.Serialize(resOmokGame);
-            var sendData = PacketToBytes.Make(PACKETID.RES_LOGIN, bodyData);
+            var sendData = PacketToBytes.Make(PACKETID.RES_OMOK_GAME, bodyData);
 
             ServerNetwork.SendData(sessionID, sendData);
             

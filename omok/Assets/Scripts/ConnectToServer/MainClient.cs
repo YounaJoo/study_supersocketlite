@@ -43,6 +43,7 @@ namespace ConnectToServer
 
         private string sendComment = "";
         private string prevCommenct = "";
+        private bool isTurn = false;
 
         private List<string> msg;
 
@@ -54,6 +55,7 @@ namespace ConnectToServer
             ROOMENTER, // 방 입장
             IN_ROOM, // 채팅 & 게임 레디
             GAME, // 게임 턴
+            TEMP,
             IDLE, // 쉬어가는 턴
             LEAVE, // 방 나가기
             ERROR // 에러
@@ -131,9 +133,15 @@ namespace ConnectToServer
                 
                 case PLAYER_STATE.GAME : // 게임 턴
                     requestOmok();
+                    receiveOmok();
                     break;
-                    
+                
+                case PLAYER_STATE.TEMP :
+                    receiveOmok();
+                    break;
+
                 case PLAYER_STATE.IDLE : // 쉬어가기
+                    Debug.Log("쉬어가기");
                     break;
                 
                 case PLAYER_STATE.LEAVE : // 해당 방 나가기
@@ -231,6 +239,9 @@ namespace ConnectToServer
                 var sendData = CSBaseLib.PacketToBytes.Make(PACKETID.REQ_OMOK_GAME, Body);
                 
                 PostSendPacket(sendData);
+
+                //p_state = PLAYER_STATE.TEMP;
+                isTurn = true;
             }
         }
         #endregion
@@ -401,6 +412,33 @@ namespace ConnectToServer
                 }
             }
         }
+
+        private void receiveOmok()
+        {
+            var packetList = networkManager.GetPacket();
+
+            foreach (var packet in packetList)
+            {
+                if (packet.PacketID == (UInt16) PACKETID.RES_OMOK_GAME || isTurn == false)
+                {
+                    var resData = MessagePackSerializer.Deserialize<OMKResOmokGame>(packet.BodyData);
+                    if (resData.Result != (short) ERROR_CODE.NONE)
+                    {
+                        roomUIManager.createNotice((ERROR_CODE) resData.Result);
+                        return;
+                    }
+
+                    if (p_state == PLAYER_STATE.GAME) p_state = PLAYER_STATE.IDLE;
+                    else if (p_state == PLAYER_STATE.IDLE) p_state = PLAYER_STATE.GAME;
+                } else if (packet.PacketID == (UInt16) PACKETID.NTF_OMOK_GAME)
+                {
+                    var resData = MessagePackSerializer.Deserialize<OMKNtfOmokGame>(packet.BodyData);
+                    roomUIManager.createNotice($"X : {resData.X} Y : {resData.Y}");
+                    isTurn = false;
+                }
+            }
+        }
+
         #endregion
         
         #region Network

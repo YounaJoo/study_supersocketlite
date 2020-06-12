@@ -2,6 +2,7 @@
 using MessagePack;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 
 namespace OMKServer
@@ -138,6 +139,23 @@ namespace OMKServer
 
             var body = MessagePackSerializer.Serialize(packet);
             var sendPacket = PacketToBytes.Make(PACKETID.NTF_GAME_READY, body);
+            
+            Broadcast(-1, sendPacket);
+        }
+
+        public void NotifyPacketOmokGame(float x, float y, short userPos)
+        {
+            var packet = new OMKNtfOmokGame()
+            {
+                X = x,
+                Y = y,
+                UserPos = userPos
+            };
+
+            var body = MessagePackSerializer.Serialize(packet);
+            var sendPacket = PacketToBytes.Make(PACKETID.NTF_OMOK_GAME, body);
+            
+            MainServer.MainLogger.Info("NotifyPacketOmokGame");
             
             Broadcast(-1, sendPacket);
         }

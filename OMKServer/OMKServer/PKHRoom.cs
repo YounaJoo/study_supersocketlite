@@ -218,13 +218,14 @@ namespace OMKServer
             var sessionID = packetData.SessionID;
 
             var user = UserMgr.GetUser(sessionIndex);
-
-            if (user == null) // 유저가 없을 경우 에러
+            var roomObject = CheckRoomAndRoomUser(sessionIndex);
+            
+            if (user == null || roomObject.Item1 == false) // 유저가 없을 경우 에러
             {
                 responseOmokGameToClinet(ERROR_CODE.OMOK_GAME_INVALIED_PACKET, sessionID);
                 return;
             }
-            
+
             var reqData = MessagePackSerializer.Deserialize<OMKReqOmokGame>(packetData.BodyData);
             var reqOmok = new Omok(reqData.X, reqData.Y);
             
@@ -262,11 +263,12 @@ namespace OMKServer
                 OmokList.Add(newOmok);
             }
             
-            responseOmokGameToClinet(ERROR_CODE.NONE, sessionID);
             MainServer.MainLogger.Info($"reqOmok X : {reqOmok.x} Y : {reqOmok.y}");
             MainServer.MainLogger.Info($"NewOmok X : {newOmok.x} Y : {newOmok.y}");
             // Notify
             
+            roomObject.Item2.NotifyPacketOmokGame(newOmok.x, newOmok.y, user.UserPos);
+            responseOmokGameToClinet(ERROR_CODE.NONE, sessionID);
         }
         
         // 해당 룸에 (roomNumber) 해당 유저(sessinIndex) 떠남
@@ -332,7 +334,7 @@ namespace OMKServer
             };
 
             var bodyData = MessagePackSerializer.Serialize(resOmokGame);
-            var sendData = PacketToBytes.Make(PACKETID.RES_LOGIN, bodyData);
+            var sendData = PacketToBytes.Make(PACKETID.RES_OMOK_GAME, bodyData);
 
             ServerNetwork.SendData(sessionID, sendData);
             
