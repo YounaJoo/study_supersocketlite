@@ -14,7 +14,9 @@ namespace OMKServer
 
         private int MaxUserCount = 0;
 
+        public List<Omok> OmokList = new List<Omok>();
         List<RoomUser> UserList = new List<RoomUser>();
+        
 
         // index --> userPos 
         public bool[] isReady { get; set; } = new[] {false, false}; 
@@ -128,8 +130,21 @@ namespace OMKServer
             
             Broadcast(-1, sendPakcet);
         }
-
+        
         public void NofifyPacketGameReady()
+        {
+            var resRoomEnter = new OMKResGameReady()
+            {
+                Result = (short)ERROR_CODE.NONE
+            };
+
+            var bodyData = MessagePackSerializer.Serialize(resRoomEnter);
+            var sendData = PacketToBytes.Make(PACKETID.RES_GAME_READY, bodyData);
+            
+            Broadcast(-1, sendData);
+        }
+
+        public void NofifyPacketGameStart()
         {
             // 이게 보내지면 GameStart
             var packet = new OMKNtfGameReady()

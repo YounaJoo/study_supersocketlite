@@ -12,8 +12,6 @@ namespace OMKServer
         List<Room> RoomList = new List<Room>();
         private int StartRoomNumber;
 
-        private List<Omok> OmokList = new List<Omok>();
-        
         public void SetRoomList(List<Room> roomList)
         {
             RoomList = roomList;
@@ -227,7 +225,7 @@ namespace OMKServer
             }
 
             var reqData = MessagePackSerializer.Deserialize<OMKReqOmokGame>(packetData.BodyData);
-            var reqOmok = new Omok(reqData.X, reqData.Y);
+            Omok reqOmok = new Omok(reqData.X, reqData.Y);
             
             // min과 max 를 넘어서면 error
             if (reqOmok.x < OmokManager.MIN_X || reqOmok.x > OmokManager.MAX_X ||
@@ -241,17 +239,17 @@ namespace OMKServer
             float tempX = (float)Math.Round(reqOmok.x - (reqOmok.x % OmokManager.DIS), 2);
             float tempY = (float)Math.Round(reqOmok.y - (reqOmok.y % OmokManager.DIS), 2);
             
-            var newOmok = new Omok(tempX, tempY);
+            Omok newOmok = new Omok(tempX, tempY);
             
             // Omok 있는지 찾기
-            if (OmokList.IsEmpty()) // 
+            if (roomObject.Item2.OmokList.IsEmpty()) // 
             {
                 newOmok.setActivity(true);
-                OmokList.Add(newOmok);
+                roomObject.Item2.OmokList.Add(newOmok);
             }
             else
             {
-                foreach (var omok in OmokList)
+                foreach (var omok in roomObject.Item2.OmokList)
                 {
                     if (omok.x == newOmok.x && omok.y == newOmok.y && omok.isActivity)
                     {
@@ -260,7 +258,7 @@ namespace OMKServer
                     }
                 }
                 newOmok.setActivity(true);
-                OmokList.Add(newOmok);
+                roomObject.Item2.OmokList.Add(newOmok);
             }
             
             MainServer.MainLogger.Info($"reqOmok X : {reqOmok.x} Y : {reqOmok.y}");
@@ -419,7 +417,8 @@ namespace OMKServer
                 if (userPos == 1)
                 { 
                     room.isReady[user.UserPos] = true;
-                    ResponseGameReadyToClient(ERROR_CODE.NONE, sessionID);
+                    //ResponseGameReadyToClient(ERROR_CODE.NONE, sessionID);
+                    room.NofifyPacketGameReady();
                     return;
                 }
                 
@@ -444,7 +443,7 @@ namespace OMKServer
                 }
                 
                 // 결과 반환 Noti -> Response -> GameStart
-                room.NofifyPacketGameReady();
+                room.NofifyPacketGameStart();
             } 
             
             catch (Exception e)

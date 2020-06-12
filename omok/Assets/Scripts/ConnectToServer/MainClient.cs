@@ -335,7 +335,7 @@ namespace ConnectToServer
                 {
                     var resData = MessagePackSerializer.Deserialize<OMKResGameReady>(packet.BodyData);
                     
-                    if (resData.Result == (UInt16) ERROR_CODE.NONE && userPos == 1)
+                    if (resData.Result == (UInt16) ERROR_CODE.NONE)
                     {
                         // ready 
                         roomUIManager.getGameReady();
