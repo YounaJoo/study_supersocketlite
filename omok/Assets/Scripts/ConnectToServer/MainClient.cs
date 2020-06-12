@@ -43,7 +43,8 @@ namespace ConnectToServer
 
         private string sendComment = "";
         private string prevCommenct = "";
-        private bool isTurn = false;
+        private bool isTurn;
+        string[] remoteUserID;
 
         private List<string> msg;
 
@@ -79,7 +80,8 @@ namespace ConnectToServer
 
             roomUIManager = new RoomUIManager();
             userPos = -1;
-            
+            remoteUserID = null;
+            isTurn = false;
 
             if (instance == null)
             {
@@ -326,6 +328,7 @@ namespace ConnectToServer
                 {
                     var reqData = MessagePackSerializer.Deserialize<OMKRoomLeaveUser>(packet.BodyData);
                     roomUIManager.setPlayerList(false, reqData.UserID);
+                    roomUIManager.getGameReady(false);
                     
                 } else if (packet.PacketID == (UInt16) PACKETID.RES_GAME_READY) // 게임 레디 None 일 때에는 player 2가 ready 했을 뿐
                 {
@@ -333,8 +336,7 @@ namespace ConnectToServer
                     
                     if (resData.Result == (UInt16) ERROR_CODE.NONE)
                     {
-                        // ready 
-                        roomUIManager.getGameReady();
+                        roomUIManager.getGameReady(true);
                         continue;
                     }
                     roomUIManager.createNotice((ERROR_CODE)resData.Result);
@@ -375,7 +377,6 @@ namespace ConnectToServer
         public void receiveRoomEnter()
         {
             var packetList = networkManager.GetPacket();
-            string[] remoteUserID = null;
             
             foreach (var packet in packetList)
             {

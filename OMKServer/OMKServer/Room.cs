@@ -16,7 +16,6 @@ namespace OMKServer
 
         public List<Omok> OmokList = new List<Omok>();
         List<RoomUser> UserList = new List<RoomUser>();
-        
 
         // index --> userPos 
         public bool[] isReady { get; set; } = new[] {false, false}; 
@@ -29,6 +28,8 @@ namespace OMKServer
             this.Index = index;
             this.Number = number;
             this.MaxUserCount = maxUserCount;
+
+            initReady();
         }
 
         public bool ChkRoomFull() // 꽉 차있으면 return --> 그냥 넘어가게
@@ -40,6 +41,14 @@ namespace OMKServer
             else
             {
                 return false;
+            }
+        }
+
+        public void initReady()
+        {
+            for (int i = 0; i < isReady.Length; i++)
+            {
+                isReady[i] = false;
             }
         }
         

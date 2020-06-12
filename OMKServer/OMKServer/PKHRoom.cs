@@ -187,6 +187,8 @@ namespace OMKServer
             try
             {
                 var user = UserMgr.GetUser(sessionIndex);
+                var room = GetRoom(user.RoomNumber);
+                
                 if (user == null)
                 {
                     return;
@@ -197,9 +199,9 @@ namespace OMKServer
                 {
                     return;
                 }
-                
                 // 유저 객체에 룸에서 떠났다고 알리기
                 user.LeaveRoom();
+                
                 // 결과를 해당 유저에게 전달
                 ResponseLeaveRoomToClient(sessionID);
                 MainServer.MainLogger.Debug("Room RequestLeave - Success");
@@ -287,7 +289,9 @@ namespace OMKServer
 
             var userID = roomUser.UserID;
             room.RemoveUser(roomUser);
-            
+
+            room.initReady();
+
             // Pakcet을 뭉쳐서 모든 유저에게 SendData
             room.NofifyPacketLeaveUser(userID);
             return true;

@@ -108,6 +108,7 @@ public class RoomUIManager : MonoBehaviour
                     break;
                 }
             }
+            
             setPlayerUI();
             return;
         }
@@ -125,7 +126,7 @@ public class RoomUIManager : MonoBehaviour
         setPlayerUI();
     }
 
-    public void getGameReady()
+    public void getGameReady(bool isReady)
     {
         if (num != 1)
         {
@@ -133,7 +134,9 @@ public class RoomUIManager : MonoBehaviour
         }
 
         var tempColor = ready.color;
-        tempColor.a = 255.0f;
+        if (isReady) tempColor.a = 255.0f;
+        else tempColor.a = 0.0f;
+        
         ready.color = tempColor;
     }
     
@@ -173,10 +176,6 @@ public class RoomUIManager : MonoBehaviour
             Destroy(Canvas.gameObject);
 
             createLoginUI();
-        }
-        else
-        {
-            return;
         }
     }
 }
