@@ -55,7 +55,6 @@ namespace ConnectToServer
             ROOMENTER, // 방 입장
             IN_ROOM, // 채팅 & 게임 레디
             GAME, // 게임 턴
-            TEMP,
             IDLE, // 쉬어가는 턴
             LEAVE, // 방 나가기
             ERROR // 에러
@@ -134,14 +133,12 @@ namespace ConnectToServer
                 case PLAYER_STATE.GAME : // 게임 턴
                     requestOmok();
                     receiveOmok();
-                    break;
-                
-                case PLAYER_STATE.TEMP :
-                    receiveOmok();
+                    Debug.Log("게임 턴");
                     break;
 
                 case PLAYER_STATE.IDLE : // 쉬어가기
                     Debug.Log("쉬어가기");
+                    receiveOmok();
                     break;
                 
                 case PLAYER_STATE.LEAVE : // 해당 방 나가기
@@ -223,7 +220,7 @@ namespace ConnectToServer
 
         public void requestOmok()
         {
-            if (Input.GetMouseButtonDown(0))
+            if (Input.GetMouseButtonDown(0) && !isTurn)
             {
                 Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             
@@ -241,7 +238,6 @@ namespace ConnectToServer
                 PostSendPacket(sendData);
 
                 //p_state = PLAYER_STATE.TEMP;
-                isTurn = true;
             }
         }
         #endregion
@@ -419,22 +415,24 @@ namespace ConnectToServer
 
             foreach (var packet in packetList)
             {
-                if (packet.PacketID == (UInt16) PACKETID.RES_OMOK_GAME || isTurn == false)
+                if (packet.PacketID == (UInt16) PACKETID.RES_OMOK_GAME)
                 {
                     var resData = MessagePackSerializer.Deserialize<OMKResOmokGame>(packet.BodyData);
                     if (resData.Result != (short) ERROR_CODE.NONE)
                     {
-                        roomUIManager.createNotice((ERROR_CODE) resData.Result);
+                        //roomUIManager.createNotice((ERROR_CODE) resData.Result);
                         return;
                     }
 
-                    if (p_state == PLAYER_STATE.GAME) p_state = PLAYER_STATE.IDLE;
-                    else if (p_state == PLAYER_STATE.IDLE) p_state = PLAYER_STATE.GAME;
-                } else if (packet.PacketID == (UInt16) PACKETID.NTF_OMOK_GAME)
+                    isTurn = false;
+
+                } else if (packet.PacketID == (UInt16) PACKETID.NTF_OMOK_GAME && !isTurn)
                 {
                     var resData = MessagePackSerializer.Deserialize<OMKNtfOmokGame>(packet.BodyData);
                     roomUIManager.createNotice($"X : {resData.X} Y : {resData.Y}");
-                    isTurn = false;
+                    
+                    if (p_state == PLAYER_STATE.GAME) p_state = PLAYER_STATE.IDLE;
+                    else if (p_state == PLAYER_STATE.IDLE) p_state = PLAYER_STATE.GAME;
                 }
             }
         }

@@ -639,4 +639,4 @@ ScriptsOnlyBuild:
   platform: 5
   scenePathNames:
   - Assets/Scenes/Loading.unity
-  playerPath: C:/Project/study_supersocketlite/00_client_bin/Omok2/omok.exe
+  playerPath: C:/Project/study_supersocketlite/00_client_bin/Omok/omok.exe

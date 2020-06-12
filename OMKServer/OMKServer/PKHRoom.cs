@@ -264,9 +264,8 @@ namespace OMKServer
             MainServer.MainLogger.Info($"reqOmok X : {reqOmok.x} Y : {reqOmok.y}");
             MainServer.MainLogger.Info($"NewOmok X : {newOmok.x} Y : {newOmok.y}");
             // Notify
-            
-            roomObject.Item2.NotifyPacketOmokGame(newOmok.x, newOmok.y, user.UserPos);
             responseOmokGameToClinet(ERROR_CODE.NONE, sessionID);
+            roomObject.Item2.NotifyPacketOmokGame(newOmok.x, newOmok.y, user.UserPos);
         }
         
         // 해당 룸에 (roomNumber) 해당 유저(sessinIndex) 떠남
@@ -319,7 +318,6 @@ namespace OMKServer
             var bodyData = MessagePackSerializer.Serialize(resRoomEnter);
             var sendData = PacketToBytes.Make(PACKETID.RES_GAME_READY, bodyData);
             
-            MainServer.MainLogger.Info("RESGAMEREADY");
             // Room 에 잘 들어갔다고 MainServer.SendData 실행
             ServerNetwork.SendData(sessionID, sendData);
         }
