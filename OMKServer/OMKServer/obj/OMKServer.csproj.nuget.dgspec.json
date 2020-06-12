@@ -1,25 +1,27 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Project\\study_supersocketlite\\OMKServer\\OMKServer\\OMKServer.csproj": {}
+    "C:\\Users\\gkdld\\Programs\\study_supersocketlite\\OMKServer\\OMKServer\\OMKServer.csproj": {}
   },
   "projects": {
-    "C:\\Project\\study_supersocketlite\\OMKServer\\CSBaseLib\\CSBaseLib.csproj": {
+    "C:\\Users\\gkdld\\Programs\\study_supersocketlite\\OMKServer\\CSBaseLib\\CSBaseLib.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Project\\study_supersocketlite\\OMKServer\\CSBaseLib\\CSBaseLib.csproj",
+        "projectUniqueName": "C:\\Users\\gkdld\\Programs\\study_supersocketlite\\OMKServer\\CSBaseLib\\CSBaseLib.csproj",
         "projectName": "CSBaseLib",
-        "projectPath": "C:\\Project\\study_supersocketlite\\OMKServer\\CSBaseLib\\CSBaseLib.csproj",
-        "packagesPath": "C:\\Users\\yaj\\.nuget\\packages\\",
-        "outputPath": "C:\\Project\\study_supersocketlite\\OMKServer\\CSBaseLib\\obj\\",
+        "projectPath": "C:\\Users\\gkdld\\Programs\\study_supersocketlite\\OMKServer\\CSBaseLib\\CSBaseLib.csproj",
+        "packagesPath": "C:\\Users\\gkdld\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\gkdld\\Programs\\study_supersocketlite\\OMKServer\\CSBaseLib\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\yaj\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\gkdld\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.1"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -60,29 +62,31 @@
         }
       }
     },
-    "C:\\Project\\study_supersocketlite\\OMKServer\\OMKServer\\OMKServer.csproj": {
+    "C:\\Users\\gkdld\\Programs\\study_supersocketlite\\OMKServer\\OMKServer\\OMKServer.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Project\\study_supersocketlite\\OMKServer\\OMKServer\\OMKServer.csproj",
+        "projectUniqueName": "C:\\Users\\gkdld\\Programs\\study_supersocketlite\\OMKServer\\OMKServer\\OMKServer.csproj",
         "projectName": "OMKServer",
-        "projectPath": "C:\\Project\\study_supersocketlite\\OMKServer\\OMKServer\\OMKServer.csproj",
-        "packagesPath": "C:\\Users\\yaj\\.nuget\\packages\\",
-        "outputPath": "C:\\Project\\study_supersocketlite\\OMKServer\\OMKServer\\obj\\",
+        "projectPath": "C:\\Users\\gkdld\\Programs\\study_supersocketlite\\OMKServer\\OMKServer\\OMKServer.csproj",
+        "packagesPath": "C:\\Users\\gkdld\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\gkdld\\Programs\\study_supersocketlite\\OMKServer\\OMKServer\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\yaj\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\gkdld\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.1"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "netcoreapp3.1": {
             "projectReferences": {
-              "C:\\Project\\study_supersocketlite\\OMKServer\\CSBaseLib\\CSBaseLib.csproj": {
-                "projectPath": "C:\\Project\\study_supersocketlite\\OMKServer\\CSBaseLib\\CSBaseLib.csproj"
+              "C:\\Users\\gkdld\\Programs\\study_supersocketlite\\OMKServer\\CSBaseLib\\CSBaseLib.csproj": {
+                "projectPath": "C:\\Users\\gkdld\\Programs\\study_supersocketlite\\OMKServer\\CSBaseLib\\CSBaseLib.csproj"
               }
             }
           }

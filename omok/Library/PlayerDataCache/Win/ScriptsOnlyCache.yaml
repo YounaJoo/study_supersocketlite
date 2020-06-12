@@ -15,7 +15,6 @@ ScriptsOnlyBuild:
     - UnityEditor.Tilemaps.SceneViewGridManager
     - UnityEditor.Tilemaps.TileDragAndDropManager
     Unity.Rider.Editor.dll:
-    - Packages.Rider.Editor.RiderScriptEditorData
     - Packages.Rider.Editor.UnitTesting.CallbackData
     UnityEditor.TestRunner.dll:
     - UnityEditor.TestTools.TestRunner.Api.CallbacksHolder
@@ -54,41 +53,41 @@ ScriptsOnlyBuild:
     - Class: 104
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 11180}
+      Script: {instanceID: 11200}
     - Class: 114
-      Script: {instanceID: 11420}
+      Script: {instanceID: 11440}
     - Class: 114
-      Script: {instanceID: 11472}
+      Script: {instanceID: 11492}
     - Class: 114
-      Script: {instanceID: 11490}
+      Script: {instanceID: 11510}
     - Class: 114
-      Script: {instanceID: 11494}
+      Script: {instanceID: 11514}
     - Class: 114
-      Script: {instanceID: 11550}
+      Script: {instanceID: 11570}
     - Class: 114
-      Script: {instanceID: 11732}
+      Script: {instanceID: 11752}
     - Class: 114
-      Script: {instanceID: 11812}
+      Script: {instanceID: 11832}
     - Class: 114
-      Script: {instanceID: 12068}
+      Script: {instanceID: 12088}
     - Class: 114
-      Script: {instanceID: 12258}
+      Script: {instanceID: 12278}
     - Class: 114
-      Script: {instanceID: 12624}
+      Script: {instanceID: 12644}
     - Class: 114
-      Script: {instanceID: 12672}
+      Script: {instanceID: 12692}
     - Class: 114
-      Script: {instanceID: 13014}
+      Script: {instanceID: 13034}
     - Class: 114
-      Script: {instanceID: 13174}
+      Script: {instanceID: 13194}
     - Class: 114
-      Script: {instanceID: 13330}
+      Script: {instanceID: 13350}
     - Class: 114
-      Script: {instanceID: 13602}
+      Script: {instanceID: 13622}
     - Class: 114
-      Script: {instanceID: 13822}
+      Script: {instanceID: 13842}
     - Class: 114
-      Script: {instanceID: 14462}
+      Script: {instanceID: 14482}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -639,4 +638,4 @@ ScriptsOnlyBuild:
   platform: 5
   scenePathNames:
   - Assets/Scenes/Loading.unity
-  playerPath: C:/Project/study_supersocketlite/00_client_bin/Omok/omok.exe
+  playerPath: C:/Users/gkdld/Programs/study_supersocketlite/00_client_bin/Omok/omok.exe

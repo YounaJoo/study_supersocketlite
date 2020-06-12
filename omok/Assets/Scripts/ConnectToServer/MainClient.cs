@@ -275,44 +275,6 @@ namespace ConnectToServer
             
             foreach (var packet in packetList)
             {
-                /*switch (packet.PacketID)
-                {
-                    case (UInt16) PACKETID.NTF_ROOM_CHAT : // 채팅 중
-                        var message = MessagePackSerializer.Deserialize<OMKResRoomChat>(packet.BodyData);
-                        GameObject.Find("Canvas_game(Clone)").GetComponent<ChattingRoom>().chatting(message.UserID, message.ChatMessage);
-                        break;
-                    
-                    case (UInt16) PACKETID.NTF_ROOM_NEW_USER : // 새로운 유저 입장
-                        var reqData = MessagePackSerializer.Deserialize<OMKRoomNewUser>(packet.BodyData);
-                        roomUIManager.setPlayerList(true, reqData.UserID);
-                        break;
-                    
-                    case (UInt16) PACKETID.NTF_ROOM_LEAVE_USER : // 유저가 나감 
-                        var reqData = MessagePackSerializer.Deserialize<OMKRoomLeaveUser>(packet.BodyData);
-                        roomUIManager.setPlayerList(false, reqData.UserID);
-                        break;
-                    
-                    case (UInt16) PACKETID.RES_GAME_READY : // 게임 레디 None 일 때에는 player 2가 ready 했을 뿐
-                        var resData = MessagePackSerializer.Deserialize<OMKResGameReady>(packet.BodyData);
-                    
-                        if (resData.Result == (UInt16) ERROR_CODE.NONE && userPos == 1)
-                        {
-                            // ready 
-                            
-                        }
-                        roomUIManager.createNotice((ERROR_CODE)resData.Result);
-                        break;
-                    
-                    case (UInt16) PACKETID.NTF_GAME_READY : // 게임 시작
-                        var reqData = MessagePackSerializer.Deserialize<OMKNtfGameReady>(packet.BodyData);
-                        Debug.Log(reqData.Result);
-                        break;
-                    
-                    case (UInt16) PacketDef.SYS_PACKET_ID_DISCONNECT_FROM_SERVER : 
-                        roomUIManager.createNotice("문제 발생\n연결을 끊습니다.");
-                        p_state = PLAYER_STATE.LEAVE;
-                        break;
-                }*/
                 
                 if (packet.PacketID == (UInt16) PACKETID.NTF_ROOM_CHAT) // 채팅 중
                 {
@@ -383,6 +345,7 @@ namespace ConnectToServer
                 if (packet.PacketID == (UInt16) PACKETID.NTF_ROOM_USER_LIST)
                 {
                     var resData = MessagePackSerializer.Deserialize<OMKRoomUserList>(packet.BodyData);
+                    
                     remoteUserID = resData.UserIDList;
                 } 
                 else if (packet.PacketID == (UInt16) PACKETID.RES_ROOM_ENTER) // 룸에 있는 유저 정보
@@ -397,7 +360,20 @@ namespace ConnectToServer
                     }
                     
                     this.userPos = resData.UserPos;
-                    
+
+                    string[] tempRemoteUserId = remoteUserID;
+                    int otherUserPos = (userPos == 1) ? 0 : 1;
+
+                    foreach(string user in tempRemoteUserId)
+                    {
+                        if (id == user)
+                        {
+                            remoteUserID[userPos] = user;
+                            continue;
+                        }
+                        remoteUserID[otherUserPos] = user;
+                    }
+
                     roomUIManager.roomEnterUIChange(id, remoteUserID, userPos);
                     
                     p_state = PLAYER_STATE.IN_ROOM;
