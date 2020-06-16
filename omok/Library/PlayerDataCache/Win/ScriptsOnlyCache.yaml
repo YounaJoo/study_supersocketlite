@@ -6,6 +6,7 @@ ScriptsOnlyBuild:
     - GameMenu
     - Login
     - Notice
+    - Omok
     Unity.2D.Animation.Editor.dll:
     - UnityEditor.U2D.Animation.BoneGizmo
     Unity.2D.Tilemap.Editor.dll:
@@ -15,6 +16,7 @@ ScriptsOnlyBuild:
     - UnityEditor.Tilemaps.SceneViewGridManager
     - UnityEditor.Tilemaps.TileDragAndDropManager
     Unity.Rider.Editor.dll:
+    - Packages.Rider.Editor.RiderScriptEditorData
     - Packages.Rider.Editor.UnitTesting.CallbackData
     UnityEditor.TestRunner.dll:
     - UnityEditor.TestTools.TestRunner.Api.CallbacksHolder
@@ -53,41 +55,43 @@ ScriptsOnlyBuild:
     - Class: 104
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 11200}
+      Script: {instanceID: 11180}
     - Class: 114
-      Script: {instanceID: 11440}
+      Script: {instanceID: 11420}
     - Class: 114
-      Script: {instanceID: 11492}
+      Script: {instanceID: 11472}
     - Class: 114
-      Script: {instanceID: 11510}
+      Script: {instanceID: 11490}
     - Class: 114
-      Script: {instanceID: 11514}
+      Script: {instanceID: 11494}
     - Class: 114
-      Script: {instanceID: 11570}
+      Script: {instanceID: 11550}
     - Class: 114
-      Script: {instanceID: 11752}
+      Script: {instanceID: 11732}
     - Class: 114
-      Script: {instanceID: 11832}
+      Script: {instanceID: 11812}
     - Class: 114
-      Script: {instanceID: 12088}
+      Script: {instanceID: 12068}
     - Class: 114
-      Script: {instanceID: 12278}
+      Script: {instanceID: 12258}
     - Class: 114
-      Script: {instanceID: 12644}
+      Script: {instanceID: 12624}
     - Class: 114
-      Script: {instanceID: 12692}
+      Script: {instanceID: 12672}
     - Class: 114
-      Script: {instanceID: 13034}
+      Script: {instanceID: 13014}
     - Class: 114
-      Script: {instanceID: 13194}
+      Script: {instanceID: 13174}
     - Class: 114
-      Script: {instanceID: 13350}
+      Script: {instanceID: 13330}
     - Class: 114
-      Script: {instanceID: 13622}
+      Script: {instanceID: 13602}
     - Class: 114
-      Script: {instanceID: 13842}
+      Script: {instanceID: 13822}
     - Class: 114
-      Script: {instanceID: 14482}
+      Script: {instanceID: 14462}
+    - Class: 114
+      Script: {instanceID: 15624}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -635,7 +639,13 @@ ScriptsOnlyBuild:
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: PlayableTrack
+  - hash:
+      serializedVersion: 2
+      Hash: d39118ef7e5b017841ede40ef10099df
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: Omok
   platform: 5
   scenePathNames:
   - Assets/Scenes/Loading.unity
-  playerPath: C:/Users/gkdld/Programs/study_supersocketlite/00_client_bin/Omok/omok.exe
+  playerPath: C:/Project/study_supersocketlite/00_client_bin/Omok/omok.exe

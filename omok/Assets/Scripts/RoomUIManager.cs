@@ -18,11 +18,11 @@ public class RoomUIManager : MonoBehaviour
     
     private GameObject Canvas;
     private GameObject Notice;
+    private GameObject OmokGame;
 
     private Image ready;
     private GameMenu gameMenu;
     
-    //private List<string> remoteUserID;
     private string[] remoteUserID = new string[remoteUserCount];
     private string userID;
     
@@ -162,6 +162,9 @@ public class RoomUIManager : MonoBehaviour
     public void gameStart()
     {
         Debug.Log("GameStart");
+
+        OmokGame = Instantiate(Resources.Load("Game_obj")) as GameObject;
+
         GameObject.Find("Room").gameObject.SetActive(false);
 
         gameMenu = GameObject.Find("Menu").GetComponent<GameMenu>();
@@ -175,7 +178,23 @@ public class RoomUIManager : MonoBehaviour
         {
             Destroy(Canvas.gameObject);
 
+            if (OmokGame != null)
+            {
+                Destroy(OmokGame.gameObject);
+            }
+            
             createLoginUI();
         }
+    }
+
+    public void SetOmokCursor(bool isActivity)
+    {
+        OmokGame.GetComponent<Omok>().setOmokCurr(isActivity, userPos);
+    }
+
+    public void CreateOmok(float x, float y)
+    {
+        Vector2 omokPos = new Vector2(x, y);
+        OmokGame.GetComponent<Omok>().createOmok(userPos, omokPos);
     }
 }

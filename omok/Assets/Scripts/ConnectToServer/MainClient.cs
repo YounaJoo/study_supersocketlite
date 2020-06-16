@@ -321,9 +321,11 @@ namespace ConnectToServer
                             p_state = PLAYER_STATE.NONE;
                             return;
                         case 0 : // 선
+                            roomUIManager.SetOmokCursor(true);
                             p_state = PLAYER_STATE.GAME;
                             break; 
                         case 1 : // 후
+                            roomUIManager.SetOmokCursor(false);
                             p_state = PLAYER_STATE.IDLE;
                             break;
                     }
@@ -406,10 +408,20 @@ namespace ConnectToServer
                 } else if (packet.PacketID == (UInt16) PACKETID.NTF_OMOK_GAME && !isTurn)
                 {
                     var resData = MessagePackSerializer.Deserialize<OMKNtfOmokGame>(packet.BodyData);
-                    roomUIManager.createNotice($"X : {resData.X} Y : {resData.Y}");
-                    
-                    if (p_state == PLAYER_STATE.GAME) p_state = PLAYER_STATE.IDLE;
-                    else if (p_state == PLAYER_STATE.IDLE) p_state = PLAYER_STATE.GAME;
+                    //roomUIManager.createNotice($"X : {resData.X} Y : {resData.Y}");
+
+                    roomUIManager.CreateOmok(resData.X, resData.Y);
+
+                    if (p_state == PLAYER_STATE.GAME)
+                    {
+                        roomUIManager.SetOmokCursor(false);
+                        p_state = PLAYER_STATE.IDLE;
+                    }
+                    else if (p_state == PLAYER_STATE.IDLE)
+                    {
+                        roomUIManager.SetOmokCursor(true);
+                        p_state = PLAYER_STATE.GAME;
+                    }
                 }
             }
         }
