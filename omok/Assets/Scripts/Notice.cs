@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using ConnectToServer;
 using CSBaseLib;
 using UnityEngine;
 using UnityEngine.UI;
@@ -27,6 +28,19 @@ public class Notice : MonoBehaviour
         text_notice.text = str;
     }
     
+    public void init(string reason, bool isWin)
+    {
+        noticePanel.GetComponent<RectTransform>().localPosition = Vector3.zero;
+        
+        string str = null;
+        if (isWin) str = $"{reason}\n You Win!";
+        else str = $"{reason}\n You Loss!";
+        
+        text_notice.text = str;
+        btn_exit.onClick.RemoveAllListeners();
+        btn_exit.onClick.AddListener(this.gameOver);
+    }
+    
     private void Awake()
     {
         noticePanel = this.gameObject;
@@ -35,6 +49,13 @@ public class Notice : MonoBehaviour
         btn_exit.onClick.AddListener(this.exitBtn);
 
         text_notice = noticePanel.transform.GetChild(1).GetComponentInChildren<Text>();
+    }
+
+    private void gameOver()
+    {
+        MainClient.Instance.requestRoomEnter();
+        MainClient.Instance.restartGame();
+        Destroy(this.gameObject);
     }
 
     private void exitBtn()

@@ -158,6 +158,16 @@ public class RoomUIManager : MonoBehaviour
         Notice = null;
     }
     
+    // 게임 종료
+    public void gameOver(string reason, bool isWin)
+    {
+        Notice = (GameObject) Instantiate(Resources.Load("panel_notice"));
+        Notice.transform.parent = Canvas.transform;
+
+        Notice.GetComponent<Notice>().init(reason, isWin);
+        Notice = null;
+    }
+    
     // 게임 시작
     public void gameStart()
     {
@@ -169,6 +179,8 @@ public class RoomUIManager : MonoBehaviour
 
         gameMenu = GameObject.Find("Menu").GetComponent<GameMenu>();
         gameMenu.setPlayer(remoteUserID);
+        
+        
     }
 
     // 게임 방에서 게임 나가기 시 접속 종료 -> UI 변경
@@ -189,12 +201,14 @@ public class RoomUIManager : MonoBehaviour
 
     public void SetOmokCursor(bool isActivity)
     {
-        OmokGame.GetComponent<Omok>().setOmokCurr(isActivity, userPos);
+        //OmokGame.GetComponent<Omok>().setOmokCurr(isActivity, userPos);
+        Omok.Instance.setOmokCurr(isActivity, userPos);
     }
 
-    public void CreateOmok(float x, float y)
+    public void CreateOmok(short userPos, float x, float y)
     {
         Vector2 omokPos = new Vector2(x, y);
-        OmokGame.GetComponent<Omok>().createOmok(userPos, omokPos);
+        //OmokGame.GetComponent<Omok>().createOmok(userPos, omokPos);
+        Omok.Instance.createOmok(userPos, omokPos);
     }
 }

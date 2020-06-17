@@ -55,43 +55,43 @@ ScriptsOnlyBuild:
     - Class: 104
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 11180}
+      Script: {instanceID: 11188}
     - Class: 114
-      Script: {instanceID: 11420}
+      Script: {instanceID: 11428}
     - Class: 114
-      Script: {instanceID: 11472}
+      Script: {instanceID: 11480}
     - Class: 114
-      Script: {instanceID: 11490}
+      Script: {instanceID: 11498}
     - Class: 114
-      Script: {instanceID: 11494}
+      Script: {instanceID: 11502}
     - Class: 114
-      Script: {instanceID: 11550}
+      Script: {instanceID: 11558}
     - Class: 114
-      Script: {instanceID: 11732}
+      Script: {instanceID: 11740}
     - Class: 114
-      Script: {instanceID: 11812}
+      Script: {instanceID: 11820}
     - Class: 114
-      Script: {instanceID: 12068}
+      Script: {instanceID: 12076}
     - Class: 114
-      Script: {instanceID: 12258}
+      Script: {instanceID: 12266}
     - Class: 114
-      Script: {instanceID: 12624}
+      Script: {instanceID: 12632}
     - Class: 114
-      Script: {instanceID: 12672}
+      Script: {instanceID: 12680}
     - Class: 114
-      Script: {instanceID: 13014}
+      Script: {instanceID: 13020}
     - Class: 114
-      Script: {instanceID: 13174}
+      Script: {instanceID: 13180}
     - Class: 114
-      Script: {instanceID: 13330}
+      Script: {instanceID: 13336}
     - Class: 114
-      Script: {instanceID: 13602}
+      Script: {instanceID: 13608}
     - Class: 114
-      Script: {instanceID: 13822}
+      Script: {instanceID: 13828}
     - Class: 114
-      Script: {instanceID: 14462}
+      Script: {instanceID: 14174}
     - Class: 114
-      Script: {instanceID: 15624}
+      Script: {instanceID: 14470}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -383,12 +383,6 @@ ScriptsOnlyBuild:
     className: Notice
   - hash:
       serializedVersion: 2
-      Hash: 1c99582cb3d63bdbdd99a06d1c319f88
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: Gane
-  - hash:
-      serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
     assemblyName: Unity.2D.Animation.Runtime.dll
     namespaceName: UnityEngine.U2D.Animation
@@ -497,7 +491,7 @@ ScriptsOnlyBuild:
     className: TimelineAsset
   - hash:
       serializedVersion: 2
-      Hash: c72346eddb3a6233210f13bc14f3e9fb
+      Hash: 9169943cd887e98c53623ba28990d610
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: ChattingRoom
@@ -537,6 +531,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.TextMeshPro.dll
     namespaceName: TMPro
     className: TMP_StyleSheet
+  - hash:
+      serializedVersion: 2
+      Hash: d39118ef7e5b017841ede40ef10099df
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: Omok
   - hash:
       serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
@@ -639,12 +639,6 @@ ScriptsOnlyBuild:
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: PlayableTrack
-  - hash:
-      serializedVersion: 2
-      Hash: d39118ef7e5b017841ede40ef10099df
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: Omok
   platform: 5
   scenePathNames:
   - Assets/Scenes/Loading.unity

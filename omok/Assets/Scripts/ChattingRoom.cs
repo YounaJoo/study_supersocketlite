@@ -10,11 +10,12 @@ public class ChattingRoom : MonoBehaviour
     private GameObject gameCanvas = null;
     private GameObject gameMenuPanel = null;
     private GameObject chatRoomPanel = null;
-    public GameObject chatView = null;
+    private GameObject chatView = null;
 
     private Button startBtn = null;
     private Button exitBtn = null;
     private Button chatBtn = null;
+    public Button gameExitBtn = null;
     
     private Text sendMessage = null;
     private Text chatText = null;
@@ -40,12 +41,14 @@ public class ChattingRoom : MonoBehaviour
 
         chatView = chatRoomPanel.transform.GetChild(1).transform.GetChild(0).gameObject;
         chatText = chatView.GetComponentInChildren<Text>();
+
+        gameExitBtn = GameObject.Find("exit").GetComponent<Button>();
+        gameExitBtn.onClick.AddListener(delegate { MainClient.Instance.exitBtn(); });
     }
 
     public void chatting(string userID, string message)
     {
         chatText.text += userID + " : " + message + "\n";
         chatView.GetComponent<ScrollRect>().verticalNormalizedPosition = 0.0f;
-        
     }
 }

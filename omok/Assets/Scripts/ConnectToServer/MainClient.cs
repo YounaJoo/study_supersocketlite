@@ -79,6 +79,8 @@ namespace ConnectToServer
             msg = new List<string>();
 
             roomUIManager = new RoomUIManager();
+            p_state = PLAYER_STATE.NONE;
+            
             userPos = -1;
             remoteUserID = null;
             isTurn = false;
@@ -172,9 +174,8 @@ namespace ConnectToServer
             p_state = PLAYER_STATE.RES_LOGIN;
         }
 
-        private void requestRoomEnter()
+        public void requestRoomEnter()
         {
-            
             var reqRoomEnter = new PKTReqRoomEnter()
             {
                 RoomNumber = -1
@@ -238,8 +239,6 @@ namespace ConnectToServer
                 var sendData = CSBaseLib.PacketToBytes.Make(PACKETID.REQ_OMOK_GAME, Body);
                 
                 PostSendPacket(sendData);
-
-                //p_state = PLAYER_STATE.TEMP;
             }
         }
         #endregion
@@ -410,7 +409,7 @@ namespace ConnectToServer
                     var resData = MessagePackSerializer.Deserialize<OMKNtfOmokGame>(packet.BodyData);
                     //roomUIManager.createNotice($"X : {resData.X} Y : {resData.Y}");
 
-                    roomUIManager.CreateOmok(resData.X, resData.Y);
+                    roomUIManager.CreateOmok(resData.UserPos, resData.X, resData.Y);
 
                     if (p_state == PLAYER_STATE.GAME)
                     {
@@ -422,6 +421,11 @@ namespace ConnectToServer
                         roomUIManager.SetOmokCursor(true);
                         p_state = PLAYER_STATE.GAME;
                     }
+                }else if (packet.PacketID == (UInt16) PACKETID.NTF_ROOM_LEAVE_USER)
+                {
+                    var resData = MessagePackSerializer.Deserialize<OMKRoomLeaveUser>(packet.BodyData);
+                    //roomUIManager.createNotice($"Leave {resData.UserID}\nYou Win!"); // 이렇게 하니 Login이 끊기고, createLoginUI로 돌아감
+                    roomUIManager.gameOver(resData.UserID, true);
                 }
             }
         }
@@ -445,6 +449,13 @@ namespace ConnectToServer
 
         #region Game
 
+        public void restartGame()
+        {
+            userPos = -1;
+            remoteUserID = null;
+            isTurn = false;
+        }
+        
         public void gameReady()
         {
             if (userPos == -1)
@@ -499,7 +510,9 @@ namespace ConnectToServer
         #region Test
         public void exitBtn()
         {
+            if (isTurn) roomUIManager.SetOmokCursor(false);
             p_state = PLAYER_STATE.LEAVE;
+            Debug.Log("게임 나가기");
         }
         #endregion
 

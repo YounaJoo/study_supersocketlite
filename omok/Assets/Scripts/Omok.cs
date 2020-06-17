@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class Omok : MonoBehaviour
 {
+    private static Omok instance = null;
+
     private Vector2 hotSpot;
     private bool isActive = false;
     private short userPos = -1;
@@ -16,10 +18,27 @@ public class Omok : MonoBehaviour
     
     private float curTime = 0.0f;
     
+    public static Omok Instance
+    {
+        get => instance;
+        set => instance = value;
+    }
+
+    private void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(this.gameObject);
+        }
+    }
+
     private void Start()
     {
         omokPan = omokPanMask.transform.parent.gameObject;
-        Debug.Log(omokPan.name);
     }
     private void Update()
     {
