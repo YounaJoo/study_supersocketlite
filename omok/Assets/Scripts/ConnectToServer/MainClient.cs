@@ -227,7 +227,7 @@ namespace ConnectToServer
             {
                 Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             
-                Debug.Log(mousePos);
+                Debug.Log("mousePos : " + mousePos);
                 
                 var request = new OMKReqOmokGame()
                 {
@@ -408,6 +408,7 @@ namespace ConnectToServer
                 {
                     var resData = MessagePackSerializer.Deserialize<OMKNtfOmokGame>(packet.BodyData);
                     //roomUIManager.createNotice($"X : {resData.X} Y : {resData.Y}");
+                    Debug.Log($"response omok position {resData.X} {resData.Y}");
 
                     roomUIManager.CreateOmok(resData.UserPos, resData.X, resData.Y);
 

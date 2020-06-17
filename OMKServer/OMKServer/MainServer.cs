@@ -54,7 +54,7 @@ namespace OMKServer
 
                 if (bResult == false)
                 {
-                    Console.WriteLine("[Error] 서버 네트워크 설정 실패");
+                    MainLogger.Error("[Error] 서버 네트워크 설정 실패");
                     return;
                 }
                 else
@@ -71,7 +71,7 @@ namespace OMKServer
             }
             catch (Exception e)
             {
-                Console.WriteLine($"[Error] 서버 생성 실패 : {e.ToString()}");
+                MainLogger.Error($"[Error] 서버 생성 실패 : {e.ToString()}");
             }
         }
 

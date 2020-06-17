@@ -42,10 +42,9 @@ public class Omok : MonoBehaviour
     }
     private void Update()
     {
-        Debug.Log(1234);
         if (isActive && userPos != -1)
         {
-            Debug.Log(5678);
+            Debug.Log("코루틴 시작");
             StartCoroutine("OmokCursor");
         }
     }

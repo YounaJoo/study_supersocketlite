@@ -179,7 +179,7 @@ namespace OMKServer
             var body = MessagePackSerializer.Serialize(packet);
             var sendPacket = PacketToBytes.Make(PACKETID.NTF_OMOK_GAME, body);
             
-            MainServer.MainLogger.Info("NotifyPacketOmokGame");
+            MainServer.MainLogger.Info($"NotifyPacketOmokGame : X : {x} Y : {y}");
             
             Broadcast(-1, sendPacket);
         }
@@ -192,8 +192,7 @@ namespace OMKServer
                 {
                     continue;
                 }
-
-                Console.WriteLine($"BroadCast : {user.NetSessionIndex}");
+                
                 NetSendFunc(user.NetSessionID, sendPacket);
             }
         }
