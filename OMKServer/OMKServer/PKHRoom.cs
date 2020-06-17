@@ -239,8 +239,8 @@ namespace OMKServer
             }
 
             // 해당 패킷에 있는 x와 y에서 가장 가까운 점을 찾고(근사값) isActivity 체크
-            float tempX = (float)Math.Round(reqOmok.x - (reqOmok.x % OmokManager.XDIS), 2);
-            float tempY = (float)Math.Round(reqOmok.y - (reqOmok.y % OmokManager.YDIS), 2);
+            float tempX = (float)Math.Round(reqOmok.x - (reqOmok.x % OmokManager.DIS), 2);
+            float tempY = (float)Math.Round(reqOmok.y - (reqOmok.y % OmokManager.DIS), 2);
             
             Omok newOmok = new Omok(tempX, tempY);
             
