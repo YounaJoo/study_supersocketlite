@@ -18,7 +18,7 @@ namespace OMKServer
             this.SessionIndex = sessionIndex;
             this.UserID = userID;
 
-            this.UserPos = -1;
+            setUserPos(-1);
         }
 
         public bool IsConfirm(string netSessionID)
@@ -44,6 +44,7 @@ namespace OMKServer
         public void LeaveRoom()
         {
             RoomNumber = -1;
+            setUserPos(-1);
         }
 
         public bool IsStateLogin()

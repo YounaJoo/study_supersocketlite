@@ -272,8 +272,8 @@ namespace MessagePack.Formatters.CSBaseLib
             IFormatterResolver formatterResolver = options.Resolver;
             var length = reader.ReadArrayHeader();
             var __UserPos__ = default(short);
-            var __X__ = default(float);
-            var __Y__ = default(float);
+            var __X__ = default(int);
+            var __Y__ = default(int);
 
             for (int i = 0; i < length; i++)
             {
@@ -285,10 +285,10 @@ namespace MessagePack.Formatters.CSBaseLib
                         __UserPos__ = reader.ReadInt16();
                         break;
                     case 1:
-                        __X__ = reader.ReadSingle();
+                        __X__ = reader.ReadInt32();
                         break;
                     case 2:
-                        __Y__ = reader.ReadSingle();
+                        __Y__ = reader.ReadInt32();
                         break;
                     default:
                         reader.Skip();
@@ -441,8 +441,8 @@ namespace MessagePack.Formatters.CSBaseLib
             options.Security.DepthStep(ref reader);
             IFormatterResolver formatterResolver = options.Resolver;
             var length = reader.ReadArrayHeader();
-            var __X__ = default(float);
-            var __Y__ = default(float);
+            var __X__ = default(int);
+            var __Y__ = default(int);
 
             for (int i = 0; i < length; i++)
             {
@@ -451,10 +451,10 @@ namespace MessagePack.Formatters.CSBaseLib
                 switch (key)
                 {
                     case 0:
-                        __X__ = reader.ReadSingle();
+                        __X__ = reader.ReadInt32();
                         break;
                     case 1:
-                        __Y__ = reader.ReadSingle();
+                        __Y__ = reader.ReadInt32();
                         break;
                     default:
                         reader.Skip();
@@ -695,7 +695,7 @@ namespace MessagePack.Formatters.CSBaseLib
             options.Security.DepthStep(ref reader);
             IFormatterResolver formatterResolver = options.Resolver;
             var length = reader.ReadArrayHeader();
-            var __Result__ = default(float);
+            var __Result__ = default(short);
 
             for (int i = 0; i < length; i++)
             {
@@ -704,7 +704,7 @@ namespace MessagePack.Formatters.CSBaseLib
                 switch (key)
                 {
                     case 0:
-                        __Result__ = reader.ReadSingle();
+                        __Result__ = reader.ReadInt16();
                         break;
                     default:
                         reader.Skip();

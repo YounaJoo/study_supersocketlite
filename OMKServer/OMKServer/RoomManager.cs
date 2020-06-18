@@ -18,6 +18,8 @@ namespace OMKServer
                 var roomNumber = (startNumber + i);
                 var room = new Room();
                 room.Init(i, roomNumber, maxUserCount);
+                room.initReady();
+                room.initOmok();
                 
                 RoomsList.Add(room);
             }

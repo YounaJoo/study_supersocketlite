@@ -13,9 +13,10 @@ namespace OMKServer
         public int Number { get; private set; }
 
         private int MaxUserCount = 0;
-
-        public List<Omok> OmokList = new List<Omok>();
+        
         List<RoomUser> UserList = new List<RoomUser>();
+        
+        private int[,] omok = new int[OmokManager.OMOK_COUNT,OmokManager.OMOK_COUNT];
 
         // index --> userPos 
         public bool[] isReady { get; set; } = new[] {false, false}; 
@@ -28,8 +29,6 @@ namespace OMKServer
             this.Index = index;
             this.Number = number;
             this.MaxUserCount = maxUserCount;
-
-            initReady();
         }
 
         public bool ChkRoomFull() // 꽉 차있으면 return --> 그냥 넘어가게
@@ -44,12 +43,35 @@ namespace OMKServer
             }
         }
 
+        public void initOmok()
+        {
+            for (int i = 0; i < OmokManager.OMOK_COUNT; i++)
+            {
+                for (int j = 0; j < OmokManager.OMOK_COUNT; j++)
+                {
+                    omok[i, j] = -1;
+                }
+            }
+        }
+        
         public void initReady()
         {
             for (int i = 0; i < isReady.Length; i++)
             {
                 isReady[i] = false;
             }
+        }
+        
+        // omok 비어있는지 체크하고 userPos 입력
+        public ERROR_CODE ChkOmokPosition(int x, int y, short userPos)
+        {
+            if (omok[x, y] != -1)
+            {
+                return ERROR_CODE.OMOK_GAME_INVALIED_POSITION;
+            }
+
+            omok[x, y] = userPos;
+            return ERROR_CODE.NONE;
         }
         
         // 요청을 보낸 유저를 룸에 들어와있는 형식으로 '추가'
@@ -167,7 +189,7 @@ namespace OMKServer
             Broadcast(-1, sendPacket);
         }
 
-        public void NotifyPacketOmokGame(float x, float y, short userPos)
+        public void NotifyPacketOmokGame(int x, int y, short userPos)
         {
             var packet = new OMKNtfOmokGame()
             {
