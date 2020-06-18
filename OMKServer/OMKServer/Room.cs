@@ -65,13 +65,24 @@ namespace OMKServer
         // omok 비어있는지 체크하고 userPos 입력
         public ERROR_CODE ChkOmokPosition(int x, int y, short userPos)
         {
+            if (x <= -1 || x > OmokManager.OMOK_COUNT || y <= -1 || y > OmokManager.OMOK_COUNT)
+            {
+                return ERROR_CODE.OMOK_GAME_INVALIED_PACKET;
+            }
+            
             if (omok[x, y] != -1)
             {
                 return ERROR_CODE.OMOK_GAME_INVALIED_POSITION;
             }
 
             omok[x, y] = userPos;
+            
             return ERROR_CODE.NONE;
+        }
+
+        private void ChkPointer(int x, int y)
+        {
+            
         }
         
         // 요청을 보낸 유저를 룸에 들어와있는 형식으로 '추가'
