@@ -211,7 +211,7 @@ MonoBehaviour:
   omokTexture:
   - {fileID: 2800000, guid: 1e7958d4d809f67459b94283736a1a8b, type: 3}
   - {fileID: 2800000, guid: 00793aaa2c940dd44bf46526005246cd, type: 3}
-  omok:
+  omokObject:
   - {fileID: 3762150070873264024, guid: 6848fdaa61f43774690799e59ba89d52, type: 3}
   - {fileID: 859894812933722259, guid: ee93f89e93c0f1a4e8e4828521a1472c, type: 3}
   omokPanMask: {fileID: 8775241619007834606}

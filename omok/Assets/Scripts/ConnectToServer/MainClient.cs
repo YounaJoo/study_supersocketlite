@@ -226,13 +226,18 @@ namespace ConnectToServer
             if (Input.GetMouseButtonDown(0) && !isTurn)
             {
                 Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            
-                Debug.Log("mousePos : " + mousePos);
+
+                if (!Omok.Instance.ChkMouseOn(mousePos.x, mousePos.y))
+                {
+                    return;
+                }
+
+                Tuple<int, int> index = Omok.Instance.GetOmokIndex(mousePos.x, mousePos.y);
                 
                 var request = new OMKReqOmokGame()
                 {
-                    X = mousePos.x,
-                    Y = mousePos.y
+                    X = index.Item1,
+                    Y = index.Item2
                 };
 
                 var Body = MessagePackSerializer.Serialize(request);

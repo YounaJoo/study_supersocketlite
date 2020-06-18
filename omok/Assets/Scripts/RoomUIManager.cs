@@ -205,10 +205,9 @@ public class RoomUIManager : MonoBehaviour
         Omok.Instance.setOmokCurr(isActivity, userPos);
     }
 
-    public void CreateOmok(short userPos, float x, float y)
+    public void CreateOmok(short userPos, int x, int y)
     {
-        Vector2 omokPos = new Vector2(x, y);
         //OmokGame.GetComponent<Omok>().createOmok(userPos, omokPos);
-        Omok.Instance.createOmok(userPos, omokPos);
+        Omok.Instance.createOmok(userPos, x, y);
     }
 }

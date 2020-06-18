@@ -185,22 +185,22 @@ namespace CSBaseLib
     [MessagePackObject]
     public class OMKReqOmokGame
     {
-        [Key(0)] public float X;
-        [Key(1)] public float Y;
+        [Key(0)] public int X;
+        [Key(1)] public int Y;
     }
     
     
     [MessagePackObject]
     public class OMKResOmokGame
     {
-        [Key(0)] public float Result;
+        [Key(0)] public short Result;
     }
     
     [MessagePackObject]
     public class OMKNtfOmokGame
     {
         [Key(0)] public short UserPos;
-        [Key(1)] public float X;
-        [Key(2)] public float Y;
+        [Key(1)] public int X;
+        [Key(2)] public int Y;
     }
 }

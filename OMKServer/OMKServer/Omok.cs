@@ -7,6 +7,8 @@ namespace OMKServer
         public float x { get; private set; }
         public float y { get; private set; }
         public bool isActivity { get; private set; } = false;
+        
+        public short result { get; private set; } = -1;
 
         public Omok(float x, float y)
         {
