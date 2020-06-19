@@ -77,7 +77,7 @@ public class Omok : MonoBehaviour
     {
         GameObject _omok = (GameObject) Instantiate(omokObject[userPos], transform.position, transform.rotation);
         _omok.transform.parent = omokPan.transform;
-        _omok.transform.position = new Vector3(omok[y, x], omok[y, 0], -0.15f);
+        _omok.transform.position = new Vector3(omok[y, x+1], omok[y, 0], -0.15f);
     }
 
     IEnumerator OmokCursor()
@@ -98,10 +98,12 @@ public class Omok : MonoBehaviour
         {
             for (int x = 1; x < OMOKCOUNT + 1; x++)
             {
-                omok[y, x] = (float)Math.Round(MINX + (DIS * x), 2);
+                omok[y, x] = (float)Math.Round(MINX + (DIS * (x-1)), 2);
+                Debug.Log($"X : {omok[y, x]}, ");
             }
 
             omok[y, 0] = (float)Math.Round(MINY + (DIS * y), 2);
+            Debug.Log($"Y : {omok[y, 0]}, ");
         }
 
         return omok;
@@ -139,7 +141,7 @@ public class Omok : MonoBehaviour
             }
         }
         
-        Tuple<int, int> result = new Tuple<int, int>(indexX, indexY);
+        Tuple<int, int> result = new Tuple<int, int>(indexX-1, indexY);
 
         return result;
     }

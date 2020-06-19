@@ -74,8 +74,18 @@ namespace OMKServer
             {
                 return ERROR_CODE.OMOK_GAME_INVALIED_POSITION;
             }
-
+            
+            Console.WriteLine($"X : {x}, Y : {y}");
             omok[x, y] = userPos;
+
+            /*for (int i = 0; i < OmokManager.OMOK_COUNT; i++)
+            {
+                for (int j = 0; j < OmokManager.OMOK_COUNT; j++)
+                {
+                    Console.Write($"x : {i} Y : {j} omok : {omok[i, j]}");
+                }
+                Console.WriteLine();
+            }*/
             
             return ERROR_CODE.NONE;
         }

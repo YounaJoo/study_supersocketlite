@@ -226,6 +226,8 @@ namespace ConnectToServer
             if (Input.GetMouseButtonDown(0) && !isTurn)
             {
                 Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                
+                Debug.Log($"Mouse Position X {mousePos.x} Y {mousePos.y}");
 
                 if (!Omok.Instance.ChkMouseOn(mousePos.x, mousePos.y))
                 {
