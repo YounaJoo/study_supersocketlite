@@ -45,11 +45,11 @@ namespace OMKServer
 
         public void initOmok()
         {
-            for (int i = 0; i < OmokManager.OMOK_COUNT; i++)
+            for (int y = 0; y < OmokManager.OMOK_COUNT; y++)
             {
-                for (int j = 0; j < OmokManager.OMOK_COUNT; j++)
+                for (int x = 0; x < OmokManager.OMOK_COUNT; x++)
                 {
-                    omok[i, j] = -1;
+                    omok[y, x] = -1;
                 }
             }
         }
@@ -70,22 +70,13 @@ namespace OMKServer
                 return ERROR_CODE.OMOK_GAME_INVALIED_PACKET;
             }
             
-            if (omok[x, y] != -1)
+            if (omok[y, x] != -1)
             {
                 return ERROR_CODE.OMOK_GAME_INVALIED_POSITION;
             }
             
             Console.WriteLine($"X : {x}, Y : {y}");
-            omok[x, y] = userPos;
-
-            /*for (int i = 0; i < OmokManager.OMOK_COUNT; i++)
-            {
-                for (int j = 0; j < OmokManager.OMOK_COUNT; j++)
-                {
-                    Console.Write($"x : {i} Y : {j} omok : {omok[i, j]}");
-                }
-                Console.WriteLine();
-            }*/
+            omok[y, x] = userPos;
             
             return ERROR_CODE.NONE;
         }
