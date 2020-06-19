@@ -1,0 +1,40 @@
+[2020/06/19 17:40:16.515] [TID:11] [Extensions.IfTrue => <>c__DisplayClass13_0.<Process>b__0 => NLogLog.Error]: System.IndexOutOfRangeException: Index was outside the bounds of the array.
+   at OMKServer.Room.ChkOmokPosition(Int32 x, Int32 y, Int16 userPos) in C:\Project\study_supersocketlite\OMKServer\OMKServer\Room.cs:line 73
+   at OMKServer.PKHRoom.requestOmokGame(ServerPacketData packetData) in C:\Project\study_supersocketlite\OMKServer\OMKServer\PKHRoom.cs:line 231
+   at OMKServer.PacketProcessor.Process() in C:\Project\study_supersocketlite\OMKServer\OMKServer\PacketProcessor.cs:line 79
+[2020/06/19 17:40:17.265] [TID:11] [Extensions.IfTrue => <>c__DisplayClass13_0.<Process>b__0 => NLogLog.Error]: System.IndexOutOfRangeException: Index was outside the bounds of the array.
+   at OMKServer.Room.ChkOmokPosition(Int32 x, Int32 y, Int16 userPos) in C:\Project\study_supersocketlite\OMKServer\OMKServer\Room.cs:line 73
+   at OMKServer.PKHRoom.requestOmokGame(ServerPacketData packetData) in C:\Project\study_supersocketlite\OMKServer\OMKServer\PKHRoom.cs:line 231
+   at OMKServer.PacketProcessor.Process() in C:\Project\study_supersocketlite\OMKServer\OMKServer\PacketProcessor.cs:line 79
+[2020/06/19 17:40:18.021] [TID:11] [Extensions.IfTrue => <>c__DisplayClass13_0.<Process>b__0 => NLogLog.Error]: System.IndexOutOfRangeException: Index was outside the bounds of the array.
+   at OMKServer.Room.ChkOmokPosition(Int32 x, Int32 y, Int16 userPos) in C:\Project\study_supersocketlite\OMKServer\OMKServer\Room.cs:line 73
+   at OMKServer.PKHRoom.requestOmokGame(ServerPacketData packetData) in C:\Project\study_supersocketlite\OMKServer\OMKServer\PKHRoom.cs:line 231
+   at OMKServer.PacketProcessor.Process() in C:\Project\study_supersocketlite\OMKServer\OMKServer\PacketProcessor.cs:line 79
+[2020/06/19 17:40:18.194] [TID:11] [Extensions.IfTrue => <>c__DisplayClass13_0.<Process>b__0 => NLogLog.Error]: System.IndexOutOfRangeException: Index was outside the bounds of the array.
+   at OMKServer.Room.ChkOmokPosition(Int32 x, Int32 y, Int16 userPos) in C:\Project\study_supersocketlite\OMKServer\OMKServer\Room.cs:line 73
+   at OMKServer.PKHRoom.requestOmokGame(ServerPacketData packetData) in C:\Project\study_supersocketlite\OMKServer\OMKServer\PKHRoom.cs:line 231
+   at OMKServer.PacketProcessor.Process() in C:\Project\study_supersocketlite\OMKServer\OMKServer\PacketProcessor.cs:line 79
+[2020/06/19 17:40:24.152] [TID:11] [Extensions.IfTrue => <>c__DisplayClass13_0.<Process>b__0 => NLogLog.Error]: System.IndexOutOfRangeException: Index was outside the bounds of the array.
+   at OMKServer.Room.ChkOmokPosition(Int32 x, Int32 y, Int16 userPos) in C:\Project\study_supersocketlite\OMKServer\OMKServer\Room.cs:line 73
+   at OMKServer.PKHRoom.requestOmokGame(ServerPacketData packetData) in C:\Project\study_supersocketlite\OMKServer\OMKServer\PKHRoom.cs:line 231
+   at OMKServer.PacketProcessor.Process() in C:\Project\study_supersocketlite\OMKServer\OMKServer\PacketProcessor.cs:line 79
+[2020/06/19 17:40:25.307] [TID:11] [Extensions.IfTrue => <>c__DisplayClass13_0.<Process>b__0 => NLogLog.Error]: System.IndexOutOfRangeException: Index was outside the bounds of the array.
+   at OMKServer.Room.ChkOmokPosition(Int32 x, Int32 y, Int16 userPos) in C:\Project\study_supersocketlite\OMKServer\OMKServer\Room.cs:line 73
+   at OMKServer.PKHRoom.requestOmokGame(ServerPacketData packetData) in C:\Project\study_supersocketlite\OMKServer\OMKServer\PKHRoom.cs:line 231
+   at OMKServer.PacketProcessor.Process() in C:\Project\study_supersocketlite\OMKServer\OMKServer\PacketProcessor.cs:line 79
+[2020/06/19 17:40:25.652] [TID:11] [Extensions.IfTrue => <>c__DisplayClass13_0.<Process>b__0 => NLogLog.Error]: System.IndexOutOfRangeException: Index was outside the bounds of the array.
+   at OMKServer.Room.ChkOmokPosition(Int32 x, Int32 y, Int16 userPos) in C:\Project\study_supersocketlite\OMKServer\OMKServer\Room.cs:line 73
+   at OMKServer.PKHRoom.requestOmokGame(ServerPacketData packetData) in C:\Project\study_supersocketlite\OMKServer\OMKServer\PKHRoom.cs:line 231
+   at OMKServer.PacketProcessor.Process() in C:\Project\study_supersocketlite\OMKServer\OMKServer\PacketProcessor.cs:line 79
+[2020/06/19 17:40:25.838] [TID:11] [Extensions.IfTrue => <>c__DisplayClass13_0.<Process>b__0 => NLogLog.Error]: System.IndexOutOfRangeException: Index was outside the bounds of the array.
+   at OMKServer.Room.ChkOmokPosition(Int32 x, Int32 y, Int16 userPos) in C:\Project\study_supersocketlite\OMKServer\OMKServer\Room.cs:line 73
+   at OMKServer.PKHRoom.requestOmokGame(ServerPacketData packetData) in C:\Project\study_supersocketlite\OMKServer\OMKServer\PKHRoom.cs:line 231
+   at OMKServer.PacketProcessor.Process() in C:\Project\study_supersocketlite\OMKServer\OMKServer\PacketProcessor.cs:line 79
+[2020/06/19 17:40:34.033] [TID:11] [Extensions.IfTrue => <>c__DisplayClass13_0.<Process>b__0 => NLogLog.Error]: System.IndexOutOfRangeException: Index was outside the bounds of the array.
+   at OMKServer.Room.ChkOmokPosition(Int32 x, Int32 y, Int16 userPos) in C:\Project\study_supersocketlite\OMKServer\OMKServer\Room.cs:line 73
+   at OMKServer.PKHRoom.requestOmokGame(ServerPacketData packetData) in C:\Project\study_supersocketlite\OMKServer\OMKServer\PKHRoom.cs:line 231
+   at OMKServer.PacketProcessor.Process() in C:\Project\study_supersocketlite\OMKServer\OMKServer\PacketProcessor.cs:line 79
+[2020/06/19 17:40:52.121] [TID:11] [Extensions.IfTrue => <>c__DisplayClass13_0.<Process>b__0 => NLogLog.Error]: System.IndexOutOfRangeException: Index was outside the bounds of the array.
+   at OMKServer.Room.ChkOmokPosition(Int32 x, Int32 y, Int16 userPos) in C:\Project\study_supersocketlite\OMKServer\OMKServer\Room.cs:line 73
+   at OMKServer.PKHRoom.requestOmokGame(ServerPacketData packetData) in C:\Project\study_supersocketlite\OMKServer\OMKServer\PKHRoom.cs:line 231
+   at OMKServer.PacketProcessor.Process() in C:\Project\study_supersocketlite\OMKServer\OMKServer\PacketProcessor.cs:line 79
