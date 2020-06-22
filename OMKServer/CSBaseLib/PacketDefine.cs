@@ -70,9 +70,10 @@
         RES_GAME_READY = 1029,
         NTF_GAME_READY = 1030,
         
-        REQ_OMOK_GAME = 1031,
-        RES_OMOK_GAME = 1032,
-        NTF_OMOK_GAME = 1034,
+        REQ_OMOK_TURN = 1031,
+        RES_OMOK_TURN = 1032,
+        NTF_OMOK_TURN = 1034,
+        NTF_OMOK_GAME_RES = 1035,
 
         CS_END          = 1100,
 

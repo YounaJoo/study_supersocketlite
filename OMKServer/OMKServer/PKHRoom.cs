@@ -26,9 +26,7 @@ namespace OMKServer
             pakcetHandlerMap.Add((int)PACKETID.REQ_ROOM_CHAT, RequestChat);
             
             pakcetHandlerMap.Add((int)PACKETID.REQ_GAME_READY, RequestGameReady);
-            
-            
-            pakcetHandlerMap.Add((int)PACKETID.REQ_OMOK_GAME, requestOmokGame);
+            pakcetHandlerMap.Add((int)PACKETID.REQ_OMOK_TURN, requestOmokGame);
         }
 
         Room GetRoom(int roomNumber)
@@ -232,7 +230,14 @@ namespace OMKServer
             responseOmokGameToClinet(code, sessionID);
             if (code == ERROR_CODE.NONE)
             {   
-                roomObject.Item2.NotifyPacketOmokGame(reqData.X, reqData.Y, user.UserPos);
+                roomObject.Item2.NotifyPacketOmokTurn(reqData.X, reqData.Y, user.UserPos);
+
+                if (roomObject.Item2.ChkPointer(reqData.X, reqData.Y, user.UserPos)) {}
+                {
+                    // 일단 성공 결과만 전부 보내게 하기
+                    roomObject.Item2.NotifyPacketOmokGame(user.UserPos);
+                    MainServer.MainLogger.Info($"USER - {user.UserPos} Win!");
+                } 
             }
         }
         
@@ -294,13 +299,13 @@ namespace OMKServer
         
         public void responseOmokGameToClinet(ERROR_CODE errorCode, string sessionID)
         {
-            var resOmokGame = new OMKResOmokGame()
+            var resOmokGame = new OMKResOmokTurn()
             {
                 Result = (short)errorCode
             };
 
             var bodyData = MessagePackSerializer.Serialize(resOmokGame);
-            var sendData = PacketToBytes.Make(PACKETID.RES_OMOK_GAME, bodyData);
+            var sendData = PacketToBytes.Make(PACKETID.RES_OMOK_TURN, bodyData);
 
             ServerNetwork.SendData(sessionID, sendData);
             

@@ -81,9 +81,98 @@ namespace OMKServer
             return ERROR_CODE.NONE;
         }
 
-        private void ChkPointer(int x, int y)
+        public bool ChkPointer(int x, int y, short userPos)
         {
+            try
+            {
+                int OMOKCOUNT = OmokManager.OMOK_COUNT;
+                int _x = x;
+                int _y = y;
+                int count = 0;
             
+                // 가로 체크
+                while (omok[_y, _x] == userPos && _x > 0)
+                {
+                    _x--;
+                }
+            
+                while (_x < OMOKCOUNT && omok[_y, _x++] == userPos)
+                {
+                    count++;
+                }
+                if (count == 5)
+                {
+                    return true;
+                }
+                        
+                // 세로 체크
+                _x = x;
+                _y = y;
+                count = 0;
+            
+                while (omok[_y, _x] == userPos && _y > 0)
+                {
+                    _y--;
+                }
+            
+                while (_y < OMOKCOUNT && omok[_y++, _x] == userPos)
+                {
+                    count++;
+                }
+            
+                if (count == 5)
+                {
+                    return true;
+                }
+                        
+                // 오른쪽 아래 대각선
+                _x = x;
+                _y = y;
+                count = 0;
+                        
+                while (omok[_y, _x] == userPos && _y > 0 && _x > 0)
+                {
+                    _y--;
+                    _x--;
+                }
+                        
+                while (_y < OMOKCOUNT && _x < OMOKCOUNT && omok[_y++, _x++] == userPos)
+                {
+                    count++;
+                }
+            
+                if (count == 5)
+                {
+                    return true;
+                }
+                        
+                // 왼쪽 아래 대각선
+                _x = x;
+                _y = y;
+                count = 0;
+                        
+                while (omok[_y, _x] == userPos && _y > 0 && _x > 0)
+                {
+                    _y--;
+                    _x++;
+                }
+                        
+                while (_y < OMOKCOUNT && _x < OMOKCOUNT && omok[_y++, _x--] == userPos)
+                {
+                    count++;
+                }
+            
+                if (count == 5)
+                {
+                    return true;
+                }
+            }
+            catch (Exception e)
+            {
+                MainServer.MainLogger.Error(e.Message);
+            }
+
+            return false;
         }
         
         // 요청을 보낸 유저를 룸에 들어와있는 형식으로 '추가'
@@ -201,9 +290,9 @@ namespace OMKServer
             Broadcast(-1, sendPacket);
         }
 
-        public void NotifyPacketOmokGame(int x, int y, short userPos)
+        public void NotifyPacketOmokTurn(int x, int y, short userPos)
         {
-            var packet = new OMKNtfOmokGame()
+            var packet = new OMKNtfOmokTurn()
             {
                 X = x,
                 Y = y,
@@ -211,9 +300,23 @@ namespace OMKServer
             };
 
             var body = MessagePackSerializer.Serialize(packet);
-            var sendPacket = PacketToBytes.Make(PACKETID.NTF_OMOK_GAME, body);
+            var sendPacket = PacketToBytes.Make(PACKETID.NTF_OMOK_TURN, body);
             
             MainServer.MainLogger.Info($"NotifyPacketOmokGame : X : {x} Y : {y}");
+            
+            Broadcast(-1, sendPacket);
+        }
+        
+        public void NotifyPacketOmokGame(short userPos)
+        {
+            var packet = new OMKNtfOmokGameRes()
+            {
+                Result = (short)ERROR_CODE.OMOK_GAME_RESULT_WIN,
+                userPos = userPos
+            };
+
+            var body = MessagePackSerializer.Serialize(packet);
+            var sendPacket = PacketToBytes.Make(PACKETID.NTF_OMOK_GAME_RES, body);
             
             Broadcast(-1, sendPacket);
         }

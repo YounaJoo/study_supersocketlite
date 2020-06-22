@@ -243,7 +243,7 @@ namespace ConnectToServer
                 };
 
                 var Body = MessagePackSerializer.Serialize(request);
-                var sendData = CSBaseLib.PacketToBytes.Make(PACKETID.REQ_OMOK_GAME, Body);
+                var sendData = CSBaseLib.PacketToBytes.Make(PACKETID.REQ_OMOK_TURN, Body);
                 
                 PostSendPacket(sendData);
             }
@@ -400,9 +400,9 @@ namespace ConnectToServer
 
             foreach (var packet in packetList)
             {
-                if (packet.PacketID == (UInt16) PACKETID.RES_OMOK_GAME)
+                if (packet.PacketID == (UInt16) PACKETID.RES_OMOK_TURN)
                 {
-                    var resData = MessagePackSerializer.Deserialize<OMKResOmokGame>(packet.BodyData);
+                    var resData = MessagePackSerializer.Deserialize<OMKResOmokTurn>(packet.BodyData);
                     if (resData.Result != (short) ERROR_CODE.NONE)
                     {
                         //roomUIManager.createNotice((ERROR_CODE) resData.Result);
@@ -411,9 +411,9 @@ namespace ConnectToServer
 
                     isTurn = false;
 
-                } else if (packet.PacketID == (UInt16) PACKETID.NTF_OMOK_GAME && !isTurn)
+                } else if (packet.PacketID == (UInt16) PACKETID.NTF_OMOK_TURN && !isTurn)
                 {
-                    var resData = MessagePackSerializer.Deserialize<OMKNtfOmokGame>(packet.BodyData);
+                    var resData = MessagePackSerializer.Deserialize<OMKNtfOmokTurn>(packet.BodyData);
                     //roomUIManager.createNotice($"X : {resData.X} Y : {resData.Y}");
                     Debug.Log($"response omok position {resData.X} {resData.Y}");
 
@@ -434,6 +434,17 @@ namespace ConnectToServer
                     var resData = MessagePackSerializer.Deserialize<OMKRoomLeaveUser>(packet.BodyData);
                     //roomUIManager.createNotice($"Leave {resData.UserID}\nYou Win!"); // 이렇게 하니 Login이 끊기고, createLoginUI로 돌아감
                     roomUIManager.gameOver(resData.UserID, true);
+                }else if (packet.PacketID == (UInt16) PACKETID.NTF_OMOK_GAME_RES)
+                {
+                    var resData = MessagePackSerializer.Deserialize<OMKNtfOmokGameRes>(packet.BodyData);
+                    if (resData.userPos != userPos)
+                    {
+                        Debug.Log("You Lose");
+                    }
+                    else
+                    {
+                        Debug.Log("You Win!");
+                    }
                 }
             }
         }

@@ -9,6 +9,7 @@ using UnityEngine.UI;
 public class Notice : MonoBehaviour
 {
     private GameObject noticePanel;
+    private GameObject tempPanel;
     private Button btn_exit;
     private Text text_notice;
 
@@ -44,7 +45,8 @@ public class Notice : MonoBehaviour
     private void Awake()
     {
         noticePanel = this.gameObject;
-
+        //tempPanel = this.gameObject.transform.GetChild(0).gameObject; 
+        
         btn_exit = noticePanel.transform.GetChild(2).GetComponent<Button>();
         btn_exit.onClick.AddListener(this.exitBtn);
 

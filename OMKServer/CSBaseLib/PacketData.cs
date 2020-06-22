@@ -191,16 +191,23 @@ namespace CSBaseLib
     
     
     [MessagePackObject]
-    public class OMKResOmokGame
+    public class OMKResOmokTurn
     {
         [Key(0)] public short Result;
     }
     
     [MessagePackObject]
-    public class OMKNtfOmokGame
+    public class OMKNtfOmokTurn
     {
         [Key(0)] public short UserPos;
         [Key(1)] public int X;
         [Key(2)] public int Y;
+    }
+
+    [MessagePackObject]
+    public class OMKNtfOmokGameRes
+    {
+        [Key(0)] public short Result;
+        [Key(1)] public short userPos;
     }
 }

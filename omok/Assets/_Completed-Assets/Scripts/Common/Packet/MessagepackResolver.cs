@@ -49,26 +49,27 @@ namespace MessagePack.Resolvers
 
         static GeneratedResolverGetFormatterHelper()
         {
-            lookup = new global::System.Collections.Generic.Dictionary<Type, int>(18)
+            lookup = new global::System.Collections.Generic.Dictionary<Type, int>(19)
             {
                 { typeof(global::CSBaseLib.OMKMustClose), 0 },
                 { typeof(global::CSBaseLib.OMKNtfGameReady), 1 },
-                { typeof(global::CSBaseLib.OMKNtfOmokGame), 2 },
-                { typeof(global::CSBaseLib.OMKReqGameReady), 3 },
-                { typeof(global::CSBaseLib.OMKReqLogin), 4 },
-                { typeof(global::CSBaseLib.OMKReqOmokGame), 5 },
-                { typeof(global::CSBaseLib.OMKReqRoomChat), 6 },
-                { typeof(global::CSBaseLib.OMKReqRoomLeave), 7 },
-                { typeof(global::CSBaseLib.OMKResGameReady), 8 },
-                { typeof(global::CSBaseLib.OMKResLogin), 9 },
-                { typeof(global::CSBaseLib.OMKResOmokGame), 10 },
-                { typeof(global::CSBaseLib.OMKResRoomChat), 11 },
-                { typeof(global::CSBaseLib.OMKResRoomEnter), 12 },
-                { typeof(global::CSBaseLib.OMKResRoomLeave), 13 },
-                { typeof(global::CSBaseLib.OMKRoomLeaveUser), 14 },
-                { typeof(global::CSBaseLib.OMKRoomNewUser), 15 },
-                { typeof(global::CSBaseLib.OMKRoomUserList), 16 },
-                { typeof(global::CSBaseLib.PKTReqRoomEnter), 17 },
+                { typeof(global::CSBaseLib.OMKNtfOmokGameRes), 2 },
+                { typeof(global::CSBaseLib.OMKNtfOmokTurn), 3 },
+                { typeof(global::CSBaseLib.OMKReqGameReady), 4 },
+                { typeof(global::CSBaseLib.OMKReqLogin), 5 },
+                { typeof(global::CSBaseLib.OMKReqOmokGame), 6 },
+                { typeof(global::CSBaseLib.OMKReqRoomChat), 7 },
+                { typeof(global::CSBaseLib.OMKReqRoomLeave), 8 },
+                { typeof(global::CSBaseLib.OMKResGameReady), 9 },
+                { typeof(global::CSBaseLib.OMKResLogin), 10 },
+                { typeof(global::CSBaseLib.OMKResOmokTurn), 11 },
+                { typeof(global::CSBaseLib.OMKResRoomChat), 12 },
+                { typeof(global::CSBaseLib.OMKResRoomEnter), 13 },
+                { typeof(global::CSBaseLib.OMKResRoomLeave), 14 },
+                { typeof(global::CSBaseLib.OMKRoomLeaveUser), 15 },
+                { typeof(global::CSBaseLib.OMKRoomNewUser), 16 },
+                { typeof(global::CSBaseLib.OMKRoomUserList), 17 },
+                { typeof(global::CSBaseLib.PKTReqRoomEnter), 18 },
             };
         }
 
@@ -84,22 +85,23 @@ namespace MessagePack.Resolvers
             {
                 case 0: return new MessagePack.Formatters.CSBaseLib.OMKMustCloseFormatter();
                 case 1: return new MessagePack.Formatters.CSBaseLib.OMKNtfGameReadyFormatter();
-                case 2: return new MessagePack.Formatters.CSBaseLib.OMKNtfOmokGameFormatter();
-                case 3: return new MessagePack.Formatters.CSBaseLib.OMKReqGameReadyFormatter();
-                case 4: return new MessagePack.Formatters.CSBaseLib.OMKReqLoginFormatter();
-                case 5: return new MessagePack.Formatters.CSBaseLib.OMKReqOmokGameFormatter();
-                case 6: return new MessagePack.Formatters.CSBaseLib.OMKReqRoomChatFormatter();
-                case 7: return new MessagePack.Formatters.CSBaseLib.OMKReqRoomLeaveFormatter();
-                case 8: return new MessagePack.Formatters.CSBaseLib.OMKResGameReadyFormatter();
-                case 9: return new MessagePack.Formatters.CSBaseLib.OMKResLoginFormatter();
-                case 10: return new MessagePack.Formatters.CSBaseLib.OMKResOmokGameFormatter();
-                case 11: return new MessagePack.Formatters.CSBaseLib.OMKResRoomChatFormatter();
-                case 12: return new MessagePack.Formatters.CSBaseLib.OMKResRoomEnterFormatter();
-                case 13: return new MessagePack.Formatters.CSBaseLib.OMKResRoomLeaveFormatter();
-                case 14: return new MessagePack.Formatters.CSBaseLib.OMKRoomLeaveUserFormatter();
-                case 15: return new MessagePack.Formatters.CSBaseLib.OMKRoomNewUserFormatter();
-                case 16: return new MessagePack.Formatters.CSBaseLib.OMKRoomUserListFormatter();
-                case 17: return new MessagePack.Formatters.CSBaseLib.PKTReqRoomEnterFormatter();
+                case 2: return new MessagePack.Formatters.CSBaseLib.OMKNtfOmokGameResFormatter();
+                case 3: return new MessagePack.Formatters.CSBaseLib.OMKNtfOmokTurnFormatter();
+                case 4: return new MessagePack.Formatters.CSBaseLib.OMKReqGameReadyFormatter();
+                case 5: return new MessagePack.Formatters.CSBaseLib.OMKReqLoginFormatter();
+                case 6: return new MessagePack.Formatters.CSBaseLib.OMKReqOmokGameFormatter();
+                case 7: return new MessagePack.Formatters.CSBaseLib.OMKReqRoomChatFormatter();
+                case 8: return new MessagePack.Formatters.CSBaseLib.OMKReqRoomLeaveFormatter();
+                case 9: return new MessagePack.Formatters.CSBaseLib.OMKResGameReadyFormatter();
+                case 10: return new MessagePack.Formatters.CSBaseLib.OMKResLoginFormatter();
+                case 11: return new MessagePack.Formatters.CSBaseLib.OMKResOmokTurnFormatter();
+                case 12: return new MessagePack.Formatters.CSBaseLib.OMKResRoomChatFormatter();
+                case 13: return new MessagePack.Formatters.CSBaseLib.OMKResRoomEnterFormatter();
+                case 14: return new MessagePack.Formatters.CSBaseLib.OMKResRoomLeaveFormatter();
+                case 15: return new MessagePack.Formatters.CSBaseLib.OMKRoomLeaveUserFormatter();
+                case 16: return new MessagePack.Formatters.CSBaseLib.OMKRoomNewUserFormatter();
+                case 17: return new MessagePack.Formatters.CSBaseLib.OMKRoomUserListFormatter();
+                case 18: return new MessagePack.Formatters.CSBaseLib.PKTReqRoomEnterFormatter();
                 default: return null;
             }
         }
@@ -242,11 +244,68 @@ namespace MessagePack.Formatters.CSBaseLib
         }
     }
 
-    public sealed class OMKNtfOmokGameFormatter : global::MessagePack.Formatters.IMessagePackFormatter<global::CSBaseLib.OMKNtfOmokGame>
+    public sealed class OMKNtfOmokGameResFormatter : global::MessagePack.Formatters.IMessagePackFormatter<global::CSBaseLib.OMKNtfOmokGameRes>
     {
 
 
-        public void Serialize(ref MessagePackWriter writer, global::CSBaseLib.OMKNtfOmokGame value, global::MessagePack.MessagePackSerializerOptions options)
+        public void Serialize(ref MessagePackWriter writer, global::CSBaseLib.OMKNtfOmokGameRes value, global::MessagePack.MessagePackSerializerOptions options)
+        {
+            if (value == null)
+            {
+                writer.WriteNil();
+                return;
+            }
+
+            IFormatterResolver formatterResolver = options.Resolver;
+            writer.WriteArrayHeader(2);
+            writer.Write(value.Result);
+            writer.Write(value.userPos);
+        }
+
+        public global::CSBaseLib.OMKNtfOmokGameRes Deserialize(ref MessagePackReader reader, global::MessagePack.MessagePackSerializerOptions options)
+        {
+            if (reader.TryReadNil())
+            {
+                return null;
+            }
+
+            options.Security.DepthStep(ref reader);
+            IFormatterResolver formatterResolver = options.Resolver;
+            var length = reader.ReadArrayHeader();
+            var __Result__ = default(short);
+            var __userPos__ = default(short);
+
+            for (int i = 0; i < length; i++)
+            {
+                var key = i;
+
+                switch (key)
+                {
+                    case 0:
+                        __Result__ = reader.ReadInt16();
+                        break;
+                    case 1:
+                        __userPos__ = reader.ReadInt16();
+                        break;
+                    default:
+                        reader.Skip();
+                        break;
+                }
+            }
+
+            var ____result = new global::CSBaseLib.OMKNtfOmokGameRes();
+            ____result.Result = __Result__;
+            ____result.userPos = __userPos__;
+            reader.Depth--;
+            return ____result;
+        }
+    }
+
+    public sealed class OMKNtfOmokTurnFormatter : global::MessagePack.Formatters.IMessagePackFormatter<global::CSBaseLib.OMKNtfOmokTurn>
+    {
+
+
+        public void Serialize(ref MessagePackWriter writer, global::CSBaseLib.OMKNtfOmokTurn value, global::MessagePack.MessagePackSerializerOptions options)
         {
             if (value == null)
             {
@@ -261,7 +320,7 @@ namespace MessagePack.Formatters.CSBaseLib
             writer.Write(value.Y);
         }
 
-        public global::CSBaseLib.OMKNtfOmokGame Deserialize(ref MessagePackReader reader, global::MessagePack.MessagePackSerializerOptions options)
+        public global::CSBaseLib.OMKNtfOmokTurn Deserialize(ref MessagePackReader reader, global::MessagePack.MessagePackSerializerOptions options)
         {
             if (reader.TryReadNil())
             {
@@ -296,7 +355,7 @@ namespace MessagePack.Formatters.CSBaseLib
                 }
             }
 
-            var ____result = new global::CSBaseLib.OMKNtfOmokGame();
+            var ____result = new global::CSBaseLib.OMKNtfOmokTurn();
             ____result.UserPos = __UserPos__;
             ____result.X = __X__;
             ____result.Y = __Y__;
@@ -668,11 +727,11 @@ namespace MessagePack.Formatters.CSBaseLib
         }
     }
 
-    public sealed class OMKResOmokGameFormatter : global::MessagePack.Formatters.IMessagePackFormatter<global::CSBaseLib.OMKResOmokGame>
+    public sealed class OMKResOmokTurnFormatter : global::MessagePack.Formatters.IMessagePackFormatter<global::CSBaseLib.OMKResOmokTurn>
     {
 
 
-        public void Serialize(ref MessagePackWriter writer, global::CSBaseLib.OMKResOmokGame value, global::MessagePack.MessagePackSerializerOptions options)
+        public void Serialize(ref MessagePackWriter writer, global::CSBaseLib.OMKResOmokTurn value, global::MessagePack.MessagePackSerializerOptions options)
         {
             if (value == null)
             {
@@ -685,7 +744,7 @@ namespace MessagePack.Formatters.CSBaseLib
             writer.Write(value.Result);
         }
 
-        public global::CSBaseLib.OMKResOmokGame Deserialize(ref MessagePackReader reader, global::MessagePack.MessagePackSerializerOptions options)
+        public global::CSBaseLib.OMKResOmokTurn Deserialize(ref MessagePackReader reader, global::MessagePack.MessagePackSerializerOptions options)
         {
             if (reader.TryReadNil())
             {
@@ -712,7 +771,7 @@ namespace MessagePack.Formatters.CSBaseLib
                 }
             }
 
-            var ____result = new global::CSBaseLib.OMKResOmokGame();
+            var ____result = new global::CSBaseLib.OMKResOmokTurn();
             ____result.Result = __Result__;
             reader.Depth--;
             return ____result;
