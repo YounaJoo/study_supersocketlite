@@ -55,8 +55,9 @@ public class Notice : MonoBehaviour
 
     private void gameOver()
     {
-        MainClient.Instance.requestRoomEnter();
-        MainClient.Instance.restartGame();
+        /*MainClient.Instance.requestRoomEnter();
+        MainClient.Instance.restartGame();*/
+        MainClient.Instance.Disconnected();
         Destroy(this.gameObject);
     }
 

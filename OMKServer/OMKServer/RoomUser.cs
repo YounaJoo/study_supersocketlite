@@ -5,7 +5,7 @@
         public string UserID { get; private set; }
         public int NetSessionIndex { get; private set; }
         public string NetSessionID { get; private set; }
-        public short omokCount { get; set; } = 0;
+        //public short omokCount { get; set; } = 0;
 
         public void Set(string userID, int netSessionIndex, string netSessionID)
         {

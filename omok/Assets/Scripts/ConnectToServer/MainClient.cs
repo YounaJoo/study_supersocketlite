@@ -38,13 +38,13 @@ namespace ConnectToServer
 
         [HideInInspector] public string ip = "127.0.0.1";
         [HideInInspector] public int port = 12021;
-        [HideInInspector] public string id = "";
+        public string id = "";
         [HideInInspector] public string pass = "";
 
         private string sendComment = "";
         private string prevCommenct = "";
         private bool isTurn;
-        string[] remoteUserID;
+        public string[] remoteUserID;
 
         private List<string> msg;
 
@@ -58,6 +58,7 @@ namespace ConnectToServer
             GAME, // 게임 턴
             IDLE, // 쉬어가는 턴
             LEAVE, // 방 나가기
+            GAMEOVER,
             ERROR // 에러
         }
 
@@ -114,7 +115,8 @@ namespace ConnectToServer
             switch (p_state)
             {
                 case PLAYER_STATE.NONE :
-                    msg.Clear();
+                    // 만약 서버가 있지 않는데 접속되어져 있을 경우 오류
+                    isDisconnected();
                     break;
                     
                 case PLAYER_STATE.REQ_LOGIN : 
@@ -137,20 +139,19 @@ namespace ConnectToServer
                 case PLAYER_STATE.GAME : // 게임 턴
                     requestOmok();
                     receiveOmok();
-                    Debug.Log("게임 턴");
                     break;
 
                 case PLAYER_STATE.IDLE : // 쉬어가기
-                    Debug.Log("쉬어가기");
                     receiveOmok();
                     break;
                 
                 case PLAYER_STATE.LEAVE : // 해당 방 나가기
-                    networkManager.disconnect();
-                    roomUIManager.exitUIChange();
-                    p_state = PLAYER_STATE.NONE;
+                    Disconnected();
                     break;
                 
+                case PLAYER_STATE.GAMEOVER :
+                    break;
+
                 case PLAYER_STATE.ERROR :
                     Debug.Log("Error 발생");
                     p_state = PLAYER_STATE.NONE;
@@ -255,6 +256,7 @@ namespace ConnectToServer
         public void receiveLogin()
         {
             var packet = networkManager.getPacket();
+            Debug.Log($"receiveLogin PACKETID : {(ERROR_CODE)packet.PacketID}");
             if (packet.PacketID == (UInt16) PACKETID.RES_LOGIN)
             {
                 var resData = MessagePackSerializer.Deserialize<OMKResLogin>(packet.BodyData);
@@ -355,6 +357,7 @@ namespace ConnectToServer
                     var resData = MessagePackSerializer.Deserialize<OMKRoomUserList>(packet.BodyData);
                     
                     remoteUserID = resData.UserIDList;
+                    Debug.Log($"NTF_ROOM_USER_LIST remoteUserID1 {remoteUserID[0]} remoteUserID2 {remoteUserID[1]}");
                 } 
                 else if (packet.PacketID == (UInt16) PACKETID.RES_ROOM_ENTER) // 룸에 있는 유저 정보
                 {
@@ -371,16 +374,22 @@ namespace ConnectToServer
 
                     string[] tempRemoteUserId = remoteUserID;
                     int otherUserPos = (userPos == 1) ? 0 : 1;
+                    
+                    // temp
+                    Debug.Log($"tempID1 {tempRemoteUserId[0]} tempID2 {tempRemoteUserId[1]}");
 
-                    foreach(string user in tempRemoteUserId)
+                    for (int i = 0; i < tempRemoteUserId.Length; i++)
                     {
-                        if (id == user)
+                        if (id == tempRemoteUserId[i])
                         {
-                            remoteUserID[userPos] = user;
+                            remoteUserID[userPos] = tempRemoteUserId[i];
+                            Debug.Log($"sameUser otherUserPos : {otherUserPos} user : {tempRemoteUserId[i]}");
                             continue;
                         }
-                        remoteUserID[otherUserPos] = user;
+                        Debug.Log($"otherUser otherUserPos : {otherUserPos} user : {tempRemoteUserId[i]}");
+                        remoteUserID[otherUserPos] = tempRemoteUserId[i];
                     }
+                    Debug.Log($"결과 : remoteUserID1 {remoteUserID[0]} remoteUserID2 {remoteUserID[1]}");
 
                     roomUIManager.roomEnterUIChange(id, remoteUserID, userPos);
                     
@@ -440,10 +449,14 @@ namespace ConnectToServer
                     if (resData.userPos != userPos)
                     {
                         Debug.Log("You Lose");
+                        roomUIManager.gameOver("GAME OVER", false);
+                        p_state = PLAYER_STATE.GAMEOVER;
                     }
                     else
                     {
                         Debug.Log("You Win!");
+                        roomUIManager.gameOver("GAME OVER", true);
+                        p_state = PLAYER_STATE.GAMEOVER;
                     }
                 }
             }
@@ -464,6 +477,22 @@ namespace ConnectToServer
             // 패킷 감싸서 network.Send(packetData)
             networkManager.Send(sendData);
         }
+
+        public void Disconnected()
+        {
+            restartGame();
+            networkManager.disconnect();
+            roomUIManager.exitUIChange();
+            p_state = PLAYER_STATE.NONE;
+        }
+
+        public void isDisconnected()
+        {
+            if (networkManager.IsConnected == false)
+            {
+                networkManager.disconnect();
+            }
+        }
         #endregion
 
         #region Game
@@ -471,6 +500,7 @@ namespace ConnectToServer
         public void restartGame()
         {
             userPos = -1;
+            id = null;
             remoteUserID = null;
             isTurn = false;
         }

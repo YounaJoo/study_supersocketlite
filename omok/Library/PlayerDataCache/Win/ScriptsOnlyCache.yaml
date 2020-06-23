@@ -143,7 +143,7 @@ ScriptsOnlyBuild:
     className: TMP_ScrollbarEventHandler
   - hash:
       serializedVersion: 2
-      Hash: 426046782cbe3b4606782bf8e0a306bd
+      Hash: f8bd4990234f2ce49e79421f19403670
     assemblyName: Assembly-CSharp.dll
     namespaceName: ConnectToServer
     className: MainClient

@@ -75,7 +75,6 @@ namespace OMKServer
                 return ERROR_CODE.OMOK_GAME_INVALIED_POSITION;
             }
             
-            Console.WriteLine($"X : {x}, Y : {y}");
             omok[y, x] = userPos;
             
             return ERROR_CODE.NONE;
@@ -83,93 +82,97 @@ namespace OMKServer
 
         public bool ChkPointer(int x, int y, short userPos)
         {
-            try
+            /*for (int j = 0; j < OmokManager.OMOK_COUNT; j++)
             {
-                int OMOKCOUNT = OmokManager.OMOK_COUNT;
-                int _x = x;
-                int _y = y;
-                int count = 0;
+                for (int i = 0; i < OmokManager.OMOK_COUNT; i++)
+                {
+                    Console.Write($"{omok[j, i] }");
+                }
+                Console.WriteLine();
+            }*/
             
-                // 가로 체크
-                while (omok[_y, _x] == userPos && _x > 0)
-                {
-                    _x--;
-                }
+            int OMOKCOUNT = OmokManager.OMOK_COUNT;
+            int _x = x;
+            int _y = y;
+            int count = 0;
+            int user = userPos;
             
-                while (_x < OMOKCOUNT && omok[_y, _x++] == userPos)
-                {
-                    count++;
-                }
-                if (count == 5)
-                {
-                    return true;
-                }
-                        
-                // 세로 체크
-                _x = x;
-                _y = y;
-                count = 0;
-            
-                while (omok[_y, _x] == userPos && _y > 0)
-                {
-                    _y--;
-                }
-            
-                while (_y < OMOKCOUNT && omok[_y++, _x] == userPos)
-                {
-                    count++;
-                }
-            
-                if (count == 5)
-                {
-                    return true;
-                }
-                        
-                // 오른쪽 아래 대각선
-                _x = x;
-                _y = y;
-                count = 0;
-                        
-                while (omok[_y, _x] == userPos && _y > 0 && _x > 0)
-                {
-                    _y--;
-                    _x--;
-                }
-                        
-                while (_y < OMOKCOUNT && _x < OMOKCOUNT && omok[_y++, _x++] == userPos)
-                {
-                    count++;
-                }
-            
-                if (count == 5)
-                {
-                    return true;
-                }
-                        
-                // 왼쪽 아래 대각선
-                _x = x;
-                _y = y;
-                count = 0;
-                        
-                while (omok[_y, _x] == userPos && _y > 0 && _x > 0)
-                {
-                    _y--;
-                    _x++;
-                }
-                        
-                while (_y < OMOKCOUNT && _x < OMOKCOUNT && omok[_y++, _x--] == userPos)
-                {
-                    count++;
-                }
-            
-                if (count == 5)
-                {
-                    return true;
-                }
+            // 가로 체크
+            while (omok[_y, _x] == user && _x > 0)
+            {
+                _x--;
             }
-            catch (Exception e)
+            
+            while (_x < OMOKCOUNT && omok[_y, _x++] == user)
             {
-                MainServer.MainLogger.Error(e.Message);
+                count++;
+            }
+
+            if (count == 5)
+            {
+                return true;
+            }
+            
+            // 세로 체크
+            _x = x;
+            _y = y;
+            count = 0;
+            
+            while (omok[_y, _x] == user && _y > 0)
+            {
+                _y--;
+            }
+            
+            while (_y < OMOKCOUNT && omok[_y++, _x] == user)
+            {
+                count++;
+            }
+
+            if (count == 5)
+            {
+                return true;
+            }
+            
+            // 오른쪽 아래 대각선
+            _x = x;
+            _y = y;
+            count = 0;
+            
+            while (omok[_y, _x] == user && _y > 0 && _x > 0)
+            {
+                _y--;
+                _x--;
+            }
+            
+            while (_y < OMOKCOUNT && _x < OMOKCOUNT && omok[_y++, _x++] == user)
+            {
+                count++;
+            }
+
+            if (count == 5)
+            {
+                return true;
+            }
+            
+            // 왼쪽 아래 대각선
+            _x = x;
+            _y = y;
+            count = 0;
+            
+            while (omok[_y, _x] == user && _y > 0 && _x > 0)
+            {
+                _y--;
+                _x++;
+            }
+            
+            while (_y < OMOKCOUNT && _x < OMOKCOUNT && omok[_y++, _x--] == user)
+            {
+                count++;
+            }
+
+            if (count == 5)
+            {
+                return true;
             }
 
             return false;
@@ -332,6 +335,22 @@ namespace OMKServer
                 
                 NetSendFunc(user.NetSessionID, sendPacket);
             }
+        }
+
+        public int GetOtherUser(int excludeNetSessionIndex)
+        {
+            int otherUserindex = 0;
+            foreach (var user in UserList)
+            {
+                if (user.NetSessionIndex == excludeNetSessionIndex)
+                {
+                    continue;
+                }
+
+                otherUserindex = user.NetSessionIndex;
+            }
+
+            return otherUserindex;
         }
     }
 }

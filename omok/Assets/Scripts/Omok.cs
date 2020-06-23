@@ -99,11 +99,9 @@ public class Omok : MonoBehaviour
             for (int x = 1; x < OMOKCOUNT + 1; x++)
             {
                 omok[y, x] = (float)Math.Round(MINX + (DIS * (x-1)), 2);
-                Debug.Log($"X : {omok[y, x]}, ");
             }
 
             omok[y, 0] = (float)Math.Round(MINY + (DIS * y), 2);
-            Debug.Log($"Y : {omok[y, 0]}, ");
         }
 
         return omok;

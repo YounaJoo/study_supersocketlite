@@ -141,8 +141,17 @@ namespace OMKServer
                     return;
                 }
 
-                if (room.CurrentUserCount() <= 1) { user.setUserPos(0);}
-                else { user.setUserPos(1); }
+                if (room.CurrentUserCount() <= 1) // 유저가 자기자신일 뿐일때
+                {
+                    user.setUserPos(0);
+                }
+                else
+                {
+                    int otherUserIndex = room.GetOtherUser(sessionIndex);
+                    User otherUser = UserMgr.GetUser(otherUserIndex);
+                    if (otherUser.UserPos == 1) {user.setUserPos(0);} 
+                    else {user.setUserPos(1);}
+                }
                 
                 user.EnteredRoom(roomNumber);
                 room.NotifyPacketUserList(sessionID); // Room에 있는 유저 정보
@@ -227,18 +236,21 @@ namespace OMKServer
             var reqData = MessagePackSerializer.Deserialize<OMKReqOmokGame>(packetData.BodyData);
 
             ERROR_CODE code = roomObject.Item2.ChkOmokPosition(reqData.X, reqData.Y, user.UserPos);
+            MainServer.MainLogger.Info($"ChkOmokPosition X : {reqData.X} Y : {reqData.Y} user : {user.UserPos}");
             responseOmokGameToClinet(code, sessionID);
             if (code == ERROR_CODE.NONE)
-            {   
+            {
                 roomObject.Item2.NotifyPacketOmokTurn(reqData.X, reqData.Y, user.UserPos);
 
-                if (roomObject.Item2.ChkPointer(reqData.X, reqData.Y, user.UserPos)) {}
+                if (roomObject.Item2.ChkPointer(reqData.X, reqData.Y, user.UserPos))
                 {
                     // 일단 성공 결과만 전부 보내게 하기
                     roomObject.Item2.NotifyPacketOmokGame(user.UserPos);
                     MainServer.MainLogger.Info($"USER - {user.UserPos} Win!");
                 } 
             }
+
+            return;
         }
         
         // 해당 룸에 (roomNumber) 해당 유저(sessinIndex) 떠남
