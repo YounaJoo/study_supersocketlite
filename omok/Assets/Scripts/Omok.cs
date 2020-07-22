@@ -98,9 +98,11 @@ public class Omok : MonoBehaviour
         {
             for (int x = 1; x < OMOKCOUNT + 1; x++)
             {
+                // y에 따라 x값 저장
                 omok[y, x] = (float)Math.Round(MINX + (DIS * (x-1)), 2);
             }
 
+            // y, 0인덱스에 y의 위치값 저장
             omok[y, 0] = (float)Math.Round(MINY + (DIS * y), 2);
         }
 
@@ -114,7 +116,7 @@ public class Omok : MonoBehaviour
         float minY = MAXY;
         int indexX = 0;
         int indexY = 0;
-        
+         
         for (int i = 0; i < OMOKCOUNT; i++)
         {
             for (int j = 1; j < OMOKCOUNT + 1; j++)

@@ -16,7 +16,7 @@ namespace OMKServer
         
         List<RoomUser> UserList = new List<RoomUser>();
         
-        private int[,] omok = new int[OmokManager.OMOK_COUNT,OmokManager.OMOK_COUNT];
+        private int[,] omok = new int[OmokManager.OMOK_COUNT + 1,OmokManager.OMOK_COUNT + 1];
 
         // index --> userPos 
         public bool[] isReady { get; set; } = new[] {false, false}; 
@@ -97,19 +97,26 @@ namespace OMKServer
             int count = 0;
             int user = userPos;
             
+            
             // 가로 체크
             while (omok[_y, _x] == user && _x > 0)
             {
                 _x--;
             }
             
-            while (_x < OMOKCOUNT && omok[_y, _x++] == user)
+            if (omok[_y, _x] == user && _x == 0)
+            {
+                _x = -1;
+            }
+            
+            while (_x < OMOKCOUNT && omok[_y, ++_x] == user)
             {
                 count++;
             }
 
-            if (count == 5)
+            if (count >= 5)
             {
+                MainServer.MainLogger.Info($"Game Over {user} winner");
                 return true;
             }
             
@@ -122,14 +129,20 @@ namespace OMKServer
             {
                 _y--;
             }
-            
-            while (_y < OMOKCOUNT && omok[_y++, _x] == user)
+
+            if (omok[_y, _x] == user && _y == 0)
+            {
+                _y = -1;
+            }
+
+            while (_y < OMOKCOUNT && omok[++_y, _x] == user)
             {
                 count++;
             }
 
-            if (count == 5)
+            if (count >= 5)
             {
+                MainServer.MainLogger.Info($"Game Over {user} winner");
                 return true;
             }
             
@@ -138,40 +151,75 @@ namespace OMKServer
             _y = y;
             count = 0;
             
-            while (omok[_y, _x] == user && _y > 0 && _x > 0)
+            MainServer.MainLogger.Info($"오른쪽 아래 대각선 체크하기 전 _x : {_x}, _y : {_y}");
+            //while (omok[_y, _x] == user && _y > 0 && _x > 0)
+            while (omok[_y, _x] == user && _y > 0 && _x >= 0)
             {
+                MainServer.MainLogger.Info($"체크 중 _x :{_x} && _y : {_y}");
                 _y--;
-                _x--;
-            }
-            
-            while (_y < OMOKCOUNT && _x < OMOKCOUNT && omok[_y++, _x++] == user)
-            {
-                count++;
+                _x++;
             }
 
-            if (count == 5)
-            {
-                return true;
-            }
-            
-            // 왼쪽 아래 대각선
-            _x = x;
-            _y = y;
-            count = 0;
-            
-            while (omok[_y, _x] == user && _y > 0 && _x > 0)
+            if (_x == 0 && omok[_y, _x] == user)
             {
                 _y--;
                 _x++;
             }
             
+            MainServer.MainLogger.Info($"number _x : {_x} , _y : {_y}");
+            
+
+
+            while (_y < OMOKCOUNT && _x > 0 && omok[++_y, --_x] == user)
+            {
+                MainServer.MainLogger.Info($"counter chk _x : {_x}, _y : {_y}, count : {count}");
+                count++;
+            }
+            
+            MainServer.MainLogger.Info($"오른쪽 대각선 count : {count}");
+
+            if (count >= 5)
+            {
+                MainServer.MainLogger.Info($"Game Over {user} winner");
+                return true;
+            }
+            
+            // 왼쪽 아래 대각선
+            // chk 필요
+            _x = x;
+            _y = y;
+            count = 0;
+            
+            /*while (omok[_y, _x] == user && _y > 0 && _x > 0)
+            {
+                _y--;
+                _x++;
+            }
             while (_y < OMOKCOUNT && _x < OMOKCOUNT && omok[_y++, _x--] == user)
             {
                 count++;
+            }*/
+
+            while (omok[_y, _x] == user && _y > 0 && _x > 0)
+            {
+                _y--;
+                _x--;
             }
 
-            if (count == 5)
+            if (_y == 0 && _x == 0 && omok[_y, _x] == user)
             {
+                _y = -1;
+                _x = -1;
+            }
+
+            while (_y < OMOKCOUNT && _x < OMOKCOUNT && omok[_y++, _x++] == user)
+            {
+                count++;
+            }
+            
+            if (count >= 5)
+            {
+                MainServer.MainLogger.Info($"Game Over {user} winner");
                 return true;
             }
 

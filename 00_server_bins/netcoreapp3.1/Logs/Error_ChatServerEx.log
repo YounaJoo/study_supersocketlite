@@ -81,3 +81,33 @@
    at System.Net.Sockets.Socket.DoBind(EndPoint endPointSnapshot, SocketAddress socketAddress)
    at System.Net.Sockets.Socket.Bind(EndPoint localEP)
    at SuperSocket.SocketEngine.TcpAsyncSocketListener.Start(IServerConfig config) in D:\Dev\github\01_SuperSocketLite\SocketEngine\TcpAsyncSocketListener.cs:line 42
+[2020/07/21 16:44:53.930] [TID:9] [PacketProcessor.Process => PKHRoom.RequestRoomEnter => NLogLog.Error]: System.MissingFieldException: Field not found: 'CSBaseLib.OMKRoomUserList.UserIDList'.
+   at ChatServer.Room.NotifyPacketUserList(String userNetSessionID)
+   at ChatServer.PKHRoom.RequestRoomEnter(ServerPacketData packetData) in C:\Project\study_supersocketlite\ChatServer\ChatServer\PKHRoom.cs:line 155
+[2020/07/21 16:45:03.529] [TID:9] [PacketProcessor.Process => PKHRoom.RequestRoomEnter => NLogLog.Error]: System.MissingFieldException: Field not found: 'CSBaseLib.OMKRoomUserList.UserIDList'.
+   at ChatServer.Room.NotifyPacketUserList(String userNetSessionID)
+   at ChatServer.PKHRoom.RequestRoomEnter(ServerPacketData packetData) in C:\Project\study_supersocketlite\ChatServer\ChatServer\PKHRoom.cs:line 155
+[2020/07/21 16:45:05.574] [TID:9] [PacketProcessor.Process => PKHRoom.RequestRoomEnter => NLogLog.Error]: System.MissingFieldException: Field not found: 'CSBaseLib.OMKRoomUserList.UserIDList'.
+   at ChatServer.Room.NotifyPacketUserList(String userNetSessionID)
+   at ChatServer.PKHRoom.RequestRoomEnter(ServerPacketData packetData) in C:\Project\study_supersocketlite\ChatServer\ChatServer\PKHRoom.cs:line 155
+[2020/07/21 16:45:12.536] [TID:9] [PacketProcessor.Process => PKHRoom.RequestRoomEnter => NLogLog.Error]: System.MissingFieldException: Field not found: 'CSBaseLib.OMKRoomUserList.UserIDList'.
+   at ChatServer.Room.NotifyPacketUserList(String userNetSessionID)
+   at ChatServer.PKHRoom.RequestRoomEnter(ServerPacketData packetData) in C:\Project\study_supersocketlite\ChatServer\ChatServer\PKHRoom.cs:line 155
+[2020/07/21 16:45:30.298] [TID:9] [PacketProcessor.Process => PKHRoom.RequestRoomEnter => NLogLog.Error]: System.MissingFieldException: Field not found: 'CSBaseLib.OMKRoomUserList.UserIDList'.
+   at ChatServer.Room.NotifyPacketUserList(String userNetSessionID)
+   at ChatServer.PKHRoom.RequestRoomEnter(ServerPacketData packetData) in C:\Project\study_supersocketlite\ChatServer\ChatServer\PKHRoom.cs:line 155
+[2020/07/21 17:05:11.249] [TID:9] [PacketProcessor.Process => PKHRoom.RequestRoomEnter => NLogLog.Error]: System.MissingFieldException: Field not found: 'CSBaseLib.OMKRoomUserList.UserIDList'.
+   at ChatServer.Room.NotifyPacketUserList(String userNetSessionID)
+   at ChatServer.PKHRoom.RequestRoomEnter(ServerPacketData packetData) in C:\Project\study_supersocketlite\ChatServer\ChatServer\PKHRoom.cs:line 155
+[2020/07/21 17:08:23.350] [TID:9] [PacketProcessor.Process => PKHRoom.RequestRoomEnter => NLogLog.Error]: System.MissingFieldException: Field not found: 'CSBaseLib.OMKRoomUserList.UserIDList'.
+   at ChatServer.Room.NotifyPacketUserList(String userNetSessionID)
+   at ChatServer.PKHRoom.RequestRoomEnter(ServerPacketData packetData) in C:\Project\study_supersocketlite\ChatServer\ChatServer\PKHRoom.cs:line 155
+[2020/07/21 17:10:51.722] [TID:9] [PacketProcessor.Process => PKHRoom.RequestRoomEnter => NLogLog.Error]: System.MissingFieldException: Field not found: 'CSBaseLib.OMKRoomUserList.UserIDList'.
+   at ChatServer.Room.NotifyPacketUserList(String userNetSessionID)
+   at ChatServer.PKHRoom.RequestRoomEnter(ServerPacketData packetData) in C:\Project\study_supersocketlite\ChatServer\ChatServer\PKHRoom.cs:line 155
+[2020/07/21 17:12:26.068] [TID:9] [PacketProcessor.Process => PKHRoom.RequestRoomEnter => NLogLog.Error]: System.MissingFieldException: Field not found: 'CSBaseLib.OMKRoomUserList.UserIDList'.
+   at ChatServer.Room.NotifyPacketUserList(String userNetSessionID)
+   at ChatServer.PKHRoom.RequestRoomEnter(ServerPacketData packetData) in C:\Project\study_supersocketlite\ChatServer\ChatServer\PKHRoom.cs:line 155
+[2020/07/21 17:12:31.755] [TID:9] [PacketProcessor.Process => PKHRoom.RequestRoomEnter => NLogLog.Error]: System.MissingFieldException: Field not found: 'CSBaseLib.OMKRoomUserList.UserIDList'.
+   at ChatServer.Room.NotifyPacketUserList(String userNetSessionID)
+   at ChatServer.PKHRoom.RequestRoomEnter(ServerPacketData packetData) in C:\Project\study_supersocketlite\ChatServer\ChatServer\PKHRoom.cs:line 155

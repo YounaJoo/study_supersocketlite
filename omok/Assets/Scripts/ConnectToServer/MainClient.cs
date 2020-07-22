@@ -30,7 +30,7 @@ namespace ConnectToServer
         
         private bool serializerRegistered = false;
         public short userPos = -1;
-
+        
         private NetworkManager networkManager;
         private RoomUIManager roomUIManager;
 
@@ -236,6 +236,8 @@ namespace ConnectToServer
                 }
 
                 Tuple<int, int> index = Omok.Instance.GetOmokIndex(mousePos.x, mousePos.y);
+                
+                Debug.Log($"index x : {mousePos.x}, index y : {mousePos.y}");
                 
                 var request = new OMKReqOmokGame()
                 {

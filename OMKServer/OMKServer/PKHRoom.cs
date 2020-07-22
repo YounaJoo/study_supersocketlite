@@ -247,7 +247,7 @@ namespace OMKServer
                     // 일단 성공 결과만 전부 보내게 하기
                     roomObject.Item2.NotifyPacketOmokGame(user.UserPos);
                     MainServer.MainLogger.Info($"USER - {user.UserPos} Win!");
-                } 
+                }
             }
 
             return;
