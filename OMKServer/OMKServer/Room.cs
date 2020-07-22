@@ -151,11 +151,9 @@ namespace OMKServer
             _y = y;
             count = 0;
             
-            MainServer.MainLogger.Info($"오른쪽 아래 대각선 체크하기 전 _x : {_x}, _y : {_y}");
             //while (omok[_y, _x] == user && _y > 0 && _x > 0)
             while (omok[_y, _x] == user && _y > 0 && _x >= 0)
             {
-                MainServer.MainLogger.Info($"체크 중 _x :{_x} && _y : {_y}");
                 _y--;
                 _x++;
             }
@@ -165,18 +163,11 @@ namespace OMKServer
                 _y--;
                 _x++;
             }
-            
-            MainServer.MainLogger.Info($"number _x : {_x} , _y : {_y}");
-            
-
 
             while (_y < OMOKCOUNT && _x > 0 && omok[++_y, --_x] == user)
             {
-                MainServer.MainLogger.Info($"counter chk _x : {_x}, _y : {_y}, count : {count}");
                 count++;
             }
-            
-            MainServer.MainLogger.Info($"오른쪽 대각선 count : {count}");
 
             if (count >= 5)
             {
@@ -200,22 +191,32 @@ namespace OMKServer
                 count++;
             }*/
 
+            MainServer.MainLogger.Info($"왼쪽 아래 대각선 체크하기 전 _x : {_x}, _y : {_y}");
             while (omok[_y, _x] == user && _y > 0 && _x > 0)
             {
+                MainServer.MainLogger.Info($"체크 중 _x :{_x} && _y : {_y}");
                 _y--;
                 _x--;
             }
 
-            if (_y == 0 && _x == 0 && omok[_y, _x] == user)
+            if (omok[_y, _x] == user)
             {
-                _y = -1;
-                _x = -1;
+                if (_y == 0 || _x == 0)
+                {
+                    _y--;
+                    _x--;
+                }
             }
+            
+            MainServer.MainLogger.Info($"number _x : {_x} , _y : {_y}");
 
-            while (_y < OMOKCOUNT && _x < OMOKCOUNT && omok[_y++, _x++] == user)
+            while (_y < OMOKCOUNT && _x < OMOKCOUNT && omok[++_y, ++_x] == user)
             {
+                MainServer.MainLogger.Info($"counter chk _x : {_x}, _y : {_y}, count : {count}");
                 count++;
             }
+            
+            MainServer.MainLogger.Info($"왼쪽 대각선 count : {count}");
             
             if (count >= 5)
             {
